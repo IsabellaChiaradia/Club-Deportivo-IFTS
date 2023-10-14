@@ -1,4 +1,4 @@
-#🏟️⚽ Club Deportivo - Sistema de Gestión
+# 🏟️⚽ Club Deportivo - Sistema de Gestión
 
 ## Trabajo Práctico: Administración del Club Deportivo
 
@@ -31,4 +31,5 @@ Para cumplir con los requerimientos, se deben llevar a cabo las siguientes tarea
 4. 🗂️ Crear un mecanismo para generar un listado diario de socios a los que les vence la cuota.
 
 Con la implementación de estas funcionalidades, el sistema estará capacitado para gestionar eficazmente el club deportivo.
-[UML]([https://lucid.app/lucidchart/4a084714-7030-41b4-a4b9-4c64084e4242/edit?invitationId=inv_879521b6-0571-46d6-9fcd-49f2c6fed290&page=0_0#](https://lucid.app/lucidchart/5e60718c-0bf5-479d-bc0b-b0ca0b37e4c2/edit?invitationId=inv_441dbee3-7a14-4020-aafc-bd2adc3683d8&page=HWEp-vi-RSFO#)https://lucid.app/lucidchart/5e60718c-0bf5-479d-bc0b-b0ca0b37e4c2/edit?invitationId=inv_441dbee3-7a14-4020-aafc-bd2adc3683d8&page=HWEp-vi-RSFO#) 
+
+[UML](https://lucid.app/lucidchart/5e60718c-0bf5-479d-bc0b-b0ca0b37e4c2/edit?invitationId=inv_441dbee3-7a14-4020-aafc-bd2adc3683d8&page=HWEp-vi-RSFO#)
