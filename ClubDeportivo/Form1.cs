@@ -33,11 +33,16 @@ namespace ClubDeportivo
 
         private void txtPassword_Leave(object sender, EventArgs e)
         {
-            if(txtPassword.Text == "")
+            if (txtPassword.Text == "")
             {
                 txtPassword.Text = "Contraseña";
                 txtPassword.UseSystemPasswordChar = false;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

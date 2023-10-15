@@ -37,6 +37,7 @@
             linklblRecuperar = new LinkLabel();
             txtUser = new TextBox();
             txtPassword = new TextBox();
+            btnClose = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -139,12 +140,29 @@
             txtPassword.Enter += txtPassword_Enter;
             txtPassword.Leave += txtPassword_Leave;
             // 
+            // btnClose
+            // 
+            btnClose.BackColor = Color.FromArgb(85, 96, 165);
+            btnClose.Cursor = Cursors.Hand;
+            btnClose.FlatAppearance.BorderColor = Color.FromArgb(85, 96, 165);
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            btnClose.ForeColor = Color.White;
+            btnClose.Location = new Point(645, 12);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(47, 47);
+            btnClose.TabIndex = 13;
+            btnClose.Text = "X";
+            btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(704, 522);
+            Controls.Add(btnClose);
             Controls.Add(txtPassword);
             Controls.Add(txtUser);
             Controls.Add(pictureBox4);
@@ -174,5 +192,6 @@
         private LinkLabel linklblRecuperar;
         private TextBox txtUser;
         private TextBox txtPassword;
+        private Button btnClose;
     }
 }
