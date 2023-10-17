@@ -1,3 +1,8 @@
+using System;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
+
 namespace Dashboard_ClubDeportivo
 
 {
@@ -6,6 +11,21 @@ namespace Dashboard_ClubDeportivo
         public Login()
         {
             InitializeComponent();
+
+            Boton btnLogin = new Boton();
+            btnLogin.Text = "Iniciar Sesión";
+            btnLogin.Location = new Point(443, 386);
+            btnLogin.Size = new Size(180, 40);
+            btnLogin.BackColor = Color.FromArgb(0x4A, 0x66, 0xAE);
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Padding = new Padding(10, 5, 5, 10);
+            btnLogin.TextAlign = ContentAlignment.MiddleCenter;
+            btnLogin.Font = new Font("Avenir Next", 12f, FontStyle.Regular);
+            btnLogin.Cursor = Cursors.Hand;
+
+            btnLogin.Click += btnLogin_Click;
+            // Agrega el Boton al formulario.
+            Controls.Add(btnLogin);
         }
 
         private void txtUser_Enter(object sender, EventArgs e)
@@ -41,38 +61,23 @@ namespace Dashboard_ClubDeportivo
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string usuario = txtUser.Text;
             string password = txtPassword.Text;
 
-            if (AutenticarUser(usuario, password))
-            {
-                // Las credenciales son correctas. Abre el siguiente formulario.
-                Form1 dashboardForm = new Form1();
-                dashboardForm.Show();
-
-                
-            }
-            else
-            {
-                MessageBox.Show("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
-            }
+            Form1 dashboardForm = new Form1();
+            dashboardForm.Show();
         }
 
-        private bool AutenticarUser(string usuario, string password)
+        private void btnMinimize_Click(object sender, EventArgs e)
         {
-            if (usuario == "asd" && password == "123456")
-            {
-                return true;
-            }
+            this.WindowState = FormWindowState.Minimized;
+        }
 
-            return false;
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

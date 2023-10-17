@@ -29,33 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             lblSingin = new Label();
-            linklblRecuperar = new LinkLabel();
             txtUser = new TextBox();
             txtPassword = new TextBox();
+            pnlControlPanel = new Panel();
             btnClose = new Button();
-            pictureBox5 = new PictureBox();
-            btnLogin = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            btnMinimize = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            pnlControlPanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.AccessibleRole = AccessibleRole.None;
-            pictureBox2.BackColor = Color.FromArgb(85, 96, 165);
-            pictureBox2.Location = new Point(325, -1);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(380, 525);
-            pictureBox2.TabIndex = 3;
-            pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -99,22 +86,6 @@
             lblSingin.TabIndex = 7;
             lblSingin.Text = "Sing in";
             // 
-            // linklblRecuperar
-            // 
-            linklblRecuperar.ActiveLinkColor = Color.Red;
-            linklblRecuperar.AutoSize = true;
-            linklblRecuperar.BackColor = Color.FromArgb(85, 96, 165);
-            linklblRecuperar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            linklblRecuperar.ForeColor = Color.White;
-            linklblRecuperar.LinkBehavior = LinkBehavior.HoverUnderline;
-            linklblRecuperar.LinkColor = Color.Wheat;
-            linklblRecuperar.Location = new Point(461, 441);
-            linklblRecuperar.Name = "linklblRecuperar";
-            linklblRecuperar.Size = new Size(141, 19);
-            linklblRecuperar.TabIndex = 8;
-            linklblRecuperar.TabStop = true;
-            linklblRecuperar.Text = "Recuperar contraseña";
-            // 
             // txtUser
             // 
             txtUser.BackColor = Color.FromArgb(85, 96, 165);
@@ -143,79 +114,78 @@
             txtPassword.Enter += txtPassword_Enter;
             txtPassword.Leave += txtPassword_Leave;
             // 
+            // pnlControlPanel
+            // 
+            pnlControlPanel.Controls.Add(btnClose);
+            pnlControlPanel.Controls.Add(btnMinimize);
+            pnlControlPanel.Location = new Point(531, 11);
+            pnlControlPanel.Margin = new Padding(3, 2, 3, 2);
+            pnlControlPanel.Name = "pnlControlPanel";
+            pnlControlPanel.Size = new Size(161, 26);
+            pnlControlPanel.TabIndex = 14;
+            // 
             // btnClose
             // 
-            btnClose.BackColor = Color.FromArgb(85, 96, 165);
+            btnClose.BackColor = Color.Transparent;
+            btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
+            btnClose.BackgroundImageLayout = ImageLayout.Zoom;
             btnClose.Cursor = Cursors.Hand;
-            btnClose.FlatAppearance.BorderColor = Color.FromArgb(85, 96, 165);
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(645, 12);
+            btnClose.Location = new Point(116, 1);
+            btnClose.Margin = new Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(47, 47);
-            btnClose.TabIndex = 13;
-            btnClose.Text = "X";
+            btnClose.Size = new Size(22, 23);
+            btnClose.TabIndex = 2;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
             // 
-            // pictureBox5
+            // btnMinimize
             // 
-            pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
-            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Location = new Point(467, 384);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(135, 32);
-            pictureBox5.TabIndex = 14;
-            pictureBox5.TabStop = false;
-            // 
-            // btnLogin
-            // 
-            btnLogin.BackColor = Color.FromArgb(85, 96, 165);
-            btnLogin.FlatAppearance.BorderSize = 0;
-            btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(473, 386);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(121, 28);
-            btnLogin.TabIndex = 15;
-            btnLogin.Text = "Ingresar";
-            btnLogin.UseVisualStyleBackColor = false;
-            btnLogin.Click += btnLogin_Click;
+            btnMinimize.BackColor = Color.Transparent;
+            btnMinimize.BackgroundImage = (Image)resources.GetObject("btnMinimize.BackgroundImage");
+            btnMinimize.BackgroundImageLayout = ImageLayout.Zoom;
+            btnMinimize.Cursor = Cursors.Hand;
+            btnMinimize.FlatAppearance.BorderSize = 0;
+            btnMinimize.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnMinimize.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.Location = new Point(67, 1);
+            btnMinimize.Margin = new Padding(3, 2, 3, 2);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.Size = new Size(23, 23);
+            btnMinimize.TabIndex = 1;
+            btnMinimize.UseVisualStyleBackColor = false;
+            btnMinimize.Click += btnMinimize_Click;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(85, 96, 165);
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(704, 522);
-            Controls.Add(btnLogin);
-            Controls.Add(pictureBox5);
-            Controls.Add(btnClose);
+            Controls.Add(pnlControlPanel);
             Controls.Add(txtPassword);
             Controls.Add(txtUser);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
-            Controls.Add(linklblRecuperar);
             Controls.Add(lblSingin);
             Controls.Add(pictureBox1);
-            Controls.Add(pictureBox2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            pnlControlPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
@@ -223,8 +193,8 @@
         private LinkLabel linklblRecuperar;
         private TextBox txtUser;
         private TextBox txtPassword;
+        private Panel pnlControlPanel;
         private Button btnClose;
-        private PictureBox pictureBox5;
-        private Button btnLogin;
+        private Button btnMinimize;
     }
 }
