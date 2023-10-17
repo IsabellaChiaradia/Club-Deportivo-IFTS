@@ -26,7 +26,8 @@ namespace Dashboard_ClubDeportivo
             btnLogin.Click += btnLogin_Click;
             // Agrega el Boton al formulario.
             Controls.Add(btnLogin);
-        }
+            btnLogin.Select();
+        }       
 
         private void txtUser_Enter(object sender, EventArgs e)
         {
