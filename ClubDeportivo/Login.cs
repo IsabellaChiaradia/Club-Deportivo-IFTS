@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using System.Data;
 
 namespace Dashboard_ClubDeportivo
 
@@ -67,9 +67,21 @@ namespace Dashboard_ClubDeportivo
             string usuario = txtUser.Text;
             string password = txtPassword.Text;
 
-            Form1 dashboardForm = new Form1();
-            dashboardForm.Show();
-        }
+                DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
+            ClubDeportivo.Datos.Usuario dato = new ClubDeportivo.Datos.Usuario(); // variable que contiene todas las caracteristicas de la clase
+                tablaLogin = dato.Log_Usu(usuario, password);
+                if (tablaLogin.Rows.Count > 0)
+                {
+                    // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
+                MessageBox.Show("Ingreso exitoso");
+                Form1 dashboardForm = new Form1();
+                dashboardForm.Show();
+            }
+                else
+                {
+                    MessageBox.Show("Usuario y/o password incorrecto");
+                }
+            }
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
