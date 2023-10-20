@@ -18,7 +18,7 @@ delimiter //
 		/* ---------------------------------------------------------
 			para saber si ya esta almacenado el postulante
 		------------------------------------------------------- */	
-		set existe = (select count(*) from miembro m where m.Correo = Correo and m.DNI = Dni);
+		set existe = (select count(*) from miembro m where m.Correo = Correo or m.DNI = Dni);
      end if;
 	 
 	  if existe = 0 then	 
