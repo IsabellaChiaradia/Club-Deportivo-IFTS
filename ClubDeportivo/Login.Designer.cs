@@ -38,6 +38,7 @@
             pnlControlPanel = new Panel();
             btnClose = new Button();
             btnMinimize = new Button();
+            btnLogin = new CustomBotonDos();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -160,6 +161,23 @@
             btnMinimize.UseVisualStyleBackColor = false;
             btnMinimize.Click += btnMinimize_Click;
             // 
+            // btnLogin
+            // 
+            btnLogin.BackColor = Color.FromArgb(96, 61, 140);
+            btnLogin.Cursor = Cursors.Hand;
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Location = new Point(440, 404);
+            btnLogin.Margin = new Padding(3, 2, 3, 2);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(181, 39);
+            btnLogin.TabIndex = 25;
+            btnLogin.Text = "INICIAR SESION";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -167,6 +185,7 @@
             BackColor = Color.FromArgb(85, 96, 165);
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(704, 522);
+            Controls.Add(btnLogin);
             Controls.Add(pnlControlPanel);
             Controls.Add(txtPassword);
             Controls.Add(txtUser);
@@ -177,6 +196,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
             Text = "Form1";
+            Shown += Login_Shown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -196,5 +216,6 @@
         private Panel pnlControlPanel;
         private Button btnClose;
         private Button btnMinimize;
+        private CustomBotonDos btnLogin;
     }
 }
