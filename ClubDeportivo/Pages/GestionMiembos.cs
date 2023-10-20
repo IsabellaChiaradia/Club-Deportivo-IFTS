@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubDeportivo.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -132,29 +133,45 @@ namespace Dashboard_ClubDeportivo.pesañas
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            //string nombre = txtNombre.Text;
-            //string apellido = txtApellido.Text;
-            //string dni = txtDni.Text;
-            //string correo = txtCorreo.Text;
-            //string domicilio = txtDomicilio.Text;
-            //string fechanac = txtFechaNacimiento.Text;
-            //string fechains = txtFechaInscripcion.Text;
-            //bool esSocio = cbxEsSocio.Checked; 
+            string respuesta;
+            E_Miembro miembro = new E_Miembro();
+            miembro.Nombre = txtNombre.Text;
+            miembro.Apellido = txtApellido.Text;
+            miembro.DNI = txtDni.Text;
+            miembro.EsSocio = cbxEsSocio.Checked;
+            miembro.Correo = txtCorreo.Text;
+            miembro.Direccion = txtDomicilio.Text;
+            miembro.FechaNac = txtFechaNacimiento.Text;
+            miembro.EstaAlDia = false;
+            miembro.AptoMedico = true;
+           
 
-            //DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
-            //ClubDeportivo.Datos.Usuario dato = new ClubDeportivo.Datos.Usuario(); // variable que contiene todas las caracteristicas de la clase
-            //tablaLogin = dato.Log_Usu(usuario, password);
-            //if (tablaLogin.Rows.Count > 0)
-            //{
-            //    // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
-            //    MessageBox.Show("Ingreso exitoso");
-            //    Form1 dashboardForm = new Form1();
-            //    dashboardForm.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Usuario y/o password incorrecto");
-            //}
+            // instanciamos para usar el metodo dentro de postulantes
+            ClubDeportivo.Datos.Miembro altaMiembro = new ClubDeportivo.Datos.Miembro();
+            respuesta = altaMiembro.Nuevo_Miembro(miembro);
+            
+            bool esnumero = int.TryParse(respuesta, out int codigo);
+            if (esnumero)
+            {
+                if (codigo == 1)
+                {
+                    MessageBox.Show("EL MIEMBRO YA EXISTE", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Se dió de alta con éxito el miembro con el codigo Nro " + respuesta, "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ups! Hubo un error con la alta del miembro", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+            }
         }
 
         private void LIMPIAR_Click(object sender, EventArgs e)
