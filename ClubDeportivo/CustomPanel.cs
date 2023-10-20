@@ -10,7 +10,7 @@ namespace Dashboard_ClubDeportivo
     {
         public CustomPanel()
         {
-            this.BorderStyle = BorderStyle.None;
+            //this.BorderStyle = BorderStyle.None;
         }
         protected override void OnPaint(PaintEventArgs e)
         {

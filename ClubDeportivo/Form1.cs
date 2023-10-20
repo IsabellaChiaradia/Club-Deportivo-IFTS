@@ -1,6 +1,8 @@
 using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Dashboard_ClubDeportivo.pesañas;
+using Dashboard_ClubDeportivo.Pages;
 
 namespace Dashboard_ClubDeportivo
 {
@@ -19,7 +21,9 @@ namespace Dashboard_ClubDeportivo
         public Form1()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
+
+            GestionMiembos uc = new GestionMiembos();
+            agregarPaneles(uc);
             this.BackColor = Color.FromArgb(0x4A, 0x66, 0xAE);
 
 
@@ -41,12 +45,26 @@ namespace Dashboard_ClubDeportivo
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            //evento a agregar
+            CenterToScreen();
+        }
+
+        private void agregarPaneles(UserControl userControl)
+        {
+            pnlContainer.Controls.Add(userControl);
+            userControl.Dock = DockStyle.Fill;
+            userControl.BringToFront();
         }
 
         private void btnGestion_Click(object sender, EventArgs e)
         {
-            this.Close();
+            GestionMiembos uc = new GestionMiembos();
+            agregarPaneles(uc);
+        }
+
+        private void btnPagosFactura_Click(object sender, EventArgs e)
+        {
+            PagosFacturacion uc = new PagosFacturacion();
+            agregarPaneles(uc);
         }
     }
 }

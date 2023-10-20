@@ -4,6 +4,9 @@
     <Compile Update="Boton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="CustomBotonDos.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="CustomPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -12,6 +15,12 @@
     </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Pages\GestionMiembos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Pages\PagosFacturacion.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>
