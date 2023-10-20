@@ -31,19 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionMiembos));
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            txbNombre = new TextBox();
+            txtNombre = new TextBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             pictureBox5 = new PictureBox();
             pictureBox6 = new PictureBox();
             pictureBox7 = new PictureBox();
-            tbxApellido = new TextBox();
-            txbDni = new TextBox();
-            txbCorreo = new TextBox();
-            txbDireccion = new TextBox();
-            txbFechaNacimiento = new TextBox();
-            txbFechaInscripcion = new TextBox();
+            txtApellido = new TextBox();
+            txtDni = new TextBox();
+            txtCorreo = new TextBox();
+            txtDomicilio = new TextBox();
+            txtFechaNacimiento = new TextBox();
+            txtFechaInscripcion = new TextBox();
             cbxEsSocio = new CheckBox();
             dgtvListaSocios = new DataGridView();
             btnAgregar = new CustomBotonDos();
@@ -81,19 +81,21 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // txbNombre
+            // txtNombre
             // 
-            txbNombre.BackColor = Color.FromArgb(74, 102, 174);
-            txbNombre.BorderStyle = BorderStyle.None;
-            txbNombre.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txbNombre.ForeColor = Color.White;
-            txbNombre.Location = new Point(43, 80);
-            txbNombre.Margin = new Padding(3, 2, 3, 2);
-            txbNombre.Multiline = true;
-            txbNombre.Name = "txbNombre";
-            txbNombre.Size = new Size(214, 18);
-            txbNombre.TabIndex = 2;
-            txbNombre.Text = "Nombre";
+            txtNombre.BackColor = Color.FromArgb(74, 102, 174);
+            txtNombre.BorderStyle = BorderStyle.None;
+            txtNombre.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNombre.ForeColor = Color.White;
+            txtNombre.Location = new Point(43, 80);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
+            txtNombre.Multiline = true;
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(214, 18);
+            txtNombre.TabIndex = 2;
+            txtNombre.Text = "Nombre";
+            txtNombre.Enter += txtNombre_Enter;
+            txtNombre.Leave += txtNombre_Leave;
             // 
             // pictureBox2
             // 
@@ -161,89 +163,101 @@
             pictureBox7.TabIndex = 8;
             pictureBox7.TabStop = false;
             // 
-            // tbxApellido
+            // txtApellido
             // 
-            tbxApellido.BackColor = Color.FromArgb(74, 102, 174);
-            tbxApellido.BorderStyle = BorderStyle.None;
-            tbxApellido.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbxApellido.ForeColor = Color.White;
-            tbxApellido.Location = new Point(43, 136);
-            tbxApellido.Margin = new Padding(3, 2, 3, 2);
-            tbxApellido.Multiline = true;
-            tbxApellido.Name = "tbxApellido";
-            tbxApellido.Size = new Size(214, 18);
-            tbxApellido.TabIndex = 9;
-            tbxApellido.Text = "Apellido";
+            txtApellido.BackColor = Color.FromArgb(74, 102, 174);
+            txtApellido.BorderStyle = BorderStyle.None;
+            txtApellido.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtApellido.ForeColor = Color.White;
+            txtApellido.Location = new Point(43, 136);
+            txtApellido.Margin = new Padding(3, 2, 3, 2);
+            txtApellido.Multiline = true;
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(214, 18);
+            txtApellido.TabIndex = 9;
+            txtApellido.Text = "Apellido";
+            txtApellido.Enter += txtApellido_Enter;
+            txtApellido.Leave += txtApellido_Leave;
             // 
-            // txbDni
+            // txtDni
             // 
-            txbDni.BackColor = Color.FromArgb(74, 102, 174);
-            txbDni.BorderStyle = BorderStyle.None;
-            txbDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txbDni.ForeColor = Color.White;
-            txbDni.Location = new Point(43, 196);
-            txbDni.Margin = new Padding(3, 2, 3, 2);
-            txbDni.Multiline = true;
-            txbDni.Name = "txbDni";
-            txbDni.Size = new Size(214, 18);
-            txbDni.TabIndex = 10;
-            txbDni.Text = "DNI";
+            txtDni.BackColor = Color.FromArgb(74, 102, 174);
+            txtDni.BorderStyle = BorderStyle.None;
+            txtDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDni.ForeColor = Color.White;
+            txtDni.Location = new Point(43, 196);
+            txtDni.Margin = new Padding(3, 2, 3, 2);
+            txtDni.Multiline = true;
+            txtDni.Name = "txtDni";
+            txtDni.Size = new Size(214, 18);
+            txtDni.TabIndex = 10;
+            txtDni.Text = "DNI";
+            txtDni.Enter += txtDni_Enter;
+            txtDni.Leave += txtDni_Leave;
             // 
-            // txbCorreo
+            // txtCorreo
             // 
-            txbCorreo.BackColor = Color.FromArgb(74, 102, 174);
-            txbCorreo.BorderStyle = BorderStyle.None;
-            txbCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txbCorreo.ForeColor = Color.White;
-            txbCorreo.Location = new Point(43, 254);
-            txbCorreo.Margin = new Padding(3, 2, 3, 2);
-            txbCorreo.Multiline = true;
-            txbCorreo.Name = "txbCorreo";
-            txbCorreo.Size = new Size(214, 18);
-            txbCorreo.TabIndex = 11;
-            txbCorreo.Text = "Correo";
+            txtCorreo.BackColor = Color.FromArgb(74, 102, 174);
+            txtCorreo.BorderStyle = BorderStyle.None;
+            txtCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCorreo.ForeColor = Color.White;
+            txtCorreo.Location = new Point(43, 254);
+            txtCorreo.Margin = new Padding(3, 2, 3, 2);
+            txtCorreo.Multiline = true;
+            txtCorreo.Name = "txtCorreo";
+            txtCorreo.Size = new Size(214, 18);
+            txtCorreo.TabIndex = 11;
+            txtCorreo.Text = "Correo";
+            txtCorreo.Enter += txtCorreo_Enter;
+            txtCorreo.Leave += txtCorreo_Leave;
             // 
-            // txbDireccion
+            // txtDomicilio
             // 
-            txbDireccion.BackColor = Color.FromArgb(74, 102, 174);
-            txbDireccion.BorderStyle = BorderStyle.None;
-            txbDireccion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txbDireccion.ForeColor = Color.White;
-            txbDireccion.Location = new Point(43, 308);
-            txbDireccion.Margin = new Padding(3, 2, 3, 2);
-            txbDireccion.Multiline = true;
-            txbDireccion.Name = "txbDireccion";
-            txbDireccion.Size = new Size(214, 18);
-            txbDireccion.TabIndex = 12;
-            txbDireccion.Text = "Dirección";
+            txtDomicilio.BackColor = Color.FromArgb(74, 102, 174);
+            txtDomicilio.BorderStyle = BorderStyle.None;
+            txtDomicilio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDomicilio.ForeColor = Color.White;
+            txtDomicilio.Location = new Point(43, 308);
+            txtDomicilio.Margin = new Padding(3, 2, 3, 2);
+            txtDomicilio.Multiline = true;
+            txtDomicilio.Name = "txtDomicilio";
+            txtDomicilio.Size = new Size(214, 18);
+            txtDomicilio.TabIndex = 12;
+            txtDomicilio.Text = "Domicilio";
+            txtDomicilio.Enter += txtDomicilio_Enter;
+            txtDomicilio.Leave += txtDomicilio_Leave;
             // 
-            // txbFechaNacimiento
+            // txtFechaNacimiento
             // 
-            txbFechaNacimiento.BackColor = Color.FromArgb(74, 102, 174);
-            txbFechaNacimiento.BorderStyle = BorderStyle.None;
-            txbFechaNacimiento.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txbFechaNacimiento.ForeColor = Color.White;
-            txbFechaNacimiento.Location = new Point(43, 362);
-            txbFechaNacimiento.Margin = new Padding(3, 2, 3, 2);
-            txbFechaNacimiento.Multiline = true;
-            txbFechaNacimiento.Name = "txbFechaNacimiento";
-            txbFechaNacimiento.Size = new Size(214, 18);
-            txbFechaNacimiento.TabIndex = 20;
-            txbFechaNacimiento.Text = "Fecha N.";
+            txtFechaNacimiento.BackColor = Color.FromArgb(74, 102, 174);
+            txtFechaNacimiento.BorderStyle = BorderStyle.None;
+            txtFechaNacimiento.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtFechaNacimiento.ForeColor = Color.White;
+            txtFechaNacimiento.Location = new Point(43, 362);
+            txtFechaNacimiento.Margin = new Padding(3, 2, 3, 2);
+            txtFechaNacimiento.Multiline = true;
+            txtFechaNacimiento.Name = "txtFechaNacimiento";
+            txtFechaNacimiento.Size = new Size(214, 18);
+            txtFechaNacimiento.TabIndex = 20;
+            txtFechaNacimiento.Text = "Fecha N.";
+            txtFechaNacimiento.Enter += txtFechaNacimiento_Enter;
+            txtFechaNacimiento.Leave += txtFechaNacimiento_Leave;
             // 
-            // txbFechaInscripcion
+            // txtFechaInscripcion
             // 
-            txbFechaInscripcion.BackColor = Color.FromArgb(74, 102, 174);
-            txbFechaInscripcion.BorderStyle = BorderStyle.None;
-            txbFechaInscripcion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txbFechaInscripcion.ForeColor = Color.White;
-            txbFechaInscripcion.Location = new Point(43, 418);
-            txbFechaInscripcion.Margin = new Padding(3, 2, 3, 2);
-            txbFechaInscripcion.Multiline = true;
-            txbFechaInscripcion.Name = "txbFechaInscripcion";
-            txbFechaInscripcion.Size = new Size(214, 18);
-            txbFechaInscripcion.TabIndex = 21;
-            txbFechaInscripcion.Text = "Fecha I.";
+            txtFechaInscripcion.BackColor = Color.FromArgb(74, 102, 174);
+            txtFechaInscripcion.BorderStyle = BorderStyle.None;
+            txtFechaInscripcion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtFechaInscripcion.ForeColor = Color.White;
+            txtFechaInscripcion.Location = new Point(43, 418);
+            txtFechaInscripcion.Margin = new Padding(3, 2, 3, 2);
+            txtFechaInscripcion.Multiline = true;
+            txtFechaInscripcion.Name = "txtFechaInscripcion";
+            txtFechaInscripcion.Size = new Size(214, 18);
+            txtFechaInscripcion.TabIndex = 21;
+            txtFechaInscripcion.Text = "Fecha I.";
+            txtFechaInscripcion.Enter += txtFechaInscripcion_Enter;
+            txtFechaInscripcion.Leave += txtFechaInscripcion_Leave;
             // 
             // cbxEsSocio
             // 
@@ -285,6 +299,7 @@
             btnAgregar.TabIndex = 24;
             btnAgregar.Text = "AGREGAR";
             btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // LIMPIAR
             // 
@@ -301,6 +316,7 @@
             LIMPIAR.TabIndex = 25;
             LIMPIAR.Text = "LIMPIAR";
             LIMPIAR.UseVisualStyleBackColor = false;
+            LIMPIAR.Click += LIMPIAR_Click;
             // 
             // GestionMiembos
             // 
@@ -311,19 +327,19 @@
             Controls.Add(btnAgregar);
             Controls.Add(dgtvListaSocios);
             Controls.Add(cbxEsSocio);
-            Controls.Add(txbFechaInscripcion);
-            Controls.Add(txbFechaNacimiento);
-            Controls.Add(txbDireccion);
-            Controls.Add(txbCorreo);
-            Controls.Add(txbDni);
-            Controls.Add(tbxApellido);
+            Controls.Add(txtFechaInscripcion);
+            Controls.Add(txtFechaNacimiento);
+            Controls.Add(txtDomicilio);
+            Controls.Add(txtCorreo);
+            Controls.Add(txtDni);
+            Controls.Add(txtApellido);
             Controls.Add(pictureBox7);
             Controls.Add(pictureBox6);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
-            Controls.Add(txbNombre);
+            Controls.Add(txtNombre);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
@@ -345,19 +361,19 @@
 
         private Label label1;
         private PictureBox pictureBox1;
-        private TextBox txbNombre;
+        private TextBox txtNombre;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
         private PictureBox pictureBox7;
-        private TextBox tbxApellido;
-        private TextBox txbDni;
-        private TextBox txbCorreo;
-        private TextBox txbDireccion;
-        private TextBox txbFechaNacimiento;
-        private TextBox txbFechaInscripcion;
+        private TextBox txtApellido;
+        private TextBox txtDni;
+        private TextBox txtCorreo;
+        private TextBox txtDomicilio;
+        private TextBox txtFechaNacimiento;
+        private TextBox txtFechaInscripcion;
         private CheckBox cbxEsSocio;
         private DataGridView dgtvListaSocios;
         private CustomBotonDos btnAgregar;
