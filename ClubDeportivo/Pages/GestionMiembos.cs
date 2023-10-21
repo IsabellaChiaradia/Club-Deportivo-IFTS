@@ -101,7 +101,7 @@ namespace Dashboard_ClubDeportivo.pesañas
 
         private void txtFechaNacimiento_Enter(object sender, EventArgs e)
         {
-            if (txtFechaNacimiento.Text == "Fecha N.")
+            if (txtFechaNacimiento.Text == "Fecha Nacimiento")
             {
                 txtFechaNacimiento.Text = "";
             }
@@ -111,23 +111,7 @@ namespace Dashboard_ClubDeportivo.pesañas
         {
             if (txtFechaNacimiento.Text == "")
             {
-                txtFechaNacimiento.Text = "Fecha N.";
-            }
-        }
-
-        private void txtFechaInscripcion_Enter(object sender, EventArgs e)
-        {
-            if (txtFechaInscripcion.Text == "Fecha I.")
-            {
-                txtFechaInscripcion.Text = "";
-            }
-        }
-
-        private void txtFechaInscripcion_Leave(object sender, EventArgs e)
-        {
-            if (txtFechaInscripcion.Text == "")
-            {
-                txtFechaInscripcion.Text = "Fecha I.";
+                txtFechaNacimiento.Text = "Fecha Nacimiento";
             }
         }
 
@@ -144,12 +128,12 @@ namespace Dashboard_ClubDeportivo.pesañas
             miembro.FechaNac = txtFechaNacimiento.Text;
             miembro.EstaAlDia = false;
             miembro.AptoMedico = true;
-           
+
 
             // instanciamos para usar el metodo dentro de postulantes
             ClubDeportivo.Datos.Miembro altaMiembro = new ClubDeportivo.Datos.Miembro();
             respuesta = altaMiembro.Nuevo_Miembro(miembro);
-            
+
             bool esnumero = int.TryParse(respuesta, out int codigo);
             if (esnumero)
             {
@@ -163,14 +147,14 @@ namespace Dashboard_ClubDeportivo.pesañas
                 {
                     MessageBox.Show("Se dió de alta con éxito el miembro con el codigo Nro " + respuesta, "AVISO DEL SISTEMA",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Question);
+                    MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Ups! Hubo un error con la alta del miembro", "AVISO DEL SISTEMA",
+                    MessageBox.Show("Ups! Hubo un error con la alta del miembro", "AVISO DEL SISTEMA",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Question);
+                    MessageBoxIcon.Error);
             }
         }
 
@@ -182,9 +166,8 @@ namespace Dashboard_ClubDeportivo.pesañas
             txtDni.Text = "DNI";
             txtCorreo.Text = "Correo";
             txtDomicilio.Text = "Domicilio";
-            txtFechaNacimiento.Text = "Fecha N.";
-            txtFechaInscripcion.Text = "Fecha I.";
+            txtFechaNacimiento.Text = "Fecha Nacimiento";
             cbxEsSocio.Checked = false;
-        }       
+        }
     }
 }
