@@ -9,6 +9,8 @@ using System.Drawing.Drawing2D;
 
 namespace Dashboard_ClubDeportivo
 {
+    //Clases derivadas personalizadas para crear propios componentes costumizados con estilos seleccionados según 
+    //el diseño adaptado para la realizacion de la ui del sistema//
     public class Boton : Button
     {
         private int borderZise = 0;

@@ -10,7 +10,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dashboard_ClubDeportivo.pesañas
-{
+{//----------------------------TERCERA PANTALLA (PAGINA)-----------------------------//
+ //-------------------------------------------------------------------------//
+ // En este sector se encontrara con el codigo de la tercera parte, siendo una pagina de navegación en la cual prodrá visualizar
+ // un formulario de carga de datos del futuro miembro y los botones que ejecutan la accion de carga, en el sector derecho se visualiza 
+ //una ventana correspondiente a un data grid, el mismo sera desarrollado a futuro para visualizar la lista de miembros activos
+ //Aqui se podra observar ademas, eventos de limpieza de textbox.
+ //Es importante tener en cuenta que, antes de seguir en esta sección del codigo se DEBE observar dentro de la carpeta "Datos"
+ //El codigo de Miembro para visualizar la logica de la carga a su vez en la carpeta "Entidades" los atributos que posee el futuro miembro
+ //para ser cargado mediante el sistema a la base de datos.
+ //A continuación se detalla en el código:
+ //-------------------------------------------------------------------------//
     public partial class GestionMiembos : UserControl
     {
         public GestionMiembos()
@@ -132,6 +142,8 @@ namespace Dashboard_ClubDeportivo.pesañas
 
             // instanciamos para usar el metodo dentro de postulantes
             ClubDeportivo.Datos.Miembro altaMiembro = new ClubDeportivo.Datos.Miembro();
+            //Tener en cuenta que, en base a la respuesta que ejecuta el procedimiento almacenado posteriormente evocado dentro
+            //de la clase Miembro, serán las siguientes lineas de código mostrando si fue o no exitosa la carga.
             respuesta = altaMiembro.Nuevo_Miembro(miembro);
 
             bool esnumero = int.TryParse(respuesta, out int codigo);

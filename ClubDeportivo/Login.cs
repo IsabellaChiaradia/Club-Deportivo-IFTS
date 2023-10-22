@@ -2,16 +2,33 @@ using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Data;
-
+//----------------------------PRIMERA PANTALLA-----------------------------//
+//-------------------------------------------------------------------------//
+// En este sector se encontrara con el codigo de la primera ventana que prodrá visualizar
+// antes de seguir avanzando es importante chequear la carpeta "Datos" ya que la misma contiene
+//la programacion necesario para la conexion a la BD y el registro del administrador para su ingreso
+//posteriormente el evento del boton es quien ejecuta el ingreso del admin.
+//Aqui se podra observar ademas, eventos de limpieza de textbox como de ocultar la contraseña.
+//-------------------------------------------------------------------------//
 namespace Dashboard_ClubDeportivo
 
 {
     public partial class Login : Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,
+           int nTopRect,
+           int nRightRect,
+           int nBottomRect,
+           int nWidthEllipse,
+           int nHeightEllipse
+       );
         public Login()
         {
             InitializeComponent();
-
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         private void txtUser_Enter(object sender, EventArgs e)
@@ -31,7 +48,7 @@ namespace Dashboard_ClubDeportivo
 
         private void txtPassword_Enter(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "Contrase�a")
+            if (txtPassword.Text == "Contraseña")
             {
                 txtPassword.Text = "";
                 txtPassword.UseSystemPasswordChar = true;
@@ -42,7 +59,7 @@ namespace Dashboard_ClubDeportivo
         {
             if (txtPassword.Text == "")
             {
-                txtPassword.Text = "Contrase�a";
+                txtPassword.Text = "Contraseña";
                 txtPassword.UseSystemPasswordChar = false;
             }
         }
@@ -53,7 +70,8 @@ namespace Dashboard_ClubDeportivo
 
             DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
             ClubDeportivo.Datos.Usuario dato = new ClubDeportivo.Datos.Usuario(); // variable que contiene todas las caracteristicas de la clase
-            tablaLogin = dato.Log_Usu(usuario, password);
+            tablaLogin = dato.Log_Usu(usuario, password);//Se activa el metodo de la clase Usuario instanciada como dato, recordar que
+            //este metodo activa el procedimiento almacenado "IngresoLogin"
             if (tablaLogin.Rows.Count > 0)
             {
                 // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE

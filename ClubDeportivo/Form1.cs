@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Dashboard_ClubDeportivo.pesa�as;
+using Dashboard_ClubDeportivo.pesañas;
 using Dashboard_ClubDeportivo.Pages;
 
 namespace Dashboard_ClubDeportivo
@@ -11,13 +11,22 @@ namespace Dashboard_ClubDeportivo
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
+            int nLeftRect,     
+            int nTopRect,     
+            int nRightRect,    
+            int nBottomRect,   
+            int nWidthEllipse,
+            int nHeightEllipse 
         );
+        //----------------------------SEGUNDA PANTALLA-----------------------------//
+        //-------------------------------------------------------------------------//
+        // En este sector se encontrara con el codigo de la segunda ventana en la cual prodrá visualizar
+        // los distintos botones de interaccion que conforman los PROCESOS requeridos por la cliente, según el análisis 
+        //previo, por el momento el unico activo es Gestion de miembros y Pagos y facturacion, es importante mencionar que
+        //la sección de gestion de miembros es la que contiene funcionalidad no asi la de pagos y facturacion, debido a que 
+        //solo se utilizo para chequear la navegacion interna de paginas dentro del componente contenedor main.
+        //A continuación se detalla en el código:
+        //-------------------------------------------------------------------------//
         public Form1()
         {
             InitializeComponent();
@@ -47,7 +56,7 @@ namespace Dashboard_ClubDeportivo
 
             CenterToScreen();
         }
-
+        //Navegacion entre paneles que se encuentra en la carpeta Pages//
         private void agregarPaneles(UserControl userControl)
         {
             pnlContainer.Controls.Add(userControl);

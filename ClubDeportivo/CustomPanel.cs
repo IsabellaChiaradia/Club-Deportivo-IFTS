@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dashboard_ClubDeportivo
 {
+    //Clases derivadas personalizadas para crear propios componentes costumizados con estilos seleccionados según 
+    //el diseño adaptado para la realizacion de la ui del sistema//
     public class CustomPanel  :  Panel
     {
         public CustomPanel()

@@ -22,7 +22,8 @@ namespace ClubDeportivo.Datos
             {
                 sqlCon = Conexion.getInstancia().CrearConexion();
                 // el comando es un elemento que almacena en este caso el nombre
-                // del procedimiento almacenado y la referencia a la conexion
+                // del procedimiento almacenado y la referencia a la conexion para su posterior ejecución
+                //con el fin de poder realizar el inicio de sesión del administrador 
                 MySqlCommand comando = new MySqlCommand("IngresoLogin", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
                 // definimos los parametros que tiene el procedure
