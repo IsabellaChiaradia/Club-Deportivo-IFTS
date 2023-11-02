@@ -1,4 +1,5 @@
-﻿using ClubDeportivo.Entidades;
+﻿using ClubDeportivo.Datos;
+using ClubDeportivo.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,9 @@ namespace Dashboard_ClubDeportivo.pesañas
         public GestionMiembos()
         {
             InitializeComponent();
-
+            Miembro elMiembro = new Miembro();
+            elMiembro.mostrarPibes(dgtvListaSocios);
+            //dgtvListaSocios
         }
 
         public void txtNombre_Enter(object sender, EventArgs e)

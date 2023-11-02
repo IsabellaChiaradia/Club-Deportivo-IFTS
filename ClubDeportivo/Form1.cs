@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Dashboard_ClubDeportivo.pesañas;
 using Dashboard_ClubDeportivo.Pages;
+using ClubDeportivo.Datos;
 
 namespace Dashboard_ClubDeportivo
 {
@@ -30,8 +31,8 @@ namespace Dashboard_ClubDeportivo
         public Form1()
         {
             InitializeComponent();
-
-            GestionMiembos uc = new GestionMiembos();
+           
+             GestionMiembos uc = new GestionMiembos();
             agregarPaneles(uc);
             this.BackColor = Color.FromArgb(0x4A, 0x66, 0xAE);
 

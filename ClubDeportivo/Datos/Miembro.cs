@@ -11,17 +11,23 @@ namespace ClubDeportivo.Datos
 {
     public class Miembro
     {
-        
+        private MySqlConnection sqlCon;
+        public Miembro()
+        {
+            // Inicializa la conexión en el constructor de la clase.
+            sqlCon = Conexion.getInstancia().CrearConexion(); //Enlazar la conexión a la base de datos.
+        }
+
         //En este sector podrá encontrar:  Método para agregar un nuevo miembro al club deportivo.
         //Objeto de tipo E_Miembro que contiene la información del nuevo miembro.
         public string Nuevo_Miembro(E_Miembro miembro)
         {
             string? salida; // Variable para almacenar el resultado de la operación.
-            MySqlConnection sqlCon = new MySqlConnection();
+            
 
             try
             {
-                sqlCon = Conexion.getInstancia().CrearConexion(); //Enlazar la conexión a la base de datos.
+              
                 MySqlCommand comando = new MySqlCommand("NuevoMiembro", sqlCon); // Define un nuevo comando SQL almacenado la cual hace referencia
                 //al procedimiento llamado "NuevoMiembro" ubicada en la base de datos.
                 comando.CommandType = CommandType.StoredProcedure;
@@ -60,5 +66,23 @@ namespace ClubDeportivo.Datos
 
             return salida; // Devuelve el mensaje de salida, indicando el resultado de la operación.
         }
+
+        public void mostrarPibes(DataGridView tablaAlumnos)
+        {
+            try
+            {
+                tablaAlumnos.DataSource = null;
+                string query = "SELECT * FROM miembro;";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);   
+                tablaAlumnos.DataSource = dt;   
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("No se mostraron los datos de la Base de datos" + error);
+            }
+        }
+
     }
 }
