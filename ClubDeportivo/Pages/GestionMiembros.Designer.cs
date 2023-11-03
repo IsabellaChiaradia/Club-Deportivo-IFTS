@@ -1,6 +1,6 @@
 ﻿namespace Dashboard_ClubDeportivo.pesañas
 {
-    partial class GestionMiembos
+    partial class GestionMiembros
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionMiembos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionMiembros));
             label1 = new Label();
             pictureBox1 = new PictureBox();
             txtNombre = new TextBox();
@@ -46,6 +46,8 @@
             dgtvListaSocios = new DataGridView();
             btnAgregar = new CustomBotonDos();
             LIMPIAR = new CustomBotonDos();
+            btnPrintCarnet = new CustomBotonDos();
+            cbxAptoFisico = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -175,7 +177,7 @@
             txtDni.Margin = new Padding(3, 2, 3, 2);
             txtDni.Multiline = true;
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(214, 18);
+            txtDni.Size = new Size(214, 22);
             txtDni.TabIndex = 10;
             txtDni.Text = "DNI";
             txtDni.Enter += txtDni_Enter;
@@ -224,7 +226,7 @@
             txtFechaNacimiento.Multiline = true;
             txtFechaNacimiento.Name = "txtFechaNacimiento";
             txtFechaNacimiento.Size = new Size(214, 22);
-            txtFechaNacimiento.TabIndex = 20;
+            txtFechaNacimiento.TabIndex = 13;
             txtFechaNacimiento.Text = "Fecha Nacimiento";
             txtFechaNacimiento.Enter += txtFechaNacimiento_Enter;
             txtFechaNacimiento.Leave += txtFechaNacimiento_Leave;
@@ -234,24 +236,27 @@
             cbxEsSocio.AutoSize = true;
             cbxEsSocio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             cbxEsSocio.ForeColor = Color.White;
-            cbxEsSocio.Location = new Point(43, 421);
+            cbxEsSocio.Location = new Point(43, 420);
             cbxEsSocio.Margin = new Padding(3, 2, 3, 2);
             cbxEsSocio.Name = "cbxEsSocio";
-            cbxEsSocio.Size = new Size(96, 24);
+            cbxEsSocio.Size = new Size(73, 24);
             cbxEsSocio.TabIndex = 22;
-            cbxEsSocio.Text = "Es socio";
+            cbxEsSocio.Text = "Socio";
             cbxEsSocio.UseVisualStyleBackColor = true;
             // 
             // dgtvListaSocios
             // 
+            dgtvListaSocios.AllowUserToAddRows = false;
+            dgtvListaSocios.AllowUserToDeleteRows = false;
             dgtvListaSocios.BackgroundColor = Color.White;
             dgtvListaSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgtvListaSocios.Location = new Point(315, 68);
             dgtvListaSocios.Margin = new Padding(3, 2, 3, 2);
             dgtvListaSocios.Name = "dgtvListaSocios";
+            dgtvListaSocios.ReadOnly = true;
             dgtvListaSocios.RowHeadersWidth = 51;
             dgtvListaSocios.RowTemplate.Height = 29;
-            dgtvListaSocios.Size = new Size(471, 310);
+            dgtvListaSocios.Size = new Size(471, 271);
             dgtvListaSocios.TabIndex = 23;
             // 
             // btnAgregar
@@ -262,7 +267,7 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(318, 406);
+            btnAgregar.Location = new Point(315, 352);
             btnAgregar.Margin = new Padding(3, 2, 3, 2);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(181, 39);
@@ -279,7 +284,7 @@
             LIMPIAR.FlatStyle = FlatStyle.Flat;
             LIMPIAR.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LIMPIAR.ForeColor = Color.White;
-            LIMPIAR.Location = new Point(603, 406);
+            LIMPIAR.Location = new Point(596, 405);
             LIMPIAR.Margin = new Padding(3, 2, 3, 2);
             LIMPIAR.Name = "LIMPIAR";
             LIMPIAR.Size = new Size(181, 39);
@@ -288,11 +293,44 @@
             LIMPIAR.UseVisualStyleBackColor = false;
             LIMPIAR.Click += LIMPIAR_Click;
             // 
-            // GestionMiembos
+            // btnPrintCarnet
+            // 
+            btnPrintCarnet.BackColor = Color.FromArgb(96, 61, 140);
+            btnPrintCarnet.Cursor = Cursors.Hand;
+            btnPrintCarnet.FlatAppearance.BorderSize = 0;
+            btnPrintCarnet.FlatStyle = FlatStyle.Flat;
+            btnPrintCarnet.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPrintCarnet.ForeColor = Color.White;
+            btnPrintCarnet.Location = new Point(596, 352);
+            btnPrintCarnet.Margin = new Padding(3, 2, 3, 2);
+            btnPrintCarnet.Name = "btnPrintCarnet";
+            btnPrintCarnet.Size = new Size(181, 39);
+            btnPrintCarnet.TabIndex = 26;
+            btnPrintCarnet.Text = "IMPRIMIR CARNET";
+            btnPrintCarnet.UseVisualStyleBackColor = false;
+            // 
+            // cbxAptoFisico
+            // 
+            cbxAptoFisico.AutoSize = true;
+            cbxAptoFisico.Checked = true;
+            cbxAptoFisico.CheckState = CheckState.Checked;
+            cbxAptoFisico.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cbxAptoFisico.ForeColor = Color.White;
+            cbxAptoFisico.Location = new Point(155, 420);
+            cbxAptoFisico.Margin = new Padding(3, 2, 3, 2);
+            cbxAptoFisico.Name = "cbxAptoFisico";
+            cbxAptoFisico.Size = new Size(118, 24);
+            cbxAptoFisico.TabIndex = 27;
+            cbxAptoFisico.Text = "Apto Físico";
+            cbxAptoFisico.UseVisualStyleBackColor = true;
+            // 
+            // GestionMiembros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(74, 102, 174);
+            Controls.Add(cbxAptoFisico);
+            Controls.Add(btnPrintCarnet);
             Controls.Add(LIMPIAR);
             Controls.Add(btnAgregar);
             Controls.Add(dgtvListaSocios);
@@ -311,7 +349,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "GestionMiembos";
+            Name = "GestionMiembros";
             Size = new Size(789, 513);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -343,5 +381,7 @@
         private DataGridView dgtvListaSocios;
         private CustomBotonDos btnAgregar;
         private CustomBotonDos LIMPIAR;
+        private CustomBotonDos btnPrintCarnet;
+        private CheckBox cbxAptoFisico;
     }
 }

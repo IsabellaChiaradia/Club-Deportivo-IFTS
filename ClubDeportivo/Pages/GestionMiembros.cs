@@ -22,9 +22,9 @@ namespace Dashboard_ClubDeportivo.pesañas
  //para ser cargado mediante el sistema a la base de datos.
  //A continuación se detalla en el código:
  //-------------------------------------------------------------------------//
-    public partial class GestionMiembos : UserControl
+    public partial class GestionMiembros : UserControl
     {
-        public GestionMiembos()
+        public GestionMiembros()
         {
             InitializeComponent();
             Miembro elMiembro = new Miembro();
@@ -140,8 +140,21 @@ namespace Dashboard_ClubDeportivo.pesañas
             miembro.Direccion = txtDomicilio.Text;
             miembro.FechaNac = txtFechaNacimiento.Text;
             miembro.EstaAlDia = false;
-            miembro.AptoMedico = true;
+            miembro.AptoMedico = cbxAptoFisico.Checked;
 
+
+            //validamos que no existan campos vacíos o sin rellenar antes de generar la inscripción 
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || txtNombre.Text == "Nombre" ||
+                string.IsNullOrWhiteSpace(txtApellido.Text) || txtApellido.Text == "Apellido" ||
+                string.IsNullOrWhiteSpace(txtDni.Text) || txtDni.Text == "DNI" ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text) || txtCorreo.Text == "Correo" ||
+                string.IsNullOrWhiteSpace(txtDomicilio.Text) || txtDomicilio.Text == "Domicilio" ||
+                string.IsNullOrWhiteSpace(txtFechaNacimiento.Text) || txtFechaNacimiento.Text == "Fecha Nacimiento")
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
 
             // instanciamos para usar el metodo dentro de postulantes
             ClubDeportivo.Datos.Miembro altaMiembro = new ClubDeportivo.Datos.Miembro();
@@ -167,9 +180,9 @@ namespace Dashboard_ClubDeportivo.pesañas
             }
             else
             {
-                    MessageBox.Show("Ups! Hubo un error con la alta del miembro", "AVISO DEL SISTEMA",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Ups! Hubo un error con la alta del miembro", "AVISO DEL SISTEMA",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             }
         }
 

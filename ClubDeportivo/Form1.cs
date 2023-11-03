@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using Dashboard_ClubDeportivo.pesañas;
 using Dashboard_ClubDeportivo.Pages;
 using ClubDeportivo.Datos;
+using ClubDeportivo.Pages;
 
 namespace Dashboard_ClubDeportivo
 {
@@ -12,12 +13,12 @@ namespace Dashboard_ClubDeportivo
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
-            int nLeftRect,     
-            int nTopRect,     
-            int nRightRect,    
-            int nBottomRect,   
+            int nLeftRect,
+            int nTopRect,
+            int nRightRect,
+            int nBottomRect,
             int nWidthEllipse,
-            int nHeightEllipse 
+            int nHeightEllipse
         );
         //----------------------------SEGUNDA PANTALLA-----------------------------//
         //-------------------------------------------------------------------------//
@@ -31,8 +32,8 @@ namespace Dashboard_ClubDeportivo
         public Form1()
         {
             InitializeComponent();
-           
-             GestionMiembos uc = new GestionMiembos();
+
+            GestionMiembros uc = new GestionMiembros();
             agregarPaneles(uc);
             this.BackColor = Color.FromArgb(0x4A, 0x66, 0xAE);
 
@@ -67,13 +68,19 @@ namespace Dashboard_ClubDeportivo
 
         private void btnGestion_Click(object sender, EventArgs e)
         {
-            GestionMiembos uc = new GestionMiembos();
+            GestionMiembros uc = new GestionMiembros();
             agregarPaneles(uc);
         }
 
         private void btnPagosFactura_Click(object sender, EventArgs e)
         {
-            PagosFacturacion uc = new PagosFacturacion();
+            PagoMensualCuota uc = new PagoMensualCuota();
+            agregarPaneles(uc);
+        }
+
+        private void btnPagoActividad_Click(object sender, EventArgs e)
+        {
+            PagoActividad uc = new PagoActividad();
             agregarPaneles(uc);
         }
     }

@@ -16,10 +16,13 @@
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Pages\GestionMiembos.cs">
+    <Compile Update="Pages\GestionMiembros.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Pages\PagosFacturacion.cs">
+    <Compile Update="Pages\PagoActividad.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Pages\PagoMensualCuota.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

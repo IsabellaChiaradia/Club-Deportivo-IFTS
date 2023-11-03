@@ -35,8 +35,8 @@
             panel1 = new Panel();
             btnExtra = new Boton();
             btnActividades = new Boton();
-            btnPlantel = new Boton();
-            btnPagosFactura = new Boton();
+            btnPagoActividad = new Boton();
+            btnPagoMensualCuota = new Boton();
             btnGestion = new Boton();
             panel2 = new Panel();
             lblNombreUser = new Label();
@@ -101,8 +101,8 @@
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(btnExtra);
             panel1.Controls.Add(btnActividades);
-            panel1.Controls.Add(btnPlantel);
-            panel1.Controls.Add(btnPagosFactura);
+            panel1.Controls.Add(btnPagoActividad);
+            panel1.Controls.Add(btnPagoMensualCuota);
             panel1.Controls.Add(btnGestion);
             panel1.Location = new Point(-3, -1);
             panel1.Margin = new Padding(3, 2, 3, 2);
@@ -124,7 +124,6 @@
             btnExtra.Padding = new Padding(20, 0, 0, 0);
             btnExtra.Size = new Size(203, 52);
             btnExtra.TabIndex = 6;
-            btnExtra.Text = "Algo más que agregar";
             btnExtra.TextAlign = ContentAlignment.MiddleLeft;
             btnExtra.UseVisualStyleBackColor = false;
             // 
@@ -142,46 +141,47 @@
             btnActividades.Padding = new Padding(20, 0, 0, 0);
             btnActividades.Size = new Size(203, 52);
             btnActividades.TabIndex = 5;
-            btnActividades.Text = "Lista de actividades";
+            btnActividades.Text = "Lista Morosos";
             btnActividades.TextAlign = ContentAlignment.MiddleLeft;
             btnActividades.UseVisualStyleBackColor = false;
             // 
-            // btnPlantel
+            // btnPagoActividad
             // 
-            btnPlantel.BackColor = Color.FromArgb(74, 102, 174);
-            btnPlantel.BackgroundImageLayout = ImageLayout.None;
-            btnPlantel.Cursor = Cursors.Hand;
-            btnPlantel.FlatAppearance.BorderSize = 0;
-            btnPlantel.FlatStyle = FlatStyle.Flat;
-            btnPlantel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPlantel.ForeColor = Color.White;
-            btnPlantel.Location = new Point(34, 327);
-            btnPlantel.Name = "btnPlantel";
-            btnPlantel.Padding = new Padding(20, 0, 0, 0);
-            btnPlantel.Size = new Size(203, 52);
-            btnPlantel.TabIndex = 4;
-            btnPlantel.Text = "Plantel docente";
-            btnPlantel.TextAlign = ContentAlignment.MiddleLeft;
-            btnPlantel.UseVisualStyleBackColor = false;
+            btnPagoActividad.BackColor = Color.FromArgb(74, 102, 174);
+            btnPagoActividad.BackgroundImageLayout = ImageLayout.None;
+            btnPagoActividad.Cursor = Cursors.Hand;
+            btnPagoActividad.FlatAppearance.BorderSize = 0;
+            btnPagoActividad.FlatStyle = FlatStyle.Flat;
+            btnPagoActividad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPagoActividad.ForeColor = Color.White;
+            btnPagoActividad.Location = new Point(34, 327);
+            btnPagoActividad.Name = "btnPagoActividad";
+            btnPagoActividad.Padding = new Padding(20, 0, 0, 0);
+            btnPagoActividad.Size = new Size(203, 52);
+            btnPagoActividad.TabIndex = 4;
+            btnPagoActividad.Text = "Pago Actividad";
+            btnPagoActividad.TextAlign = ContentAlignment.MiddleLeft;
+            btnPagoActividad.UseVisualStyleBackColor = false;
+            btnPagoActividad.Click += btnPagoActividad_Click;
             // 
-            // btnPagosFactura
+            // btnPagoMensualCuota
             // 
-            btnPagosFactura.BackColor = Color.FromArgb(74, 102, 174);
-            btnPagosFactura.BackgroundImageLayout = ImageLayout.None;
-            btnPagosFactura.Cursor = Cursors.Hand;
-            btnPagosFactura.FlatAppearance.BorderSize = 0;
-            btnPagosFactura.FlatStyle = FlatStyle.Flat;
-            btnPagosFactura.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPagosFactura.ForeColor = Color.White;
-            btnPagosFactura.Location = new Point(34, 241);
-            btnPagosFactura.Name = "btnPagosFactura";
-            btnPagosFactura.Padding = new Padding(20, 0, 0, 0);
-            btnPagosFactura.Size = new Size(203, 52);
-            btnPagosFactura.TabIndex = 3;
-            btnPagosFactura.Text = "Pagos y facturación";
-            btnPagosFactura.TextAlign = ContentAlignment.MiddleLeft;
-            btnPagosFactura.UseVisualStyleBackColor = false;
-            btnPagosFactura.Click += btnPagosFactura_Click;
+            btnPagoMensualCuota.BackColor = Color.FromArgb(74, 102, 174);
+            btnPagoMensualCuota.BackgroundImageLayout = ImageLayout.None;
+            btnPagoMensualCuota.Cursor = Cursors.Hand;
+            btnPagoMensualCuota.FlatAppearance.BorderSize = 0;
+            btnPagoMensualCuota.FlatStyle = FlatStyle.Flat;
+            btnPagoMensualCuota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPagoMensualCuota.ForeColor = Color.White;
+            btnPagoMensualCuota.Location = new Point(34, 241);
+            btnPagoMensualCuota.Name = "btnPagoMensualCuota";
+            btnPagoMensualCuota.Padding = new Padding(20, 0, 0, 0);
+            btnPagoMensualCuota.Size = new Size(203, 52);
+            btnPagoMensualCuota.TabIndex = 3;
+            btnPagoMensualCuota.Text = "Pagos Mensual Cuota";
+            btnPagoMensualCuota.TextAlign = ContentAlignment.MiddleLeft;
+            btnPagoMensualCuota.UseVisualStyleBackColor = false;
+            btnPagoMensualCuota.Click += btnPagosFactura_Click;
             // 
             // btnGestion
             // 
@@ -242,7 +242,7 @@
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(37, 8);
             label1.Name = "label1";
-            label1.Size = new Size(246, 25);
+            label1.Size = new Size(270, 25);
             label1.TabIndex = 0;
             label1.Text = "Panel de control general";
             // 
@@ -293,8 +293,8 @@
         private Boton btnGestion;
         private Boton btnExtra;
         private Boton btnActividades;
-        private Boton btnPlantel;
-        private Boton btnPagosFactura;
+        private Boton btnPagoActividad;
+        private Boton btnPagoMensualCuota;
         private Panel panel2;
         private Label label2;
         private Label label1;
