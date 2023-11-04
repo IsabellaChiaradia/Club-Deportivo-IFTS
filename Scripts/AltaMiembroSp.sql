@@ -1,6 +1,6 @@
 delimiter // 
  drop procedure if exists NuevoMiembro//
- create procedure NuevoMiembro(in Nom varchar(50),in Ape varchar(50), in Dni varchar(15), in EsSocio BOOLEAN, in Correo varchar(50), in Direccion varchar(50), in FNac varchar(50), in AlDia BOOLEAN, in AptoM BOOLEAN, out rta int)
+ create procedure NuevoMiembro(in Nom varchar(50),in Ape varchar(50), in Dni varchar(15), in EsSocio BOOLEAN, in Correo varchar(50), in Direccion varchar(50), in FNac varchar(50), in AptoM BOOLEAN, out rta int)
  begin
      declare filas int default 0;
 	 declare existe int default 0;
@@ -22,7 +22,7 @@ delimiter //
      end if;
 	 
 	  if existe = 0 then	 
-		 insert into miembro values(filas,Nom,Ape,Dni,EsSocio,Correo,Direccion,FNac,AlDia,AptoM);
+		 insert into miembro values(filas,Nom,Ape,Dni,EsSocio,Correo,Direccion,FNac,AptoM);
 		 set rta  = filas; -- esto devuelve el id del postulante
 	  else
 		 set rta = existe; -- si devuelve 1 ya existe

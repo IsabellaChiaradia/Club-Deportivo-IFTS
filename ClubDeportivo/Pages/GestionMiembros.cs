@@ -139,7 +139,6 @@ namespace Dashboard_ClubDeportivo.pesañas
             miembro.Correo = txtCorreo.Text;
             miembro.Direccion = txtDomicilio.Text;
             miembro.FechaNac = txtFechaNacimiento.Text;
-            miembro.EstaAlDia = false;
             miembro.AptoMedico = cbxAptoFisico.Checked;
 
 

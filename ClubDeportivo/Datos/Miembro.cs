@@ -40,7 +40,6 @@ namespace ClubDeportivo.Datos
                 comando.Parameters.Add("Correo", MySqlDbType.VarChar).Value = miembro.Correo;
                 comando.Parameters.Add("Direccion", MySqlDbType.VarChar).Value = miembro.Direccion;
                 comando.Parameters.Add("FNac", MySqlDbType.VarChar).Value = miembro.FechaNac;
-                comando.Parameters.Add("AlDia", MySqlDbType.Byte).Value = miembro.EstaAlDia ? 1 : 0;
                 comando.Parameters.Add("AptoM", MySqlDbType.Byte).Value = miembro.AptoMedico ? 1 : 0;
 
                 MySqlParameter ParCodigo = new MySqlParameter();
