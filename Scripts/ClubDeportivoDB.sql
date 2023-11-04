@@ -64,6 +64,7 @@ constraint fk_inscripcion_actividad foreign key (IDActiv) references Actividad (
 create table Cuota(
 IDCuota int,
 Monto dec,
+FechaPago date,
 FechaVenc date,
 IDMiembro int,
 constraint pk_cuota primary key (IDCuota),
