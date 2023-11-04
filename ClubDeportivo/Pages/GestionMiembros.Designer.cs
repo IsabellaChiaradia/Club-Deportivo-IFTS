@@ -48,6 +48,7 @@
             LIMPIAR = new CustomBotonDos();
             btnPrintCarnet = new CustomBotonDos();
             cbxAptoFisico = new CheckBox();
+            lblFechaNac = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -121,7 +122,7 @@
             // pictureBox5
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(-1, 350);
+            pictureBox5.Location = new Point(-1, 370);
             pictureBox5.Margin = new Padding(3, 2, 3, 2);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(304, 43);
@@ -221,13 +222,14 @@
             txtFechaNacimiento.BorderStyle = BorderStyle.None;
             txtFechaNacimiento.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtFechaNacimiento.ForeColor = Color.White;
-            txtFechaNacimiento.Location = new Point(43, 361);
+            txtFechaNacimiento.Location = new Point(43, 381);
             txtFechaNacimiento.Margin = new Padding(3, 2, 3, 2);
+            txtFechaNacimiento.MaxLength = 10;
             txtFechaNacimiento.Multiline = true;
             txtFechaNacimiento.Name = "txtFechaNacimiento";
             txtFechaNacimiento.Size = new Size(214, 22);
             txtFechaNacimiento.TabIndex = 13;
-            txtFechaNacimiento.Text = "Fecha Nacimiento";
+            txtFechaNacimiento.Text = "dd/mm/aaaa";
             txtFechaNacimiento.Enter += txtFechaNacimiento_Enter;
             txtFechaNacimiento.Leave += txtFechaNacimiento_Leave;
             // 
@@ -236,7 +238,7 @@
             cbxEsSocio.AutoSize = true;
             cbxEsSocio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             cbxEsSocio.ForeColor = Color.White;
-            cbxEsSocio.Location = new Point(43, 420);
+            cbxEsSocio.Location = new Point(34, 439);
             cbxEsSocio.Margin = new Padding(3, 2, 3, 2);
             cbxEsSocio.Name = "cbxEsSocio";
             cbxEsSocio.Size = new Size(73, 24);
@@ -267,7 +269,7 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(315, 352);
+            btnAgregar.Location = new Point(315, 374);
             btnAgregar.Margin = new Padding(3, 2, 3, 2);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(181, 39);
@@ -284,7 +286,7 @@
             LIMPIAR.FlatStyle = FlatStyle.Flat;
             LIMPIAR.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LIMPIAR.ForeColor = Color.White;
-            LIMPIAR.Location = new Point(596, 405);
+            LIMPIAR.Location = new Point(596, 424);
             LIMPIAR.Margin = new Padding(3, 2, 3, 2);
             LIMPIAR.Name = "LIMPIAR";
             LIMPIAR.Size = new Size(181, 39);
@@ -301,7 +303,7 @@
             btnPrintCarnet.FlatStyle = FlatStyle.Flat;
             btnPrintCarnet.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnPrintCarnet.ForeColor = Color.White;
-            btnPrintCarnet.Location = new Point(596, 352);
+            btnPrintCarnet.Location = new Point(596, 374);
             btnPrintCarnet.Margin = new Padding(3, 2, 3, 2);
             btnPrintCarnet.Name = "btnPrintCarnet";
             btnPrintCarnet.Size = new Size(181, 39);
@@ -316,7 +318,7 @@
             cbxAptoFisico.CheckState = CheckState.Checked;
             cbxAptoFisico.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             cbxAptoFisico.ForeColor = Color.White;
-            cbxAptoFisico.Location = new Point(155, 420);
+            cbxAptoFisico.Location = new Point(146, 439);
             cbxAptoFisico.Margin = new Padding(3, 2, 3, 2);
             cbxAptoFisico.Name = "cbxAptoFisico";
             cbxAptoFisico.Size = new Size(118, 24);
@@ -324,11 +326,23 @@
             cbxAptoFisico.Text = "Apto Físico";
             cbxAptoFisico.UseVisualStyleBackColor = true;
             // 
+            // lblFechaNac
+            // 
+            lblFechaNac.AutoSize = true;
+            lblFechaNac.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFechaNac.ForeColor = Color.White;
+            lblFechaNac.Location = new Point(34, 348);
+            lblFechaNac.Name = "lblFechaNac";
+            lblFechaNac.Size = new Size(157, 20);
+            lblFechaNac.TabIndex = 28;
+            lblFechaNac.Text = "Fecha de nacimiento";
+            // 
             // GestionMiembros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(74, 102, 174);
+            Controls.Add(lblFechaNac);
             Controls.Add(cbxAptoFisico);
             Controls.Add(btnPrintCarnet);
             Controls.Add(LIMPIAR);
@@ -383,5 +397,6 @@
         private CustomBotonDos LIMPIAR;
         private CustomBotonDos btnPrintCarnet;
         private CheckBox cbxAptoFisico;
+        private Label lblFechaNac;
     }
 }

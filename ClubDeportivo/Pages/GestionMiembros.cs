@@ -114,7 +114,7 @@ namespace Dashboard_ClubDeportivo.pesañas
 
         private void txtFechaNacimiento_Enter(object sender, EventArgs e)
         {
-            if (txtFechaNacimiento.Text == "Fecha Nacimiento")
+            if (txtFechaNacimiento.Text == "dd/mm/aaaa")
             {
                 txtFechaNacimiento.Text = "";
             }
@@ -124,7 +124,7 @@ namespace Dashboard_ClubDeportivo.pesañas
         {
             if (txtFechaNacimiento.Text == "")
             {
-                txtFechaNacimiento.Text = "Fecha Nacimiento";
+                txtFechaNacimiento.Text = "dd/mm/aaaa";
             }
         }
 
@@ -149,11 +149,11 @@ namespace Dashboard_ClubDeportivo.pesañas
                 string.IsNullOrWhiteSpace(txtDni.Text) || txtDni.Text == "DNI" ||
                 string.IsNullOrWhiteSpace(txtCorreo.Text) || txtCorreo.Text == "Correo" ||
                 string.IsNullOrWhiteSpace(txtDomicilio.Text) || txtDomicilio.Text == "Domicilio" ||
-                string.IsNullOrWhiteSpace(txtFechaNacimiento.Text) || txtFechaNacimiento.Text == "Fecha Nacimiento")
+                string.IsNullOrWhiteSpace(txtFechaNacimiento.Text) || txtFechaNacimiento.Text == "dd/mm/aaaa")
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "AVISO DEL SISTEMA",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
             }
 
             // instanciamos para usar el metodo dentro de postulantes
@@ -186,12 +186,12 @@ namespace Dashboard_ClubDeportivo.pesañas
             }
             Miembro elMiembro = new Miembro();
             elMiembro.mostrarMiembros(dgtvListaSocios);
-             txtNombre.Text = "Nombre";
+            txtNombre.Text = "Nombre";
             txtApellido.Text = "Apellido";
             txtDni.Text = "DNI";
             txtCorreo.Text = "Correo";
             txtDomicilio.Text = "Domicilio";
-            txtFechaNacimiento.Text = "Fecha Nacimiento";
+            txtFechaNacimiento.Text = "dd/mm/aaaa";
             cbxEsSocio.Checked = false;
         }
 
@@ -203,7 +203,7 @@ namespace Dashboard_ClubDeportivo.pesañas
             txtDni.Text = "DNI";
             txtCorreo.Text = "Correo";
             txtDomicilio.Text = "Domicilio";
-            txtFechaNacimiento.Text = "Fecha Nacimiento";
+            txtFechaNacimiento.Text = "dd/mm/aaaa";
             cbxEsSocio.Checked = false;
         }
     }
