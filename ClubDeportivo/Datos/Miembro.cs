@@ -67,7 +67,7 @@ namespace ClubDeportivo.Datos
             return salida; // Devuelve el mensaje de salida, indicando el resultado de la operación.
         }
 
-        public void mostrarPibes(DataGridView tablaAlumnos)
+        public void mostrarMiembros(DataGridView tablaAlumnos)
         {
             try
             {

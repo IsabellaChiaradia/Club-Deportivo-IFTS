@@ -28,7 +28,7 @@ namespace Dashboard_ClubDeportivo.pesañas
         {
             InitializeComponent();
             Miembro elMiembro = new Miembro();
-            elMiembro.mostrarPibes(dgtvListaSocios);
+            elMiembro.mostrarMiembros(dgtvListaSocios);
             //dgtvListaSocios
         }
 
@@ -184,6 +184,15 @@ namespace Dashboard_ClubDeportivo.pesañas
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
             }
+            Miembro elMiembro = new Miembro();
+            elMiembro.mostrarMiembros(dgtvListaSocios);
+             txtNombre.Text = "Nombre";
+            txtApellido.Text = "Apellido";
+            txtDni.Text = "DNI";
+            txtCorreo.Text = "Correo";
+            txtDomicilio.Text = "Domicilio";
+            txtFechaNacimiento.Text = "Fecha Nacimiento";
+            cbxEsSocio.Checked = false;
         }
 
         private void LIMPIAR_Click(object sender, EventArgs e)
