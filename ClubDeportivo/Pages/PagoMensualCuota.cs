@@ -83,7 +83,7 @@ namespace Dashboard_ClubDeportivo.Pages
         private void btnPagar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtDni.Text) || txtDni.Text == "Documento" ||
-                string.IsNullOrWhiteSpace(txtMonto.Text) || txtMonto.Text == "Monto" )
+                string.IsNullOrWhiteSpace(txtMonto.Text) || txtMonto.Text == "Monto")
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "AVISO DEL SISTEMA",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -109,6 +109,8 @@ namespace Dashboard_ClubDeportivo.Pages
                     MessageBox.Show("Se realizó el pago correctamente", "AVISO DEL SISTEMA",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                    //Cargamos los datos del pago en la grilla
+                    cuotaDB.mostrarPagoExitoso(dgtvPagoRealizado, dniMiembro);
                 }
                 else
                 {

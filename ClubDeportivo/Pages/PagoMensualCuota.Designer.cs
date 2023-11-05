@@ -42,14 +42,14 @@
             pictureBox2 = new PictureBox();
             dtpPago = new DateTimePicker();
             lblTotal = new Label();
-            dataGridView1 = new DataGridView();
+            dgtvPagoRealizado = new DataGridView();
             btnPagar = new CustomBotonDos();
             btnPrint = new CustomBotonDos();
             ((System.ComponentModel.ISupportInitialize)picMontoPMC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picDocPMC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgtvPagoRealizado).BeginInit();
             SuspendLayout();
             // 
             // lblPMC
@@ -217,16 +217,16 @@
             lblTotal.TabIndex = 29;
             lblTotal.Text = "Total con descuento:";
             // 
-            // dataGridView1
+            // dgtvPagoRealizado
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(362, 189);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(408, 174);
-            dataGridView1.TabIndex = 30;
+            dgtvPagoRealizado.BackgroundColor = Color.White;
+            dgtvPagoRealizado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgtvPagoRealizado.Location = new Point(362, 189);
+            dgtvPagoRealizado.Name = "dgtvPagoRealizado";
+            dgtvPagoRealizado.ReadOnly = true;
+            dgtvPagoRealizado.RowTemplate.Height = 25;
+            dgtvPagoRealizado.Size = new Size(408, 174);
+            dgtvPagoRealizado.TabIndex = 30;
             // 
             // btnPagar
             // 
@@ -268,7 +268,7 @@
             BackColor = Color.FromArgb(74, 102, 174);
             Controls.Add(btnPrint);
             Controls.Add(btnPagar);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgtvPagoRealizado);
             Controls.Add(lblTotal);
             Controls.Add(dtpPago);
             Controls.Add(pictureBox2);
@@ -289,7 +289,7 @@
             ((System.ComponentModel.ISupportInitialize)picDocPMC).EndInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotas).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgtvPagoRealizado).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -311,7 +311,7 @@
         private PictureBox pictureBox2;
         private DateTimePicker dtpPago;
         private Label lblTotal;
-        private DataGridView dataGridView1;
+        private DataGridView dgtvPagoRealizado;
         private CustomBotonDos btnPagar;
         private CustomBotonDos btnPrint;
     }

@@ -55,5 +55,28 @@ namespace ClubDeportivo.Datos
             return respuesta;
         }
 
+        public void mostrarPagoExitoso(DataGridView tablaPago, string dni)
+        {
+            try
+            {
+                tablaPago.DataSource = null;
+                string query = "SELECT m.Nombre AS Nombre, m.Apellido AS Apellido, c.Monto AS Monto, " 
+                    + " c.FechaVenc AS 'Fecha de Vencimiento' " 
+                    + " FROM miembro m " 
+                    + " INNER JOIN cuota c ON c.IDMiembro = m.IDMiembro " 
+                    + " WHERE m.DNI = " + dni
+                    + " ORDER BY c.FechaPago DESC "
+                    + " LIMIT 1;";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                tablaPago.DataSource = dt;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Ups! Hubo un error al cargar la tabla con el último pago miembro " + error);
+            }
+        }
+
     }
 }
