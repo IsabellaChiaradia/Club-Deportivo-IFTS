@@ -18,18 +18,19 @@ namespace ClubDeportivo.Datos
             this.sqlCon = Conexion.getInstancia().CrearConexion();
         }
 
-        public string Pagar(E_Cuota cuota, String dniMiembro)
+        public string Pagar(E_Cuota cuota, String dniMiembro, int tipo_pago)
         {
             string? respuesta;
 
             try
             {
-                MySqlCommand comando = new MySqlCommand("PagarCuota", sqlCon);
+                MySqlCommand comando = new MySqlCommand("Pagar", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
 
                 comando.Parameters.Add("dni_miembro", MySqlDbType.VarChar).Value = dniMiembro;
                 comando.Parameters.Add("monto", MySqlDbType.Double).Value = cuota.Monto;
                 comando.Parameters.Add("fecha_pago", MySqlDbType.Date).Value = cuota.FechaPago;
+                comando.Parameters.Add("tipo_pago", MySqlDbType.Int32).Value = tipo_pago;
 
                 //creamos una variable para usarla como parametro de salida del procedimiento
                 MySqlParameter rtaParameter = new MySqlParameter();

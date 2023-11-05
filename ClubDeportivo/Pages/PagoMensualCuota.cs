@@ -99,7 +99,7 @@ namespace Dashboard_ClubDeportivo.Pages
             string dniMiembro = txtDni.Text;
 
             Cuota cuotaDB = new Cuota();
-            respuesta = cuotaDB.Pagar(cuota, dniMiembro);
+            respuesta = cuotaDB.Pagar(cuota, dniMiembro, 1); // el parametro 1 indica que el pago es de tipo mensual
 
             bool esnumero = int.TryParse(respuesta, out int codigo);
             if (esnumero)
@@ -111,6 +111,12 @@ namespace Dashboard_ClubDeportivo.Pages
                     MessageBoxIcon.Information);
                     //Cargamos los datos del pago en la grilla
                     cuotaDB.mostrarPagoExitoso(dgtvPagoRealizado, dniMiembro);
+                }
+                else if (codigo == 0)
+                {
+                    MessageBox.Show("Sólo los socios pueden pagar la cuota mensual", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 }
                 else
                 {
