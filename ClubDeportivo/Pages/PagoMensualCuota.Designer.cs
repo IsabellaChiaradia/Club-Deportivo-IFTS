@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagoMensualCuota));
             lblPMC = new Label();
-            txtMontoPMC = new TextBox();
+            txtMonto = new TextBox();
             picMontoPMC = new PictureBox();
-            txtDocumentoPMC = new TextBox();
+            txtDni = new TextBox();
             picDocPMC = new PictureBox();
             lblFormaPago = new Label();
             cbxEfectivo = new CheckBox();
@@ -40,16 +40,16 @@
             picCantCuotas = new PictureBox();
             cboCuotas = new ComboBox();
             pictureBox2 = new PictureBox();
-            dtpPMC = new DateTimePicker();
+            dtpPago = new DateTimePicker();
             lblTotal = new Label();
-            dataGridView1 = new DataGridView();
+            dgtvPagoRealizado = new DataGridView();
             btnPagar = new CustomBotonDos();
             btnPrint = new CustomBotonDos();
             ((System.ComponentModel.ISupportInitialize)picMontoPMC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picDocPMC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgtvPagoRealizado).BeginInit();
             SuspendLayout();
             // 
             // lblPMC
@@ -63,21 +63,21 @@
             lblPMC.TabIndex = 0;
             lblPMC.Text = "Pago mensual cuota";
             // 
-            // txtMontoPMC
+            // txtMonto
             // 
-            txtMontoPMC.BackColor = Color.FromArgb(74, 102, 174);
-            txtMontoPMC.BorderStyle = BorderStyle.None;
-            txtMontoPMC.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtMontoPMC.ForeColor = Color.White;
-            txtMontoPMC.Location = new Point(50, 153);
-            txtMontoPMC.Margin = new Padding(3, 2, 3, 2);
-            txtMontoPMC.Multiline = true;
-            txtMontoPMC.Name = "txtMontoPMC";
-            txtMontoPMC.Size = new Size(214, 22);
-            txtMontoPMC.TabIndex = 13;
-            txtMontoPMC.Text = "Monto";
-            txtMontoPMC.Enter += txtMontoPMC_Enter;
-            txtMontoPMC.Leave += txtMontoPMC_Leave;
+            txtMonto.BackColor = Color.FromArgb(74, 102, 174);
+            txtMonto.BorderStyle = BorderStyle.None;
+            txtMonto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMonto.ForeColor = Color.White;
+            txtMonto.Location = new Point(50, 153);
+            txtMonto.Margin = new Padding(3, 2, 3, 2);
+            txtMonto.Multiline = true;
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new Size(214, 22);
+            txtMonto.TabIndex = 13;
+            txtMonto.Text = "Monto";
+            txtMonto.Enter += txtMontoPMC_Enter;
+            txtMonto.Leave += txtMontoPMC_Leave;
             // 
             // picMontoPMC
             // 
@@ -90,21 +90,21 @@
             picMontoPMC.TabIndex = 11;
             picMontoPMC.TabStop = false;
             // 
-            // txtDocumentoPMC
+            // txtDni
             // 
-            txtDocumentoPMC.BackColor = Color.FromArgb(74, 102, 174);
-            txtDocumentoPMC.BorderStyle = BorderStyle.None;
-            txtDocumentoPMC.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDocumentoPMC.ForeColor = Color.White;
-            txtDocumentoPMC.Location = new Point(50, 86);
-            txtDocumentoPMC.Margin = new Padding(3, 2, 3, 2);
-            txtDocumentoPMC.Multiline = true;
-            txtDocumentoPMC.Name = "txtDocumentoPMC";
-            txtDocumentoPMC.Size = new Size(214, 22);
-            txtDocumentoPMC.TabIndex = 12;
-            txtDocumentoPMC.Text = "Documento";
-            txtDocumentoPMC.Enter += txtDocumentoPMC_Enter;
-            txtDocumentoPMC.Leave += txtDocumentoPMC_Leave;
+            txtDni.BackColor = Color.FromArgb(74, 102, 174);
+            txtDni.BorderStyle = BorderStyle.None;
+            txtDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDni.ForeColor = Color.White;
+            txtDni.Location = new Point(50, 86);
+            txtDni.Margin = new Padding(3, 2, 3, 2);
+            txtDni.Multiline = true;
+            txtDni.Name = "txtDni";
+            txtDni.Size = new Size(214, 22);
+            txtDni.TabIndex = 12;
+            txtDni.Text = "Documento";
+            txtDni.Enter += txtDocumentoPMC_Enter;
+            txtDni.Leave += txtDocumentoPMC_Leave;
             // 
             // picDocPMC
             // 
@@ -192,19 +192,19 @@
             pictureBox2.TabIndex = 27;
             pictureBox2.TabStop = false;
             // 
-            // dtpPMC
+            // dtpPago
             // 
-            dtpPMC.CalendarForeColor = Color.Black;
-            dtpPMC.CalendarTitleForeColor = Color.FromArgb(74, 102, 174);
-            dtpPMC.Cursor = Cursors.Hand;
-            dtpPMC.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpPMC.Format = DateTimePickerFormat.Short;
-            dtpPMC.Location = new Point(379, 86);
-            dtpPMC.MaxDate = new DateTime(2025, 12, 31, 0, 0, 0, 0);
-            dtpPMC.MinDate = new DateTime(2020, 1, 1, 0, 0, 0, 0);
-            dtpPMC.Name = "dtpPMC";
-            dtpPMC.Size = new Size(215, 26);
-            dtpPMC.TabIndex = 28;
+            dtpPago.CalendarForeColor = Color.Black;
+            dtpPago.CalendarTitleForeColor = Color.FromArgb(74, 102, 174);
+            dtpPago.Cursor = Cursors.Hand;
+            dtpPago.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpPago.Format = DateTimePickerFormat.Short;
+            dtpPago.Location = new Point(379, 86);
+            dtpPago.MaxDate = new DateTime(2025, 12, 31, 0, 0, 0, 0);
+            dtpPago.MinDate = new DateTime(2020, 1, 1, 0, 0, 0, 0);
+            dtpPago.Name = "dtpPago";
+            dtpPago.Size = new Size(215, 26);
+            dtpPago.TabIndex = 28;
             // 
             // lblTotal
             // 
@@ -217,16 +217,16 @@
             lblTotal.TabIndex = 29;
             lblTotal.Text = "Total con descuento:";
             // 
-            // dataGridView1
+            // dgtvPagoRealizado
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(362, 189);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(408, 174);
-            dataGridView1.TabIndex = 30;
+            dgtvPagoRealizado.BackgroundColor = Color.White;
+            dgtvPagoRealizado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgtvPagoRealizado.Location = new Point(362, 189);
+            dgtvPagoRealizado.Name = "dgtvPagoRealizado";
+            dgtvPagoRealizado.ReadOnly = true;
+            dgtvPagoRealizado.RowTemplate.Height = 25;
+            dgtvPagoRealizado.Size = new Size(408, 174);
+            dgtvPagoRealizado.TabIndex = 30;
             // 
             // btnPagar
             // 
@@ -268,18 +268,18 @@
             BackColor = Color.FromArgb(74, 102, 174);
             Controls.Add(btnPrint);
             Controls.Add(btnPagar);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgtvPagoRealizado);
             Controls.Add(lblTotal);
-            Controls.Add(dtpPMC);
+            Controls.Add(dtpPago);
             Controls.Add(pictureBox2);
             Controls.Add(cboCuotas);
             Controls.Add(picCantCuotas);
             Controls.Add(cbxTarjeta);
             Controls.Add(cbxEfectivo);
             Controls.Add(lblFormaPago);
-            Controls.Add(txtMontoPMC);
+            Controls.Add(txtMonto);
             Controls.Add(picMontoPMC);
-            Controls.Add(txtDocumentoPMC);
+            Controls.Add(txtDni);
             Controls.Add(picDocPMC);
             Controls.Add(lblPMC);
             Margin = new Padding(3, 2, 3, 2);
@@ -289,7 +289,7 @@
             ((System.ComponentModel.ISupportInitialize)picDocPMC).EndInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotas).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgtvPagoRealizado).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -297,9 +297,9 @@
         #endregion
 
         private Label label1;
-        private TextBox txtMontoPMC;
+        private TextBox txtMonto;
         private PictureBox picMontoPMC;
-        private TextBox txtDocumentoPMC;
+        private TextBox txtDni;
         private PictureBox picDocPMC;
         private Label lblFormaPago;
         private CheckBox cbxEfectivo;
@@ -309,9 +309,9 @@
         private PictureBox picCantCuotas;
         private ComboBox cboCuotas;
         private PictureBox pictureBox2;
-        private DateTimePicker dtpPMC;
+        private DateTimePicker dtpPago;
         private Label lblTotal;
-        private DataGridView dataGridView1;
+        private DataGridView dgtvPagoRealizado;
         private CustomBotonDos btnPagar;
         private CustomBotonDos btnPrint;
     }

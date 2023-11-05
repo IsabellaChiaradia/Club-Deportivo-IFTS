@@ -17,7 +17,6 @@ namespace ClubDeportivo.Entidades
         public string? Correo { get; set; }
         public string? Direccion { get; set; }
         public string? FechaNac { get; set; }
-        public Boolean EstaAlDia { get; set; }
         public Boolean AptoMedico { get; set; }
         
     }

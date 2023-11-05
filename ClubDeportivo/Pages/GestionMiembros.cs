@@ -24,15 +24,108 @@ namespace Dashboard_ClubDeportivo.pesañas
  //-------------------------------------------------------------------------//
     public partial class GestionMiembros : UserControl
     {
+        private Miembro miembroDB;
         public GestionMiembros()
         {
             InitializeComponent();
-            Miembro elMiembro = new Miembro();
-            elMiembro.mostrarMiembros(dgtvListaSocios);
-            //dgtvListaSocios
+            this.miembroDB = new Miembro();
         }
 
-        public void txtNombre_Enter(object sender, EventArgs e)
+
+
+        // -------------------- FUNCIONALIDAD PRINCIPAL DEL FORMULARIO --------------------
+
+
+
+        private void GestionMiembros_Load(object sender, EventArgs e)
+        {
+            this.miembroDB.mostrarMiembros(dgtvListaSocios);
+        }
+
+        private void limpiarCampos()
+        {
+            txtNombre.Text = "Nombre";
+            txtApellido.Text = "Apellido";
+            txtDni.Text = "DNI";
+            txtCorreo.Text = "Correo";
+            txtDomicilio.Text = "Domicilio";
+            txtFechaNacimiento.Text = "dd/mm/aaaa";
+            cbxEsSocio.Checked = false;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+            //validamos que no existan campos vacíos o sin rellenar antes de generar la inscripción 
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || txtNombre.Text == "Nombre" ||
+                string.IsNullOrWhiteSpace(txtApellido.Text) || txtApellido.Text == "Apellido" ||
+                string.IsNullOrWhiteSpace(txtDni.Text) || txtDni.Text == "DNI" ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text) || txtCorreo.Text == "Correo" ||
+                string.IsNullOrWhiteSpace(txtDomicilio.Text) || txtDomicilio.Text == "Domicilio" ||
+                string.IsNullOrWhiteSpace(txtFechaNacimiento.Text) || txtFechaNacimiento.Text == "dd/mm/aaaa")
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string respuesta;
+            E_Miembro miembro = new E_Miembro();
+
+            miembro.Nombre = txtNombre.Text;
+            miembro.Apellido = txtApellido.Text;
+            miembro.DNI = txtDni.Text;
+            miembro.EsSocio = cbxEsSocio.Checked;
+            miembro.Correo = txtCorreo.Text;
+            miembro.Direccion = txtDomicilio.Text;
+            miembro.FechaNac = txtFechaNacimiento.Text;
+            miembro.AptoMedico = cbxAptoFisico.Checked;
+
+
+            //Tener en cuenta que, en base a la respuesta que ejecuta el procedimiento almacenado posteriormente evocado dentro
+            //de la clase Miembro, serán las siguientes lineas de código mostrando si fue o no exitosa la carga.
+            respuesta = this.miembroDB.Nuevo_Miembro(miembro);
+
+            bool esnumero = int.TryParse(respuesta, out int codigo);
+            if (esnumero)
+            {
+                if (codigo == 1)
+                {
+                    MessageBox.Show("EL MIEMBRO YA EXISTE", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Se dió de alta con éxito el miembro con el codigo Nro " + respuesta, "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ups! Hubo un error con la alta del miembro", "AVISO DEL SISTEMA",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+
+            //actualizamos la grilla luego de registrar un nuevo miembro
+            this.miembroDB.mostrarMiembros(dgtvListaSocios);
+            limpiarCampos();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+        }
+
+
+
+        // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
+
+
+
+        private void txtNombre_Enter(object sender, EventArgs e)
         {
             if (txtNombre.Text == "Nombre")
             {
@@ -128,83 +221,8 @@ namespace Dashboard_ClubDeportivo.pesañas
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            string respuesta;
-            E_Miembro miembro = new E_Miembro();
-            miembro.Nombre = txtNombre.Text;
-            miembro.Apellido = txtApellido.Text;
-            miembro.DNI = txtDni.Text;
-            miembro.EsSocio = cbxEsSocio.Checked;
-            miembro.Correo = txtCorreo.Text;
-            miembro.Direccion = txtDomicilio.Text;
-            miembro.FechaNac = txtFechaNacimiento.Text;
-            miembro.EstaAlDia = false;
-            miembro.AptoMedico = cbxAptoFisico.Checked;
 
 
-            //validamos que no existan campos vacíos o sin rellenar antes de generar la inscripción 
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || txtNombre.Text == "Nombre" ||
-                string.IsNullOrWhiteSpace(txtApellido.Text) || txtApellido.Text == "Apellido" ||
-                string.IsNullOrWhiteSpace(txtDni.Text) || txtDni.Text == "DNI" ||
-                string.IsNullOrWhiteSpace(txtCorreo.Text) || txtCorreo.Text == "Correo" ||
-                string.IsNullOrWhiteSpace(txtDomicilio.Text) || txtDomicilio.Text == "Domicilio" ||
-                string.IsNullOrWhiteSpace(txtFechaNacimiento.Text) || txtFechaNacimiento.Text == "dd/mm/aaaa")
-            {
-                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "AVISO DEL SISTEMA",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            // instanciamos para usar el metodo dentro de postulantes
-            ClubDeportivo.Datos.Miembro altaMiembro = new ClubDeportivo.Datos.Miembro();
-            //Tener en cuenta que, en base a la respuesta que ejecuta el procedimiento almacenado posteriormente evocado dentro
-            //de la clase Miembro, serán las siguientes lineas de código mostrando si fue o no exitosa la carga.
-            respuesta = altaMiembro.Nuevo_Miembro(miembro);
-
-            bool esnumero = int.TryParse(respuesta, out int codigo);
-            if (esnumero)
-            {
-                if (codigo == 1)
-                {
-                    MessageBox.Show("EL MIEMBRO YA EXISTE", "AVISO DEL SISTEMA",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show("Se dió de alta con éxito el miembro con el codigo Nro " + respuesta, "AVISO DEL SISTEMA",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Ups! Hubo un error con la alta del miembro", "AVISO DEL SISTEMA",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-            }
-            Miembro elMiembro = new Miembro();
-            elMiembro.mostrarMiembros(dgtvListaSocios);
-            txtNombre.Text = "Nombre";
-            txtApellido.Text = "Apellido";
-            txtDni.Text = "DNI";
-            txtCorreo.Text = "Correo";
-            txtDomicilio.Text = "Domicilio";
-            txtFechaNacimiento.Text = "dd/mm/aaaa";
-            cbxEsSocio.Checked = false;
-        }
-
-        private void LIMPIAR_Click(object sender, EventArgs e)
-        {
-            //Limpiamos todos los campos
-            txtNombre.Text = "Nombre";
-            txtApellido.Text = "Apellido";
-            txtDni.Text = "DNI";
-            txtCorreo.Text = "Correo";
-            txtDomicilio.Text = "Domicilio";
-            txtFechaNacimiento.Text = "dd/mm/aaaa";
-            cbxEsSocio.Checked = false;
-        }
     }
 }

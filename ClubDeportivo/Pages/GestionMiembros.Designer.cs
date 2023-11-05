@@ -45,7 +45,7 @@
             cbxEsSocio = new CheckBox();
             dgtvListaSocios = new DataGridView();
             btnAgregar = new CustomBotonDos();
-            LIMPIAR = new CustomBotonDos();
+            btnLimpiar = new CustomBotonDos();
             btnPrintCarnet = new CustomBotonDos();
             cbxAptoFisico = new CheckBox();
             lblFechaNac = new Label();
@@ -278,22 +278,22 @@
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // LIMPIAR
+            // btnLimpiar
             // 
-            LIMPIAR.BackColor = Color.FromArgb(96, 61, 140);
-            LIMPIAR.Cursor = Cursors.Hand;
-            LIMPIAR.FlatAppearance.BorderSize = 0;
-            LIMPIAR.FlatStyle = FlatStyle.Flat;
-            LIMPIAR.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            LIMPIAR.ForeColor = Color.White;
-            LIMPIAR.Location = new Point(596, 424);
-            LIMPIAR.Margin = new Padding(3, 2, 3, 2);
-            LIMPIAR.Name = "LIMPIAR";
-            LIMPIAR.Size = new Size(181, 39);
-            LIMPIAR.TabIndex = 25;
-            LIMPIAR.Text = "LIMPIAR";
-            LIMPIAR.UseVisualStyleBackColor = false;
-            LIMPIAR.Click += LIMPIAR_Click;
+            btnLimpiar.BackColor = Color.FromArgb(96, 61, 140);
+            btnLimpiar.Cursor = Cursors.Hand;
+            btnLimpiar.FlatAppearance.BorderSize = 0;
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
+            btnLimpiar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.ForeColor = Color.White;
+            btnLimpiar.Location = new Point(596, 424);
+            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(181, 39);
+            btnLimpiar.TabIndex = 25;
+            btnLimpiar.Text = "LIMPIAR";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnPrintCarnet
             // 
@@ -345,7 +345,7 @@
             Controls.Add(lblFechaNac);
             Controls.Add(cbxAptoFisico);
             Controls.Add(btnPrintCarnet);
-            Controls.Add(LIMPIAR);
+            Controls.Add(btnLimpiar);
             Controls.Add(btnAgregar);
             Controls.Add(dgtvListaSocios);
             Controls.Add(cbxEsSocio);
@@ -365,6 +365,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "GestionMiembros";
             Size = new Size(789, 513);
+            Load += GestionMiembros_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -394,7 +395,7 @@
         private CheckBox cbxEsSocio;
         private DataGridView dgtvListaSocios;
         private CustomBotonDos btnAgregar;
-        private CustomBotonDos LIMPIAR;
+        private CustomBotonDos btnLimpiar;
         private CustomBotonDos btnPrintCarnet;
         private CheckBox cbxAptoFisico;
         private Label lblFechaNac;

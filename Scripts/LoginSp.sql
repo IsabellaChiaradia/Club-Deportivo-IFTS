@@ -1,5 +1,5 @@
 delimiter //  
-drop procedure if exists IngresoLogin;
+drop procedure if exists IngresoLogin//
 create procedure IngresoLogin(in correo varchar(20),in psw varchar(15))
 begin
   select NomRol

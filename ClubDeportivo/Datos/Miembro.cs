@@ -40,7 +40,6 @@ namespace ClubDeportivo.Datos
                 comando.Parameters.Add("Correo", MySqlDbType.VarChar).Value = miembro.Correo;
                 comando.Parameters.Add("Direccion", MySqlDbType.VarChar).Value = miembro.Direccion;
                 comando.Parameters.Add("FNac", MySqlDbType.VarChar).Value = miembro.FechaNac;
-                comando.Parameters.Add("AlDia", MySqlDbType.Byte).Value = miembro.EstaAlDia ? 1 : 0;
                 comando.Parameters.Add("AptoM", MySqlDbType.Byte).Value = miembro.AptoMedico ? 1 : 0;
 
                 MySqlParameter ParCodigo = new MySqlParameter();
@@ -67,16 +66,16 @@ namespace ClubDeportivo.Datos
             return salida; // Devuelve el mensaje de salida, indicando el resultado de la operación.
         }
 
-        public void mostrarMiembros(DataGridView tablaAlumnos)
+        public void mostrarMiembros(DataGridView tablaMiembros)
         {
             try
             {
-                tablaAlumnos.DataSource = null;
+                tablaMiembros.DataSource = null;
                 string query = "SELECT * FROM miembro;";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);   
-                tablaAlumnos.DataSource = dt;   
+                tablaMiembros.DataSource = dt;   
             }
             catch (Exception error)
             {

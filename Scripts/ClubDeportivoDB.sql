@@ -21,8 +21,7 @@ DNI varchar(15),
 EsSocio boolean,
 Correo varchar(50),
 Direccion varchar(50),
-FechaNac varchar(50),
-EstaAlDia boolean,
+FechaNac varchar(50), -- debemos cambiar la fecha de nacimiento a date
 AptoMedico boolean,
 constraint pk_miembro primary key (IDMiembro)
 );
@@ -64,10 +63,10 @@ constraint fk_inscripcion_actividad foreign key (IDActiv) references Actividad (
 
 create table Cuota(
 IDCuota int,
-Monto dec,
+Monto double,
+FechaPago date,
 FechaVenc date,
-EstaPagada boolean,
-IDActiv int,
+IDMiembro int,
 constraint pk_cuota primary key (IDCuota),
-constraint fk_cuota_actividad foreign key (IDActiv) references Actividad (IDActiv)
+constraint fk_cuota_miembro foreign key (IDMiembro) references Miembro (IDMiembro)
 );
