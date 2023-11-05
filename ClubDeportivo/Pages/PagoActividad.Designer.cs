@@ -39,7 +39,7 @@
             lblFormaPagoPA = new Label();
             btnPrintPA = new Dashboard_ClubDeportivo.CustomBotonDos();
             btnPagarPA = new Dashboard_ClubDeportivo.CustomBotonDos();
-            dvgActividad = new DataGridView();
+            dtgvActividad = new DataGridView();
             dtpPA = new DateTimePicker();
             picActividad = new PictureBox();
             cboActividad = new ComboBox();
@@ -48,7 +48,7 @@
             picMontoPMC = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picDocPA).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotasPA).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dvgActividad).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvActividad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picActividad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMontoPMC).BeginInit();
@@ -190,16 +190,16 @@
             btnPagarPA.UseVisualStyleBackColor = false;
             btnPagarPA.Click += btnPagarPA_Click;
             // 
-            // dvgActividad
+            // dtgvActividad
             // 
-            dvgActividad.BackgroundColor = Color.White;
-            dvgActividad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgActividad.Location = new Point(362, 189);
-            dvgActividad.Name = "dvgActividad";
-            dvgActividad.ReadOnly = true;
-            dvgActividad.RowTemplate.Height = 25;
-            dvgActividad.Size = new Size(408, 196);
-            dvgActividad.TabIndex = 36;
+            dtgvActividad.BackgroundColor = Color.White;
+            dtgvActividad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvActividad.Location = new Point(362, 189);
+            dtgvActividad.Name = "dtgvActividad";
+            dtgvActividad.ReadOnly = true;
+            dtgvActividad.RowTemplate.Height = 25;
+            dtgvActividad.Size = new Size(408, 196);
+            dtgvActividad.TabIndex = 36;
             // 
             // dtpPA
             // 
@@ -286,7 +286,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(btnPrintPA);
             Controls.Add(btnPagarPA);
-            Controls.Add(dvgActividad);
+            Controls.Add(dtgvActividad);
             Controls.Add(dtpPA);
             Controls.Add(picActividad);
             Controls.Add(cboCuotasPA);
@@ -301,7 +301,7 @@
             Size = new Size(789, 513);
             ((System.ComponentModel.ISupportInitialize)picDocPA).EndInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotasPA).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dvgActividad).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvActividad).EndInit();
             ((System.ComponentModel.ISupportInitialize)picActividad).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMontoPMC).EndInit();
@@ -321,7 +321,7 @@
         private Label lblFormaPagoPA;
         private Dashboard_ClubDeportivo.CustomBotonDos btnPrintPA;
         private Dashboard_ClubDeportivo.CustomBotonDos btnPagarPA;
-        private DataGridView dvgActividad;
+        private DataGridView dtgvActividad;
         private DateTimePicker dtpPA;
         private PictureBox picActividad;
         private ComboBox cboActividad;

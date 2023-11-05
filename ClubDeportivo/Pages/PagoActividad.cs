@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClubDeportivo.Datos;
+using ClubDeportivo.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,71 @@ namespace ClubDeportivo.Pages
         {
             InitializeComponent();
         }
+
+
+
+        // -------------------- FUNCIONALIDAD PRINCIPAL DEL FORMULARIO --------------------
+
+
+
+        private void btnPagarPA_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDocumentoPA.Text) || txtDocumentoPA.Text == "Documento" ||
+                string.IsNullOrWhiteSpace(txtMontoPA.Text) || txtMontoPA.Text == "Monto")
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string respuesta;
+            E_Cuota cuota = new E_Cuota();
+
+            string monto = txtMontoPA.Text.Replace('.', ',');
+            cuota.Monto = Math.Round(double.Parse(monto), 2);
+            cuota.FechaPago = dtpPA.Value;
+            string dniMiembro = txtDocumentoPA.Text;
+
+            Cuota cuotaDB = new Cuota();
+            respuesta = cuotaDB.Pagar(cuota, dniMiembro, 2); // el parametro 2 indica que el pago es de tipo actividad
+
+            bool esnumero = int.TryParse(respuesta, out int codigo);
+            if (esnumero)
+            {
+                if (codigo == 1)
+                {
+                    MessageBox.Show("Se realizó el pago correctamente", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                    //Cargamos los datos del pago en la grilla
+                    cuotaDB.mostrarPagoExitoso(dtgvActividad, dniMiembro);
+                }
+                else if (codigo == 0)
+                {
+                    MessageBox.Show("Sólo los NO socios deben pagar por la actividad a realizar", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("El miembro no está registrado en el sistema ", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ups! Hubo un error en el pago: " + respuesta, "AVISO DEL SISTEMA",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
+
+
 
         private void txtDocumentoPA_Enter(object sender, EventArgs e)
         {
@@ -76,16 +143,6 @@ namespace ClubDeportivo.Pages
             }
         }
 
-        private void btnPagarPA_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtDocumentoPA.Text) || txtDocumentoPA.Text == "Documento" ||
-                string.IsNullOrWhiteSpace(txtMontoPA.Text) || txtMontoPA.Text == "Monto" ||
-                (!cbxTarjetaPA.Checked && !cbxEfectivoPA.Checked))
-            {
-                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "AVISO DEL SISTEMA",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
+
     }
 }

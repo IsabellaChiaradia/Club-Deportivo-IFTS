@@ -76,8 +76,8 @@
             txtMonto.Size = new Size(214, 22);
             txtMonto.TabIndex = 13;
             txtMonto.Text = "Monto";
-            txtMonto.Enter += txtMontoPMC_Enter;
-            txtMonto.Leave += txtMontoPMC_Leave;
+            txtMonto.Enter += txtMonto_Enter;
+            txtMonto.Leave += txtMonto_Leave;
             // 
             // picMontoPMC
             // 
@@ -103,8 +103,8 @@
             txtDni.Size = new Size(214, 22);
             txtDni.TabIndex = 12;
             txtDni.Text = "Documento";
-            txtDni.Enter += txtDocumentoPMC_Enter;
-            txtDni.Leave += txtDocumentoPMC_Leave;
+            txtDni.Enter += txtDni_Enter;
+            txtDni.Leave += txtDni_Leave;
             // 
             // picDocPMC
             // 

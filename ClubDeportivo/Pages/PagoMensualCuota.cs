@@ -20,7 +20,13 @@ namespace Dashboard_ClubDeportivo.Pages
             InitializeComponent();
         }
 
-        private void txtDocumentoPMC_Enter(object sender, EventArgs e)
+
+
+        // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
+
+
+
+        private void txtDni_Enter(object sender, EventArgs e)
         {
             if (txtDni.Text == "Documento")
             {
@@ -28,7 +34,7 @@ namespace Dashboard_ClubDeportivo.Pages
             }
         }
 
-        private void txtDocumentoPMC_Leave(object sender, EventArgs e)
+        private void txtDni_Leave(object sender, EventArgs e)
         {
             if (txtDni.Text == "")
             {
@@ -36,7 +42,7 @@ namespace Dashboard_ClubDeportivo.Pages
             }
         }
 
-        private void txtMontoPMC_Enter(object sender, EventArgs e)
+        private void txtMonto_Enter(object sender, EventArgs e)
         {
             if (txtMonto.Text == "Monto")
             {
@@ -44,7 +50,7 @@ namespace Dashboard_ClubDeportivo.Pages
             }
         }
 
-        private void txtMontoPMC_Leave(object sender, EventArgs e)
+        private void txtMonto_Leave(object sender, EventArgs e)
         {
             if (txtMonto.Text == "")
             {
@@ -79,6 +85,12 @@ namespace Dashboard_ClubDeportivo.Pages
                 cboCuotas.Enabled = false;
             }
         }
+
+
+
+        // -------------------- FUNCIONALIDAD PRINCIPAL DEL FORMULARIO --------------------
+
+
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
