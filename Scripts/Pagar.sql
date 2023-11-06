@@ -23,7 +23,7 @@ BEGIN
             INSERT INTO Cuota (Monto, FechaPago, FechaVenc, IDMiembro)
 			VALUES (monto, fecha_pago, fecha_vencimiento, miembro_id);
             SET rta = 1;
-        ELSEIF (tipo_pago = 2 AND !es_Socio) THEN -- EL PAGO ES DE ACTIVIDAD Y SOLO LOS NO SOCIOS DEBEN PAGARLO
+        ELSEIF (tipo_pago = 2 AND NOT es_Socio) THEN -- EL PAGO ES DE ACTIVIDAD Y SOLO LOS NO SOCIOS DEBEN PAGARLO
 			SET fecha_vencimiento = DATE_ADD(fecha_pago, INTERVAL 1 DAY);
 			INSERT INTO Cuota (Monto, FechaPago, FechaVenc, IDMiembro)
 			VALUES (monto, fecha_pago, fecha_vencimiento, miembro_id);

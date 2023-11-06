@@ -22,7 +22,7 @@ namespace ClubDeportivo.Datos
 {
 this.baseDatos = "club_deportivo";
 this.servidor = "localhost";
-this.puerto = "3307";
+this.puerto = "3306";
 this.usuario = "root";
 this.clave = "root"; //Colocar clave propia en el caso de tener.
 }

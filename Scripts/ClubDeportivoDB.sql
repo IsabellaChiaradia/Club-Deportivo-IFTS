@@ -62,7 +62,7 @@ constraint fk_inscripcion_actividad foreign key (IDActiv) references Actividad (
 );
 
 create table Cuota(
-IDCuota int,
+IDCuota int auto_increment,
 Monto double,
 FechaPago date,
 FechaVenc date,
