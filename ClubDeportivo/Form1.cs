@@ -83,5 +83,11 @@ namespace Dashboard_ClubDeportivo
             PagoActividad uc = new PagoActividad();
             agregarPaneles(uc);
         }
+
+        private void btnCuotasVencidas_Click(object sender, EventArgs e)
+        {
+            CuotasVencidas uc = new CuotasVencidas();
+            agregarPaneles(uc);
+        }
     }
 }

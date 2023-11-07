@@ -33,8 +33,7 @@
             btnClose2 = new Button();
             btnClose = new Button();
             panel1 = new Panel();
-            btnExtra = new Boton();
-            btnActividades = new Boton();
+            btnCuotasVencidas = new Boton();
             btnPagoActividad = new Boton();
             btnPagoMensualCuota = new Boton();
             btnGestion = new Boton();
@@ -99,8 +98,7 @@
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(btnExtra);
-            panel1.Controls.Add(btnActividades);
+            panel1.Controls.Add(btnCuotasVencidas);
             panel1.Controls.Add(btnPagoActividad);
             panel1.Controls.Add(btnPagoMensualCuota);
             panel1.Controls.Add(btnGestion);
@@ -110,40 +108,24 @@
             panel1.Size = new Size(237, 698);
             panel1.TabIndex = 1;
             // 
-            // btnExtra
+            // btnCuotasVencidas
             // 
-            btnExtra.BackColor = Color.FromArgb(74, 102, 174);
-            btnExtra.BackgroundImageLayout = ImageLayout.None;
-            btnExtra.Cursor = Cursors.Hand;
-            btnExtra.FlatAppearance.BorderSize = 0;
-            btnExtra.FlatStyle = FlatStyle.Flat;
-            btnExtra.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnExtra.ForeColor = Color.White;
-            btnExtra.Location = new Point(34, 499);
-            btnExtra.Name = "btnExtra";
-            btnExtra.Padding = new Padding(20, 0, 0, 0);
-            btnExtra.Size = new Size(203, 52);
-            btnExtra.TabIndex = 6;
-            btnExtra.TextAlign = ContentAlignment.MiddleLeft;
-            btnExtra.UseVisualStyleBackColor = false;
-            // 
-            // btnActividades
-            // 
-            btnActividades.BackColor = Color.FromArgb(74, 102, 174);
-            btnActividades.BackgroundImageLayout = ImageLayout.None;
-            btnActividades.Cursor = Cursors.Hand;
-            btnActividades.FlatAppearance.BorderSize = 0;
-            btnActividades.FlatStyle = FlatStyle.Flat;
-            btnActividades.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnActividades.ForeColor = Color.White;
-            btnActividades.Location = new Point(34, 413);
-            btnActividades.Name = "btnActividades";
-            btnActividades.Padding = new Padding(20, 0, 0, 0);
-            btnActividades.Size = new Size(203, 52);
-            btnActividades.TabIndex = 5;
-            btnActividades.Text = "Lista Morosos";
-            btnActividades.TextAlign = ContentAlignment.MiddleLeft;
-            btnActividades.UseVisualStyleBackColor = false;
+            btnCuotasVencidas.BackColor = Color.FromArgb(74, 102, 174);
+            btnCuotasVencidas.BackgroundImageLayout = ImageLayout.None;
+            btnCuotasVencidas.Cursor = Cursors.Hand;
+            btnCuotasVencidas.FlatAppearance.BorderSize = 0;
+            btnCuotasVencidas.FlatStyle = FlatStyle.Flat;
+            btnCuotasVencidas.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCuotasVencidas.ForeColor = Color.White;
+            btnCuotasVencidas.Location = new Point(34, 434);
+            btnCuotasVencidas.Name = "btnCuotasVencidas";
+            btnCuotasVencidas.Padding = new Padding(20, 0, 0, 0);
+            btnCuotasVencidas.Size = new Size(203, 52);
+            btnCuotasVencidas.TabIndex = 5;
+            btnCuotasVencidas.Text = "Cuotas Vencidas";
+            btnCuotasVencidas.TextAlign = ContentAlignment.MiddleLeft;
+            btnCuotasVencidas.UseVisualStyleBackColor = false;
+            btnCuotasVencidas.Click += btnCuotasVencidas_Click;
             // 
             // btnPagoActividad
             // 
@@ -154,7 +136,7 @@
             btnPagoActividad.FlatStyle = FlatStyle.Flat;
             btnPagoActividad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnPagoActividad.ForeColor = Color.White;
-            btnPagoActividad.Location = new Point(34, 327);
+            btnPagoActividad.Location = new Point(34, 348);
             btnPagoActividad.Name = "btnPagoActividad";
             btnPagoActividad.Padding = new Padding(20, 0, 0, 0);
             btnPagoActividad.Size = new Size(203, 52);
@@ -173,7 +155,7 @@
             btnPagoMensualCuota.FlatStyle = FlatStyle.Flat;
             btnPagoMensualCuota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnPagoMensualCuota.ForeColor = Color.White;
-            btnPagoMensualCuota.Location = new Point(34, 241);
+            btnPagoMensualCuota.Location = new Point(34, 262);
             btnPagoMensualCuota.Name = "btnPagoMensualCuota";
             btnPagoMensualCuota.Padding = new Padding(20, 0, 0, 0);
             btnPagoMensualCuota.Size = new Size(203, 52);
@@ -192,7 +174,7 @@
             btnGestion.FlatStyle = FlatStyle.Flat;
             btnGestion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnGestion.ForeColor = Color.White;
-            btnGestion.Location = new Point(34, 155);
+            btnGestion.Location = new Point(34, 176);
             btnGestion.Name = "btnGestion";
             btnGestion.Padding = new Padding(30, 0, 0, 0);
             btnGestion.Size = new Size(203, 52);
@@ -291,8 +273,7 @@
         private Button btnClose2;
         private Panel panel1;
         private Boton btnGestion;
-        private Boton btnExtra;
-        private Boton btnActividades;
+        private Boton btnCuotasVencidas;
         private Boton btnPagoActividad;
         private Boton btnPagoMensualCuota;
         private Panel panel2;
