@@ -44,7 +44,7 @@
             lblTotal = new Label();
             dgtvPagoRealizado = new DataGridView();
             btnPagar = new CustomBotonDos();
-            btnPrint = new CustomBotonDos();
+            btnComprobante = new CustomBotonDos();
             ((System.ComponentModel.ISupportInitialize)picMontoPMC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picDocPMC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotas).BeginInit();
@@ -245,28 +245,29 @@
             btnPagar.UseVisualStyleBackColor = false;
             btnPagar.Click += btnPagar_Click;
             // 
-            // btnPrint
+            // btnComprobante
             // 
-            btnPrint.BackColor = Color.FromArgb(96, 61, 140);
-            btnPrint.Cursor = Cursors.Hand;
-            btnPrint.FlatAppearance.BorderSize = 0;
-            btnPrint.FlatStyle = FlatStyle.Flat;
-            btnPrint.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPrint.ForeColor = Color.White;
-            btnPrint.Location = new Point(589, 395);
-            btnPrint.Margin = new Padding(3, 2, 3, 2);
-            btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(181, 39);
-            btnPrint.TabIndex = 32;
-            btnPrint.Text = "IMPRIMIR";
-            btnPrint.UseVisualStyleBackColor = false;
+            btnComprobante.BackColor = Color.FromArgb(96, 61, 140);
+            btnComprobante.Cursor = Cursors.Hand;
+            btnComprobante.FlatAppearance.BorderSize = 0;
+            btnComprobante.FlatStyle = FlatStyle.Flat;
+            btnComprobante.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnComprobante.ForeColor = Color.White;
+            btnComprobante.Location = new Point(589, 395);
+            btnComprobante.Margin = new Padding(3, 2, 3, 2);
+            btnComprobante.Name = "btnComprobante";
+            btnComprobante.Size = new Size(181, 39);
+            btnComprobante.TabIndex = 32;
+            btnComprobante.Text = "COMPROBANTE";
+            btnComprobante.UseVisualStyleBackColor = false;
+            btnComprobante.Click += btnComprobante_Click;
             // 
             // PagoMensualCuota
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(74, 102, 174);
-            Controls.Add(btnPrint);
+            Controls.Add(btnComprobante);
             Controls.Add(btnPagar);
             Controls.Add(dgtvPagoRealizado);
             Controls.Add(lblTotal);
@@ -313,6 +314,6 @@
         private Label lblTotal;
         private DataGridView dgtvPagoRealizado;
         private CustomBotonDos btnPagar;
-        private CustomBotonDos btnPrint;
+        private CustomBotonDos btnComprobante;
     }
 }

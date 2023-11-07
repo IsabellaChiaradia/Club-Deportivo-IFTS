@@ -1,4 +1,5 @@
-﻿using ClubDeportivo.Datos;
+﻿using ClubDeportivo.Comprobantes;
+using ClubDeportivo.Datos;
 using ClubDeportivo.Entidades;
 using System;
 using System.Collections.Generic;
@@ -144,6 +145,12 @@ namespace Dashboard_ClubDeportivo.Pages
                 MessageBoxIcon.Error);
             }
 
+        }
+
+        private void btnComprobante_Click(object sender, EventArgs e)
+        {
+            frmFactura form = new frmFactura();
+            form.Show();
         }
     }
 }

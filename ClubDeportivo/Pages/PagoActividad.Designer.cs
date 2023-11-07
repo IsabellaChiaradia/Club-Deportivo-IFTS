@@ -37,7 +37,7 @@
             cbxTarjetaPA = new CheckBox();
             cbxEfectivoPA = new CheckBox();
             lblFormaPagoPA = new Label();
-            btnPrintPA = new Dashboard_ClubDeportivo.CustomBotonDos();
+            btnComprobantePA = new Dashboard_ClubDeportivo.CustomBotonDos();
             btnPagarPA = new Dashboard_ClubDeportivo.CustomBotonDos();
             dtgvActividad = new DataGridView();
             dtpPA = new DateTimePicker();
@@ -157,21 +157,22 @@
             lblFormaPagoPA.TabIndex = 27;
             lblFormaPagoPA.Text = "Forma de pago";
             // 
-            // btnPrintPA
+            // btnComprobantePA
             // 
-            btnPrintPA.BackColor = Color.FromArgb(96, 61, 140);
-            btnPrintPA.Cursor = Cursors.Hand;
-            btnPrintPA.FlatAppearance.BorderSize = 0;
-            btnPrintPA.FlatStyle = FlatStyle.Flat;
-            btnPrintPA.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPrintPA.ForeColor = Color.White;
-            btnPrintPA.Location = new Point(588, 402);
-            btnPrintPA.Margin = new Padding(3, 2, 3, 2);
-            btnPrintPA.Name = "btnPrintPA";
-            btnPrintPA.Size = new Size(181, 39);
-            btnPrintPA.TabIndex = 38;
-            btnPrintPA.Text = "IMPRIMIR";
-            btnPrintPA.UseVisualStyleBackColor = false;
+            btnComprobantePA.BackColor = Color.FromArgb(96, 61, 140);
+            btnComprobantePA.Cursor = Cursors.Hand;
+            btnComprobantePA.FlatAppearance.BorderSize = 0;
+            btnComprobantePA.FlatStyle = FlatStyle.Flat;
+            btnComprobantePA.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnComprobantePA.ForeColor = Color.White;
+            btnComprobantePA.Location = new Point(588, 402);
+            btnComprobantePA.Margin = new Padding(3, 2, 3, 2);
+            btnComprobantePA.Name = "btnComprobantePA";
+            btnComprobantePA.Size = new Size(181, 39);
+            btnComprobantePA.TabIndex = 38;
+            btnComprobantePA.Text = "COMPROBANTE";
+            btnComprobantePA.UseVisualStyleBackColor = false;
+            btnComprobantePA.Click += btnComprobantePA_Click;
             // 
             // btnPagarPA
             // 
@@ -284,7 +285,7 @@
             Controls.Add(picMontoPMC);
             Controls.Add(cboActividad);
             Controls.Add(pictureBox1);
-            Controls.Add(btnPrintPA);
+            Controls.Add(btnComprobantePA);
             Controls.Add(btnPagarPA);
             Controls.Add(dtgvActividad);
             Controls.Add(dtpPA);
@@ -319,7 +320,7 @@
         private CheckBox cbxTarjetaPA;
         private CheckBox cbxEfectivoPA;
         private Label lblFormaPagoPA;
-        private Dashboard_ClubDeportivo.CustomBotonDos btnPrintPA;
+        private Dashboard_ClubDeportivo.CustomBotonDos btnComprobantePA;
         private Dashboard_ClubDeportivo.CustomBotonDos btnPagarPA;
         private DataGridView dtgvActividad;
         private DateTimePicker dtpPA;

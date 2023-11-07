@@ -1,4 +1,5 @@
-﻿using ClubDeportivo.Datos;
+﻿using ClubDeportivo.Comprobantes;
+using ClubDeportivo.Datos;
 using ClubDeportivo.Entidades;
 using System;
 using System.Collections.Generic;
@@ -143,6 +144,10 @@ namespace ClubDeportivo.Pages
             }
         }
 
-
+        private void btnComprobantePA_Click(object sender, EventArgs e)
+        {
+            frmFactura form = new frmFactura();
+            form.Show();
+        }
     }
 }
