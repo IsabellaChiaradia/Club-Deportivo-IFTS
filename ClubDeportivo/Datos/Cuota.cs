@@ -61,7 +61,7 @@ namespace ClubDeportivo.Datos
             try
             {
                 tablaPago.DataSource = null;
-                string query = "SELECT m.Nombre AS Nombre, m.Apellido AS Apellido, c.Monto AS Monto, " 
+                string query = "SELECT m.Nombre, m.Apellido, c.Monto, " 
                     + " c.FechaVenc AS 'Fecha de Vencimiento' " 
                     + " FROM miembro m " 
                     + " INNER JOIN cuota c ON c.IDMiembro = m.IDMiembro " 
@@ -76,6 +76,27 @@ namespace ClubDeportivo.Datos
             catch (Exception error)
             {
                 MessageBox.Show("Ups! Hubo un error al cargar la tabla con el último pago miembro " + error);
+            }
+        }
+
+        public void mostrarSociosMorosos(DataGridView tabla)
+        {
+            try
+            {
+                tabla.DataSource = null;
+                string query = "SELECT m.Nombre, m.Apellido, m.DNI, m.Correo, c.FechaVenc AS 'Fecha de Vencimiento'"
+                    + " FROM miembro m "
+                    + " INNER JOIN cuota c ON c.IDMiembro = m.IDMiembro "
+                    + " WHERE m.EsSocio AND c.FechaVenc < current_date() "
+                    + " ORDER BY c.FechaVenc ASC; ";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                tabla.DataSource = dt;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Ups! Hubo un error al cargar el listado de los socios morosos " + error);
             }
         }
 

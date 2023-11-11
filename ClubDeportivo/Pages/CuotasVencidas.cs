@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClubDeportivo.Datos;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,12 @@ namespace ClubDeportivo.Pages
         public CuotasVencidas()
         {
             InitializeComponent();
+        }
+
+        private void CuotasVencidas_Load(object sender, EventArgs e)
+        {
+            Cuota cuotaDB = new Cuota();
+            cuotaDB.mostrarSociosMorosos(dtgvCuotasVenc);
         }
     }
 }

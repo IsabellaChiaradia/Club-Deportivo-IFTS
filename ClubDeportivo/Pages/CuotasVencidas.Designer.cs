@@ -100,6 +100,7 @@
             Controls.Add(lblCuotasVenc);
             Name = "CuotasVencidas";
             Size = new Size(789, 513);
+            Load += CuotasVencidas_Load;
             ((System.ComponentModel.ISupportInitialize)dtgvCuotasVenc).EndInit();
             ResumeLayout(false);
             PerformLayout();
