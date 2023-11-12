@@ -346,6 +346,7 @@
             Name = "frmFactura";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmFactura";
+            Load += frmFactura_Load;
             ResumeLayout(false);
             PerformLayout();
         }

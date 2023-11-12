@@ -15,9 +15,13 @@ namespace ClubDeportivo.Pages
 {
     public partial class PagoActividad : UserControl
     {
+        private Cuota cuotaDB;
+        private string dniMiembro;
+
         public PagoActividad()
         {
             InitializeComponent();
+            this.cuotaDB = new Cuota();
         }
 
 
@@ -42,9 +46,9 @@ namespace ClubDeportivo.Pages
             string monto = txtMontoPA.Text.Replace('.', ',');
             cuota.Monto = Math.Round(double.Parse(monto), 2);
             cuota.FechaPago = dtpPA.Value;
-            string dniMiembro = txtDocumentoPA.Text;
+            dniMiembro = txtDocumentoPA.Text;
 
-            Cuota cuotaDB = new Cuota();
+
             respuesta = cuotaDB.Pagar(cuota, dniMiembro, 2); // el parametro 2 indica que el pago es de tipo actividad
 
             bool esnumero = int.TryParse(respuesta, out int codigo);
@@ -57,6 +61,7 @@ namespace ClubDeportivo.Pages
                     MessageBoxIcon.Information);
                     //Cargamos los datos del pago en la grilla
                     cuotaDB.mostrarPagoExitoso(dtgvActividad, dniMiembro);
+                    btnComprobantePA.Enabled = true;
                 }
                 else if (codigo == 0)
                 {
@@ -83,7 +88,12 @@ namespace ClubDeportivo.Pages
 
         // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
 
-
+        private void btnComprobantePA_Click(object sender, EventArgs e)
+        {
+            frmFactura factura = new frmFactura();
+            cuotaDB.emitirFactura(dniMiembro, factura);
+            factura.Show();
+        }
 
         private void txtDocumentoPA_Enter(object sender, EventArgs e)
         {
@@ -144,10 +154,5 @@ namespace ClubDeportivo.Pages
             }
         }
 
-        private void btnComprobantePA_Click(object sender, EventArgs e)
-        {
-            frmFactura form = new frmFactura();
-            form.Show();
-        }
     }
 }

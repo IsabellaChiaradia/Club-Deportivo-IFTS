@@ -16,9 +16,13 @@ namespace Dashboard_ClubDeportivo.Pages
 {
     public partial class PagoMensualCuota : UserControl
     {
+
+        private Cuota cuotaDB;
+        private string dniMiembro;
         public PagoMensualCuota()
         {
             InitializeComponent();
+            this.cuotaDB = new Cuota();
         }
 
 
@@ -109,9 +113,8 @@ namespace Dashboard_ClubDeportivo.Pages
             string monto = txtMonto.Text.Replace('.', ',');
             cuota.Monto = Math.Round(double.Parse(monto), 2);
             cuota.FechaPago = dtpPago.Value;
-            string dniMiembro = txtDni.Text;
+            dniMiembro = txtDni.Text;
 
-            Cuota cuotaDB = new Cuota();
             respuesta = cuotaDB.Pagar(cuota, dniMiembro, 1); // el parametro 1 indica que el pago es de tipo mensual
 
             bool esnumero = int.TryParse(respuesta, out int codigo);
@@ -124,6 +127,7 @@ namespace Dashboard_ClubDeportivo.Pages
                     MessageBoxIcon.Information);
                     //Cargamos los datos del pago en la grilla
                     cuotaDB.mostrarPagoExitoso(dgtvPagoRealizado, dniMiembro);
+                    btnComprobante.Enabled = true;
                 }
                 else if (codigo == 0)
                 {
@@ -149,8 +153,9 @@ namespace Dashboard_ClubDeportivo.Pages
 
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-            frmFactura form = new frmFactura();
-            form.Show();
+            frmFactura factura = new frmFactura();
+            cuotaDB.emitirFactura(dniMiembro, factura);
+            factura.Show();
         }
     }
 }

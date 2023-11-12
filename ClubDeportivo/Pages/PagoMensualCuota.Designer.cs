@@ -249,6 +249,7 @@
             // 
             btnComprobante.BackColor = Color.FromArgb(96, 61, 140);
             btnComprobante.Cursor = Cursors.Hand;
+            btnComprobante.Enabled = false;
             btnComprobante.FlatAppearance.BorderSize = 0;
             btnComprobante.FlatStyle = FlatStyle.Flat;
             btnComprobante.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);

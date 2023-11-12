@@ -14,6 +14,16 @@ namespace ClubDeportivo.Comprobantes
 {
     public partial class frmFactura : Form
     {
+
+        public string? nombre;
+        public string? apellido;
+        public string? dni;
+        public string? fechaPago;
+        public string? fechaVenc;
+        public string? formaDePago;
+        public string? monto;
+        //public int numero_f; //id couta 
+
         public frmFactura()
         {
             InitializeComponent();
@@ -24,12 +34,16 @@ namespace ClubDeportivo.Comprobantes
             this.Close();
         }
 
-        //public string? miembro_f;
-        //public string? pago_f;
-        //public float monto_f; // monto
-        //public int numero_f; //id couta 
-        //public DateTime fecha_f;
-        ////public string? forma_f;
+        private void frmFactura_Load(object sender, EventArgs e)
+        {
+            lblNombreApe.Text = nombre + " " + apellido;
+            lblDNI.Text = dni;
+            lblFechaPago.Text = fechaPago;
+            lblFechaVenc.Text = fechaVenc;
+            lblMonto.Text = monto;
+        }
+
+
 
 
 

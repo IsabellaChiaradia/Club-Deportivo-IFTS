@@ -1,4 +1,5 @@
-﻿using ClubDeportivo.Entidades;
+﻿using ClubDeportivo.Comprobantes;
+using ClubDeportivo.Entidades;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -84,11 +85,13 @@ namespace ClubDeportivo.Datos
             try
             {
                 tabla.DataSource = null;
-                string query = "SELECT m.Nombre, m.Apellido, m.DNI, m.Correo, c.FechaVenc AS 'Fecha de Vencimiento'"
+                string query = "SELECT m.Nombre, m.Apellido, m.DNI, m.Correo, MAX(c.FechaVenc) AS 'Fecha de Vencimiento'"
                     + " FROM miembro m "
                     + " INNER JOIN cuota c ON c.IDMiembro = m.IDMiembro "
-                    + " WHERE m.EsSocio AND c.FechaVenc < current_date() "
-                    + " ORDER BY c.FechaVenc ASC; ";
+                    + " WHERE m.EsSocio "
+                    + " GROUP BY m.IDMiembro "
+                    + " HAVING MAX(c.FechaVenc) < CURRENT_DATE"
+                    + " ORDER BY MAX(c.FechaVenc); ";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -97,6 +100,42 @@ namespace ClubDeportivo.Datos
             catch (Exception error)
             {
                 MessageBox.Show("Ups! Hubo un error al cargar el listado de los socios morosos " + error);
+            }
+        }
+
+
+        public void emitirFactura(string dni, frmFactura factura)
+        {
+            try
+            {
+                
+                string query = "SELECT m.Nombre, m.Apellido, m.DNI, m.EsSocio, c.FechaPago, c.FechaVenc, c.Monto "
+                    + " FROM miembro m "
+                    + " INNER JOIN cuota c ON c.IDMiembro = m.IDMiembro "
+                    + " WHERE m.DNI = " + dni
+                    + " ORDER BY c.FechaPago DESC "
+                    + " LIMIT 1;";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+
+                    factura.nombre = row["Nombre"].ToString();
+                    factura.apellido = row["Apellido"].ToString();
+                    factura.dni = row["DNI"].ToString();
+                    factura.fechaPago = Convert.ToDateTime(row["FechaPago"]).ToString("dd/MM/yyyy");
+                    factura.fechaVenc = Convert.ToDateTime(row["FechaVenc"]).ToString("dd/MM/yyyy");
+                    factura.monto = row["Monto"].ToString();
+                    
+                    
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Ups! Hubo un error al emitir la factura " + error);
             }
         }
 
