@@ -219,9 +219,12 @@
             // 
             // dgtvPagoRealizado
             // 
+            dgtvPagoRealizado.AllowUserToDeleteRows = false;
+            dgtvPagoRealizado.AllowUserToAddRows = false;
             dgtvPagoRealizado.BackgroundColor = Color.White;
             dgtvPagoRealizado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgtvPagoRealizado.Location = new Point(362, 189);
+            dgtvPagoRealizado.Margin = new Padding(3, 2, 3, 2);
             dgtvPagoRealizado.Name = "dgtvPagoRealizado";
             dgtvPagoRealizado.ReadOnly = true;
             dgtvPagoRealizado.RowTemplate.Height = 25;

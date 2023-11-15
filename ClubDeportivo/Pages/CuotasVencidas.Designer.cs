@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             lblCuotasVenc = new Label();
-            dtgvCuotasVenc = new DataGridView();
             btnPrintCuotasVenc = new Dashboard_ClubDeportivo.CustomBotonDos();
             btnNotificar = new Dashboard_ClubDeportivo.CustomBotonDos();
+            dtgvCuotasVenc = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dtgvCuotasVenc).BeginInit();
             SuspendLayout();
             // 
@@ -45,17 +45,6 @@
             lblCuotasVenc.Size = new Size(192, 26);
             lblCuotasVenc.TabIndex = 14;
             lblCuotasVenc.Text = "Cuotas Vencidas";
-            // 
-            // dtgvCuotasVenc
-            // 
-            dtgvCuotasVenc.BackgroundColor = Color.White;
-            dtgvCuotasVenc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvCuotasVenc.Location = new Point(52, 103);
-            dtgvCuotasVenc.Name = "dtgvCuotasVenc";
-            dtgvCuotasVenc.ReadOnly = true;
-            dtgvCuotasVenc.RowTemplate.Height = 25;
-            dtgvCuotasVenc.Size = new Size(710, 282);
-            dtgvCuotasVenc.TabIndex = 37;
             // 
             // btnPrintCuotasVenc
             // 
@@ -89,14 +78,29 @@
             btnNotificar.Text = "NOTIFICAR";
             btnNotificar.UseVisualStyleBackColor = false;
             // 
+            // dtgvCuotasVenc
+            // 
+            dtgvCuotasVenc.AllowUserToAddRows = false;
+            dtgvCuotasVenc.AllowUserToDeleteRows = false;
+            dtgvCuotasVenc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgvCuotasVenc.BackgroundColor = Color.White;
+            dtgvCuotasVenc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvCuotasVenc.Location = new Point(52, 103);
+            dtgvCuotasVenc.Margin = new Padding(3, 2, 3, 2);
+            dtgvCuotasVenc.Name = "dtgvCuotasVenc";
+            dtgvCuotasVenc.ReadOnly = true;
+            dtgvCuotasVenc.RowTemplate.Height = 25;
+            dtgvCuotasVenc.Size = new Size(710, 282);
+            dtgvCuotasVenc.TabIndex = 41;
+            // 
             // CuotasVencidas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(74, 102, 174);
+            Controls.Add(dtgvCuotasVenc);
             Controls.Add(btnPrintCuotasVenc);
             Controls.Add(btnNotificar);
-            Controls.Add(dtgvCuotasVenc);
             Controls.Add(lblCuotasVenc);
             Name = "CuotasVencidas";
             Size = new Size(789, 513);
@@ -109,8 +113,8 @@
         #endregion
 
         private Label lblCuotasVenc;
-        private DataGridView dtgvCuotasVenc;
         private Dashboard_ClubDeportivo.CustomBotonDos btnPrintCuotasVenc;
         private Dashboard_ClubDeportivo.CustomBotonDos btnNotificar;
+        private DataGridView dtgvCuotasVenc;
     }
 }
