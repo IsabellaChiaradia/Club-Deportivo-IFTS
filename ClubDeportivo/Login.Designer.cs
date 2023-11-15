@@ -197,6 +197,7 @@
             Controls.Add(pictureBox3);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Shown += Login_Shown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
