@@ -34,9 +34,29 @@ namespace ClubDeportivo.Pages
         {
             this.actividades = actividadBD.traerActividades();
 
+            cboActividad.Items.Add("Seleccionar Actividad");
             foreach (E_Actividad a in actividades)
             {
                 cboActividad.Items.Add(a.Nombre);
+            }
+            cboActividad.SelectedIndex = 0;
+        }
+
+        private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string actSeleccionada = cboActividad.SelectedItem.ToString();
+            foreach (E_Actividad a in actividades)
+            {
+                if (actSeleccionada == "Seleccionar Actividad")
+                {
+                    txtMontoPA.Text = "Monto";
+                    break;
+                } 
+                else if (actSeleccionada == a.Nombre)
+                {
+                    txtMontoPA.Text = a.Costo.ToString();
+                    break;
+                }
             }
         }
 
@@ -94,16 +114,17 @@ namespace ClubDeportivo.Pages
             }
         }
 
-
-
-        // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
-
         private void btnComprobantePA_Click(object sender, EventArgs e)
         {
             frmFactura factura = new frmFactura();
             cuotaDB.emitirFactura(dniMiembro, factura);
             factura.Show();
         }
+
+
+
+        // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
+
 
         private void txtDocumentoPA_Enter(object sender, EventArgs e)
         {
@@ -121,21 +142,6 @@ namespace ClubDeportivo.Pages
             }
         }
 
-        private void txtMontoPA_Enter(object sender, EventArgs e)
-        {
-            if (txtMontoPA.Text == "Monto")
-            {
-                txtMontoPA.Text = "";
-            }
-        }
-
-        private void txtMontoPA_Leave(object sender, EventArgs e)
-        {
-            if (txtMontoPA.Text == "")
-            {
-                txtMontoPA.Text = "Monto";
-            }
-        }
         private void cbxEfectivoPA_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxEfectivoPA.Checked)
@@ -164,6 +170,6 @@ namespace ClubDeportivo.Pages
             }
         }
 
-        
+
     }
 }

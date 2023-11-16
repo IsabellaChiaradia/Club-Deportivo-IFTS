@@ -233,6 +233,7 @@
             // cboActividad
             // 
             cboActividad.Cursor = Cursors.Hand;
+            cboActividad.DropDownStyle = ComboBoxStyle.DropDownList;
             cboActividad.FlatStyle = FlatStyle.Popup;
             cboActividad.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboActividad.ForeColor = Color.FromArgb(74, 102, 174);
@@ -241,7 +242,7 @@
             cboActividad.Name = "cboActividad";
             cboActividad.Size = new Size(217, 28);
             cboActividad.TabIndex = 40;
-            cboActividad.Text = "  Seleccionar Actividad";
+            cboActividad.SelectedIndexChanged += cboActividad_SelectedIndexChanged;
             // 
             // pictureBox1
             // 
@@ -263,11 +264,10 @@
             txtMontoPA.Margin = new Padding(3, 2, 3, 2);
             txtMontoPA.Multiline = true;
             txtMontoPA.Name = "txtMontoPA";
+            txtMontoPA.ReadOnly = true;
             txtMontoPA.Size = new Size(214, 22);
             txtMontoPA.TabIndex = 42;
             txtMontoPA.Text = "Monto";
-            txtMontoPA.Enter += txtMontoPA_Enter;
-            txtMontoPA.Leave += txtMontoPA_Leave;
             // 
             // picMontoPMC
             // 
