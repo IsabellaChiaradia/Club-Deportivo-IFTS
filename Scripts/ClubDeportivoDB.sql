@@ -50,6 +50,11 @@ Costo int,
 constraint pk_actividad primary key (IDActiv)
 );
 
+INSERT INTO `club_deportivo`.`actividad` (`IDActiv`, `Nombre`, `CupoMax`, `Costo`) VALUES ('101', 'CrossFit', '30', '700');
+INSERT INTO `club_deportivo`.`actividad` (`IDActiv`, `Nombre`, `CupoMax`, `Costo`) VALUES ('102', 'Natacion', '15', '1200');
+INSERT INTO `club_deportivo`.`actividad` (`IDActiv`, `Nombre`, `CupoMax`, `Costo`) VALUES ('103', 'Funcional', '50', '500');
+INSERT INTO `club_deportivo`.`actividad` (`IDActiv`, `Nombre`, `CupoMax`, `Costo`) VALUES ('104', 'Musculacion', '60', '800');
+
 create table Inscripcion(
 IDInscrip int,
 IDMiembro int,

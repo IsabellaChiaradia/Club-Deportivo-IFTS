@@ -194,8 +194,8 @@
             // 
             // dtgvActividad
             // 
-            dtgvActividad.AllowUserToDeleteRows = false;
             dtgvActividad.AllowUserToAddRows = false;
+            dtgvActividad.AllowUserToDeleteRows = false;
             dtgvActividad.BackgroundColor = Color.White;
             dtgvActividad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvActividad.Location = new Point(362, 189);
@@ -304,6 +304,7 @@
             Controls.Add(lblPA);
             Name = "PagoActividad";
             Size = new Size(789, 513);
+            Load += PagoActividad_Load;
             ((System.ComponentModel.ISupportInitialize)picDocPA).EndInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotasPA).EndInit();
             ((System.ComponentModel.ISupportInitialize)dtgvActividad).EndInit();

@@ -16,19 +16,29 @@ namespace ClubDeportivo.Pages
     public partial class PagoActividad : UserControl
     {
         private Cuota cuotaDB;
+        private Actividad actividadBD;
         private string dniMiembro;
-
+        private List<E_Actividad> actividades;
         public PagoActividad()
         {
             InitializeComponent();
             this.cuotaDB = new Cuota();
+            this.actividadBD = new Actividad();
         }
 
 
 
         // -------------------- FUNCIONALIDAD PRINCIPAL DEL FORMULARIO --------------------
 
+        private void PagoActividad_Load(object sender, EventArgs e)
+        {
+            this.actividades = actividadBD.traerActividades();
 
+            foreach (E_Actividad a in actividades)
+            {
+                cboActividad.Items.Add(a.Nombre);
+            }
+        }
 
         private void btnPagarPA_Click(object sender, EventArgs e)
         {
@@ -154,5 +164,6 @@ namespace ClubDeportivo.Pages
             }
         }
 
+        
     }
 }
