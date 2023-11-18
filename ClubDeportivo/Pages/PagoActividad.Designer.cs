@@ -95,17 +95,17 @@
             // cboCuotasPA
             // 
             cboCuotasPA.Cursor = Cursors.Hand;
+            cboCuotasPA.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCuotasPA.Enabled = false;
             cboCuotasPA.FlatStyle = FlatStyle.Popup;
             cboCuotasPA.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboCuotasPA.ForeColor = Color.FromArgb(74, 102, 174);
             cboCuotasPA.FormattingEnabled = true;
-            cboCuotasPA.Items.AddRange(new object[] { "3 cuotas", "6 cuotas" });
             cboCuotasPA.Location = new Point(51, 406);
             cboCuotasPA.Name = "cboCuotasPA";
             cboCuotasPA.Size = new Size(217, 28);
             cboCuotasPA.TabIndex = 31;
-            cboCuotasPA.Text = "  Cantidad de cuotas";
+            cboCuotasPA.SelectedIndexChanged += cboCuotasPA_SelectedIndexChanged;
             // 
             // picCantCuotasPA
             // 
@@ -130,11 +130,12 @@
             cbxTarjetaPA.Text = "Tarjeta de crédito";
             cbxTarjetaPA.UseVisualStyleBackColor = true;
             cbxTarjetaPA.CheckedChanged += cbxTarjetaPA_CheckedChanged;
-            cbxTarjetaPA.CheckStateChanged += cbxTarjetaPA_CheckStateChanged;
             // 
             // cbxEfectivoPA
             // 
             cbxEfectivoPA.AutoSize = true;
+            cbxEfectivoPA.Checked = true;
+            cbxEfectivoPA.CheckState = CheckState.Checked;
             cbxEfectivoPA.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbxEfectivoPA.ForeColor = Color.White;
             cbxEfectivoPA.Location = new Point(54, 308);

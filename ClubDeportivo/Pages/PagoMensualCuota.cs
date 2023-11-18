@@ -1,6 +1,7 @@
 ﻿using ClubDeportivo.Comprobantes;
 using ClubDeportivo.Datos;
 using ClubDeportivo.Entidades;
+using ClubDeportivo.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace Dashboard_ClubDeportivo.Pages
 
         private Cuota cuotaDB;
         private string dniMiembro;
+        private double montoEfectivo;
+
         public PagoMensualCuota()
         {
             InitializeComponent();
@@ -26,76 +29,49 @@ namespace Dashboard_ClubDeportivo.Pages
         }
 
 
+        // ---------------------------- FUNCIONES ----------------------------
 
-        // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
-
-
-
-        private void txtDni_Enter(object sender, EventArgs e)
+        private void cargarCuotas()
         {
-            if (txtDni.Text == "Documento")
-            {
-                txtDni.Text = "";
-            }
+            cboCuotas.Items.Add("Cantidad de Cuotas");
+            cboCuotas.Items.Add("3 cuotas");
+            cboCuotas.Items.Add("6 cuotas");
+            cboCuotas.SelectedIndex = 0;
         }
 
-        private void txtDni_Leave(object sender, EventArgs e)
+        private void aplicarInteresCuotas(double costo)
         {
-            if (txtDni.Text == "")
+            string cantCuotasSeleccionadas = cboCuotas.SelectedItem.ToString();
+            if (costo > 0)
             {
-                txtDni.Text = "Documento";
-            }
-        }
+                if (cantCuotasSeleccionadas == "3 cuotas")
+                {
+                    double interes = (double)InteresesCuotasEnum.tresCuotas / 100.00;
+                    txtMonto.Text = Math.Round((costo * (1 + interes)), 2).ToString();
 
-        private void txtMonto_Enter(object sender, EventArgs e)
-        {
-            if (txtMonto.Text == "Monto")
-            {
-                txtMonto.Text = "";
-            }
-        }
-
-        private void txtMonto_Leave(object sender, EventArgs e)
-        {
-            if (txtMonto.Text == "")
-            {
-                txtMonto.Text = "Monto";
-            }
-        }
-
-        private void cbxEfectivo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxEfectivo.Checked)
-            {
-                cboCuotas.Enabled = false;
-                cbxTarjeta.Checked = false;
-            }
-        }
-
-        private void cbxTarjeta_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxTarjeta.Checked)
-            {
-                cbxEfectivo.Checked = false;
-                cboCuotas.Enabled = true;
-            }
-        }
-
-        private void cbxTarjeta_CheckStateChanged(object sender, EventArgs e)
-        {
-            cboCuotas.SelectedItem = null;
-            cboCuotas.Text = "Cantidad de cuotas";
-            if (!(cbxEfectivo.Checked) && !(cbxTarjeta.Checked))
-            {
-                cboCuotas.Enabled = false;
+                }
+                else if (cantCuotasSeleccionadas == "6 cuotas")
+                {
+                    double interes = (double)InteresesCuotasEnum.seisCuotas / 100.00;
+                    txtMonto.Text = Math.Round((costo * (1 + interes)), 2).ToString();
+                }
+                else
+                {
+                    txtMonto.Text = costo.ToString();
+                }
             }
         }
 
 
+        // ---------------------------- EVENTOS DEL FORMULARIO ----------------------------
 
-        // -------------------- FUNCIONALIDAD PRINCIPAL DEL FORMULARIO --------------------
+        private void PagoMensualCuota_Load(object sender, EventArgs e)
+        {
+            cargarCuotas();
+        }
 
 
+        // ---------------------------- EVENTOS DE BOTONES ----------------------------
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
@@ -151,11 +127,94 @@ namespace Dashboard_ClubDeportivo.Pages
 
         }
 
+
         private void btnComprobante_Click(object sender, EventArgs e)
         {
             frmFactura factura = new frmFactura();
             cuotaDB.emitirFactura(dniMiembro, factura);
             factura.Show();
+        }
+
+
+        // ---------------------------- EVENTOS DE COMBOBOX ----------------------------
+
+        private void cboCuotas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtMonto.Text) && txtMonto.Text != "Monto")
+            {
+                aplicarInteresCuotas(montoEfectivo);
+            }
+        }
+
+
+        // ---------------------------- EVENTOS DE CHECKBOX ----------------------------
+
+        private void cbxEfectivo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxEfectivo.Checked)
+            {
+                cboCuotas.SelectedIndex = 0;
+                cboCuotas.Enabled = false;
+                cbxTarjeta.Checked = false;
+                txtMonto.Text = montoEfectivo.ToString();
+            }
+        }
+
+        private void cbxTarjeta_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxTarjeta.Checked)
+            {
+                cbxEfectivo.Checked = false;
+                cboCuotas.Enabled = true;
+            }
+        }
+
+
+        // ---------------------------- EVENTOS DE TEXTBOX ----------------------------
+
+        private void txtDni_Enter(object sender, EventArgs e)
+        {
+            if (txtDni.Text == "Documento")
+            {
+                txtDni.Text = "";
+            }
+        }
+
+        private void txtDni_Leave(object sender, EventArgs e)
+        {
+            if (txtDni.Text == "")
+            {
+                txtDni.Text = "Documento";
+            }
+        }
+
+        private void txtMonto_Enter(object sender, EventArgs e)
+        {
+            if (txtMonto.Text == "Monto")
+            {
+                txtMonto.Text = "";
+            } 
+            
+        }
+
+        private void txtMonto_Leave(object sender, EventArgs e)
+        {
+            if (txtMonto.Text == "")
+            {
+                txtMonto.Text = "Monto";
+            }
+            else
+            {
+                
+                string monto = txtMonto.Text.Replace('.', ','); // TODO VALIDAR QUE EL VALOR INTRODUCIDO SEA NUMÉRICO
+                montoEfectivo = Math.Round(double.Parse(monto), 2);
+
+                // Modifico el monto si ya han seleccionado pago en tarjeta
+                if (!string.IsNullOrWhiteSpace(txtMonto.Text) && txtMonto.Text != "Monto")
+                {
+                    aplicarInteresCuotas(montoEfectivo);
+                }
+            }
         }
     }
 }

@@ -131,6 +131,8 @@
             // cbxEfectivo
             // 
             cbxEfectivo.AutoSize = true;
+            cbxEfectivo.Checked = true;
+            cbxEfectivo.CheckState = CheckState.Checked;
             cbxEfectivo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbxEfectivo.ForeColor = Color.White;
             cbxEfectivo.Location = new Point(49, 293);
@@ -155,7 +157,6 @@
             cbxTarjeta.Text = "Tarjeta de crédito";
             cbxTarjeta.UseVisualStyleBackColor = true;
             cbxTarjeta.CheckedChanged += cbxTarjeta_CheckedChanged;
-            cbxTarjeta.CheckStateChanged += cbxTarjeta_CheckStateChanged;
             // 
             // picCantCuotas
             // 
@@ -170,17 +171,17 @@
             // cboCuotas
             // 
             cboCuotas.Cursor = Cursors.Hand;
+            cboCuotas.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCuotas.Enabled = false;
             cboCuotas.FlatStyle = FlatStyle.Popup;
             cboCuotas.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboCuotas.ForeColor = Color.FromArgb(74, 102, 174);
             cboCuotas.FormattingEnabled = true;
-            cboCuotas.Items.AddRange(new object[] { "3 cuotas", "6 cuotas" });
             cboCuotas.Location = new Point(58, 399);
             cboCuotas.Name = "cboCuotas";
             cboCuotas.Size = new Size(217, 28);
             cboCuotas.TabIndex = 26;
-            cboCuotas.Text = "  Cantidad de cuotas";
+            cboCuotas.SelectedIndexChanged += cboCuotas_SelectedIndexChanged;
             // 
             // pictureBox2
             // 
@@ -219,8 +220,8 @@
             // 
             // dgtvPagoRealizado
             // 
-            dgtvPagoRealizado.AllowUserToDeleteRows = false;
             dgtvPagoRealizado.AllowUserToAddRows = false;
+            dgtvPagoRealizado.AllowUserToDeleteRows = false;
             dgtvPagoRealizado.BackgroundColor = Color.White;
             dgtvPagoRealizado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgtvPagoRealizado.Location = new Point(362, 189);
@@ -290,6 +291,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "PagoMensualCuota";
             Size = new Size(789, 513);
+            Load += PagoMensualCuota_Load;
             ((System.ComponentModel.ISupportInitialize)picMontoPMC).EndInit();
             ((System.ComponentModel.ISupportInitialize)picDocPMC).EndInit();
             ((System.ComponentModel.ISupportInitialize)picCantCuotas).EndInit();

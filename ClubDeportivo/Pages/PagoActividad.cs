@@ -1,6 +1,7 @@
 ﻿using ClubDeportivo.Comprobantes;
 using ClubDeportivo.Datos;
 using ClubDeportivo.Entidades;
+using ClubDeportivo.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace ClubDeportivo.Pages
         private Actividad actividadBD;
         private string dniMiembro;
         private List<E_Actividad> actividades;
+
         public PagoActividad()
         {
             InitializeComponent();
@@ -27,10 +29,9 @@ namespace ClubDeportivo.Pages
         }
 
 
+        // ---------------------------- FUNCIONES ----------------------------
 
-        // -------------------- FUNCIONALIDAD PRINCIPAL DEL FORMULARIO --------------------
-
-        private void PagoActividad_Load(object sender, EventArgs e)
+        private void cargarActividades()
         {
             this.actividades = actividadBD.traerActividades();
 
@@ -42,23 +43,71 @@ namespace ClubDeportivo.Pages
             cboActividad.SelectedIndex = 0;
         }
 
-        private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void cargarCuotas()
+        {
+            cboCuotasPA.Items.Add("Cantidad de Cuotas");
+            cboCuotasPA.Items.Add("3 cuotas");
+            cboCuotasPA.Items.Add("6 cuotas");
+            cboCuotasPA.SelectedIndex = 0;
+        }
+
+        private double capturarCostoActivSeleccionada()
         {
             string actSeleccionada = cboActividad.SelectedItem.ToString();
+            double costo = 0;
+
             foreach (E_Actividad a in actividades)
             {
                 if (actSeleccionada == "Seleccionar Actividad")
                 {
-                    txtMontoPA.Text = "Monto";
+                    costo = -1;
                     break;
-                } 
+                }
                 else if (actSeleccionada == a.Nombre)
                 {
-                    txtMontoPA.Text = a.Costo.ToString();
+                    costo = a.Costo;
                     break;
                 }
             }
+
+            return costo;
         }
+
+        private void aplicarInteresCuotas(double costo)
+        {
+            string cantCuotasSeleccionadas = cboCuotasPA.SelectedItem.ToString();
+            if (costo > 0)
+            {
+                if (cantCuotasSeleccionadas == "3 cuotas")
+                {
+                    double interes = (double)InteresesCuotasEnum.tresCuotas / 100.00;
+                    txtMontoPA.Text = Math.Round((costo * (1 + interes)), 2).ToString();
+
+                }
+                else if (cantCuotasSeleccionadas == "6 cuotas")
+                {
+                    double interes = (double)InteresesCuotasEnum.seisCuotas / 100.00;
+                    txtMontoPA.Text = Math.Round((costo * (1 + interes)), 2).ToString();
+                }
+                else
+                {
+                    txtMontoPA.Text = costo.ToString();
+                }
+            }
+        }
+
+
+        // ---------------------------- EVENTOS DEL FORMULARIO ----------------------------
+
+        private void PagoActividad_Load(object sender, EventArgs e)
+        {
+            cargarActividades();
+            cargarCuotas();
+        }
+
+
+        // ---------------------------- EVENTOS DE BOTONES ----------------------------
 
         private void btnPagarPA_Click(object sender, EventArgs e)
         {
@@ -73,7 +122,7 @@ namespace ClubDeportivo.Pages
             string respuesta;
             E_Cuota cuota = new E_Cuota();
 
-            string monto = txtMontoPA.Text.Replace('.', ',');
+            string monto = txtMontoPA.Text;
             cuota.Monto = Math.Round(double.Parse(monto), 2);
             cuota.FechaPago = dtpPA.Value;
             dniMiembro = txtDocumentoPA.Text;
@@ -122,9 +171,57 @@ namespace ClubDeportivo.Pages
         }
 
 
+        // ---------------------------- EVENTOS DE COMBOBOX ----------------------------
 
-        // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
+        private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            double costo = capturarCostoActivSeleccionada();
+            if (costo == -1)
+            {
+                txtMontoPA.Text = "Monto";
+            }
+            else if (costo >= 0)
+            {
+                // Antes de colocar el monto final llamo a la siguiente funcion por si ya han seleccionado pago en tarjeta
+                aplicarInteresCuotas(costo);
+            }
+        }
 
+        private void cboCuotasPA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            double costo = capturarCostoActivSeleccionada();
+            aplicarInteresCuotas(costo);
+        }
+
+
+        // ---------------------------- EVENTOS DE CHECKBOX ----------------------------
+
+        private void cbxEfectivoPA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxEfectivoPA.Checked)
+            {
+                cboCuotasPA.SelectedIndex = 0;
+                cboCuotasPA.Enabled = false;
+                cbxTarjetaPA.Checked = false;
+                double costo = capturarCostoActivSeleccionada();
+                if (costo >= 0)
+                {
+                    txtMontoPA.Text = costo.ToString();
+                }
+            }
+        }
+
+        private void cbxTarjetaPA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxTarjetaPA.Checked)
+            {
+                cbxEfectivoPA.Checked = false;
+                cboCuotasPA.Enabled = true;
+            }
+        }
+
+
+        // ---------------------------- EVENTOS DE TEXTBOX ----------------------------
 
         private void txtDocumentoPA_Enter(object sender, EventArgs e)
         {
@@ -142,33 +239,6 @@ namespace ClubDeportivo.Pages
             }
         }
 
-        private void cbxEfectivoPA_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxEfectivoPA.Checked)
-            {
-                cboCuotasPA.Enabled = false;
-                cbxTarjetaPA.Checked = false;
-            }
-        }
-
-        private void cbxTarjetaPA_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxTarjetaPA.Checked)
-            {
-                cbxEfectivoPA.Checked = false;
-                cboCuotasPA.Enabled = true;
-            }
-        }
-
-        private void cbxTarjetaPA_CheckStateChanged(object sender, EventArgs e)
-        {
-            cboCuotasPA.SelectedItem = null;
-            cboCuotasPA.Text = "Cantidad de cuotas";
-            if (!(cbxEfectivoPA.Checked) && !(cbxTarjetaPA.Checked))
-            {
-                cboCuotasPA.Enabled = false;
-            }
-        }
 
 
     }
