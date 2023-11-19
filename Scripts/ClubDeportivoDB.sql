@@ -12,7 +12,6 @@ insert into roles values
 (1,'Administrador'),
 (2,'Empleado');
 
-/*  modifique el auto_increment de miembro y tambien el tipo de dato en fecha de nacimiento  */
 create table Miembro(
 IDMiembro int,
 Nombre varchar(50),
@@ -21,13 +20,15 @@ DNI varchar(15),
 EsSocio boolean,
 Correo varchar(50),
 Direccion varchar(50),
-FechaNac varchar(50), -- debemos cambiar la fecha de nacimiento a date
+FechaNac varchar(50),
 AptoMedico boolean,
 constraint pk_miembro primary key (IDMiembro)
 );
 
 create table Usuario(
 IDUsuario int auto_increment,
+Nombre varchar(50),
+Apellido varchar(50),
 IDRol int,
 email varchar(50),
 contrasenia varchar(50),
@@ -36,9 +37,11 @@ constraint pk_usuario primary key (IDUsuario),
 constraint fk_miembro_rol foreign key(IDRol) references roles (IDRol)
 );
 
-insert into usuario(IDUsuario,IDRol,email,contrasenia, EstaActivo) values
-(1, 1,'admin@admin',1234, 1),
-(2, 2,'noadmin@admin',1234, 0);
+insert into usuario(IDUsuario,Nombre, Apellido, IDRol,email,contrasenia, EstaActivo) values
+(1, "Juan", "Gomez", 1,'admin@admin',1234, 1),
+(2, "Lucia", "Garcia", 2,'noadmin@admin',1234, 0),
+(3, "Jose", "Rodriguez", 1, 'admin1@admin', 2345, 1);
+
 
 create table Actividad(
 IDActiv int,
@@ -50,10 +53,11 @@ Costo int,
 constraint pk_actividad primary key (IDActiv)
 );
 
-INSERT INTO `club_deportivo`.`actividad` (`IDActiv`, `Nombre`, `CupoMax`, `Costo`) VALUES ('101', 'CrossFit', '30', '700');
-INSERT INTO `club_deportivo`.`actividad` (`IDActiv`, `Nombre`, `CupoMax`, `Costo`) VALUES ('102', 'Natacion', '15', '1200');
-INSERT INTO `club_deportivo`.`actividad` (`IDActiv`, `Nombre`, `CupoMax`, `Costo`) VALUES ('103', 'Funcional', '50', '500');
-INSERT INTO `club_deportivo`.`actividad` (`IDActiv`, `Nombre`, `CupoMax`, `Costo`) VALUES ('104', 'Musculacion', '60', '800');
+insert into actividad(IDActiv, Nombre, CupoMax, Costo) values
+('101', 'CrossFit', '30', '700'),
+('102', 'Natacion', '15', '1200'),
+('103', 'Funcional', '50', '500'),
+('104', 'Musculacion', '60', '800');
 
 create table Inscripcion(
 IDInscrip int,
