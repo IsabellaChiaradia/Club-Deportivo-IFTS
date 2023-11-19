@@ -22,17 +22,17 @@ namespace ClubDeportivo.Comprobantes
         public string? fechaVenc;
         public string? formaDePago;
         public string? monto;
-        //public int numero_f; //id couta 
+        public string? tipoMiembro;
+        public string? actividad;
+        public string? interes;
+
 
         public frmFactura()
         {
             InitializeComponent();
         }
 
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        // ---------------------------- EVENTOS DEL FORMULARIO ----------------------------
 
         private void frmFactura_Load(object sender, EventArgs e)
         {
@@ -41,22 +41,24 @@ namespace ClubDeportivo.Comprobantes
             lblFechaPago.Text = fechaPago;
             lblFechaVenc.Text = fechaVenc;
             lblMonto.Text = monto;
+            lblFormaPago.Text = formaDePago;
+            lblCaracter.Text = tipoMiembro;
+            lblActividad.Text = actividad;
+            lblInteres.Text = interes;
+
+            if (string.IsNullOrWhiteSpace(actividad))
+            {
+                lblActividad.Hide();
+                lblTituloActividad.Hide();
+            }
         }
 
 
+        // ---------------------------- EVENTOS DE BOTONES ----------------------------
 
-
-
-
-        //lblNombreApe.Text = 
-        //lblDNI.Text = 
-        //lblCaracter.Text =
-        //lblPago.Text =
-        //lblFechaPago.Text =
-        //lblFechaVenc.Text =
-        //lblFormaPago.Text =
-        //lblDescuento.Text =
-        //lblMonto.Text =
-
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

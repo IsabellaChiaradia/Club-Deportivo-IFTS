@@ -21,6 +21,7 @@ namespace Dashboard_ClubDeportivo.Pages
         private Cuota cuotaDB;
         private string dniMiembro;
         private double montoEfectivo;
+        private frmFactura factura;
 
         public PagoMensualCuota()
         {
@@ -39,26 +40,49 @@ namespace Dashboard_ClubDeportivo.Pages
             cboCuotas.SelectedIndex = 0;
         }
 
-        private void aplicarInteresCuotas(double costo)
+        private void cargarFactura()
+        {
+            factura.interes = (calcularInteresCuotas() * 100).ToString() + "%";
+
+            if (cbxTarjeta.Checked)
+            {
+                factura.formaDePago = "Tarjeta";
+            }
+            else
+            {
+                factura.formaDePago = "Efectivo";
+            }
+
+            cuotaDB.emitirFactura(dniMiembro, factura);
+        }
+
+        private double calcularInteresCuotas()
         {
             string cantCuotasSeleccionadas = cboCuotas.SelectedItem.ToString();
-            if (costo > 0)
-            {
-                if (cantCuotasSeleccionadas == "3 cuotas")
-                {
-                    double interes = (double)InteresesCuotasEnum.tresCuotas / 100.00;
-                    txtMonto.Text = Math.Round((costo * (1 + interes)), 2).ToString();
 
-                }
-                else if (cantCuotasSeleccionadas == "6 cuotas")
-                {
-                    double interes = (double)InteresesCuotasEnum.seisCuotas / 100.00;
-                    txtMonto.Text = Math.Round((costo * (1 + interes)), 2).ToString();
-                }
-                else
-                {
-                    txtMonto.Text = costo.ToString();
-                }
+            if (cantCuotasSeleccionadas == "3 cuotas")
+            {
+                return (double)InteresesCuotasEnum.tresCuotas / 100.00;
+
+            }
+            else if (cantCuotasSeleccionadas == "6 cuotas")
+            {
+                return (double)InteresesCuotasEnum.seisCuotas / 100.00;
+
+            }
+            else
+            {
+                return 0;
+            }
+
+        }
+
+        private void aplicarInteresCuotas(double costo)
+        {
+            if (costo >= 0)
+            {
+                double interes = calcularInteresCuotas();
+                txtMonto.Text = Math.Round((costo * (1 + interes)), 2).ToString();
             }
         }
 
@@ -103,6 +127,8 @@ namespace Dashboard_ClubDeportivo.Pages
                     MessageBoxIcon.Information);
                     //Cargamos los datos del pago en la grilla
                     cuotaDB.mostrarPagoExitoso(dgtvPagoRealizado, dniMiembro);
+                    this.factura = new frmFactura(); // cada vez que pagamos generamos una nueva factura
+                    cargarFactura();
                     btnComprobante.Enabled = true;
                 }
                 else if (codigo == 0)
@@ -130,8 +156,6 @@ namespace Dashboard_ClubDeportivo.Pages
 
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-            frmFactura factura = new frmFactura();
-            cuotaDB.emitirFactura(dniMiembro, factura);
             factura.Show();
         }
 

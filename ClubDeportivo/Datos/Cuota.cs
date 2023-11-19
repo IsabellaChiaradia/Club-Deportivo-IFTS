@@ -67,7 +67,7 @@ namespace ClubDeportivo.Datos
                     + " FROM miembro m " 
                     + " INNER JOIN cuota c ON c.IDMiembro = m.IDMiembro " 
                     + " WHERE m.DNI = " + dni
-                    + " ORDER BY c.FechaPago DESC "
+                    + " ORDER BY IDCuota DESC, c.FechaPago DESC "
                     + " LIMIT 1;";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
                 DataTable dt = new DataTable();
@@ -113,7 +113,7 @@ namespace ClubDeportivo.Datos
                     + " FROM miembro m "
                     + " INNER JOIN cuota c ON c.IDMiembro = m.IDMiembro "
                     + " WHERE m.DNI = " + dni
-                    + " ORDER BY c.FechaPago DESC "
+                    + " ORDER BY IDCuota DESC, c.FechaPago DESC "
                     + " LIMIT 1;";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
                 DataTable dt = new DataTable();
@@ -128,7 +128,15 @@ namespace ClubDeportivo.Datos
                     factura.dni = row["DNI"].ToString();
                     factura.fechaPago = Convert.ToDateTime(row["FechaPago"]).ToString("dd/MM/yyyy");
                     factura.fechaVenc = Convert.ToDateTime(row["FechaVenc"]).ToString("dd/MM/yyyy");
-                    factura.monto = row["Monto"].ToString();
+                    factura.monto = "$" + row["Monto"].ToString();
+                    if (Convert.ToInt32(row["EsSocio"]) == 1)
+                    {
+                        factura.tipoMiembro = "Socio";
+                    }
+                    else
+                    {
+                        factura.tipoMiembro = "No Socio";
+                    }
                     
                     
                 }
