@@ -35,7 +35,7 @@
             lblTituloNombreApe = new Label();
             lblTituloDNI = new Label();
             lblTituloCaracter = new Label();
-            lblTituloPago = new Label();
+            lblTituloActividad = new Label();
             lblTituloFechaPago = new Label();
             lblTituloDescuento = new Label();
             lblTituloFechaVenc = new Label();
@@ -44,11 +44,11 @@
             lblNombreApe = new Label();
             lblDNI = new Label();
             lblCaracter = new Label();
-            lblPago = new Label();
+            lblActividad = new Label();
             lblFechaPago = new Label();
             lblFechaVenc = new Label();
             lblFormaPago = new Label();
-            lblDescuento = new Label();
+            lblInteres = new Label();
             lblMonto = new Label();
             btnImprimirFactura = new Dashboard_ClubDeportivo.CustomBotonDos();
             btnVolver = new Dashboard_ClubDeportivo.CustomBotonDos();
@@ -122,16 +122,16 @@
             lblTituloCaracter.TabIndex = 5;
             lblTituloCaracter.Text = "En caracter de:";
             // 
-            // lblTituloPago
+            // lblTituloActividad
             // 
-            lblTituloPago.AutoSize = true;
-            lblTituloPago.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTituloPago.ForeColor = Color.FromArgb(74, 102, 174);
-            lblTituloPago.Location = new Point(31, 239);
-            lblTituloPago.Name = "lblTituloPago";
-            lblTituloPago.Size = new Size(294, 22);
-            lblTituloPago.TabIndex = 6;
-            lblTituloPago.Text = "Pago de actividad o cuota mensual:";
+            lblTituloActividad.AutoSize = true;
+            lblTituloActividad.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTituloActividad.ForeColor = Color.FromArgb(74, 102, 174);
+            lblTituloActividad.Location = new Point(31, 239);
+            lblTituloActividad.Name = "lblTituloActividad";
+            lblTituloActividad.Size = new Size(88, 22);
+            lblTituloActividad.TabIndex = 6;
+            lblTituloActividad.Text = "Actividad:";
             // 
             // lblTituloFechaPago
             // 
@@ -151,9 +151,9 @@
             lblTituloDescuento.ForeColor = Color.FromArgb(74, 102, 174);
             lblTituloDescuento.Location = new Point(31, 396);
             lblTituloDescuento.Name = "lblTituloDescuento";
-            lblTituloDescuento.Size = new Size(101, 22);
+            lblTituloDescuento.Size = new Size(69, 22);
             lblTituloDescuento.TabIndex = 8;
-            lblTituloDescuento.Text = "Descuento:";
+            lblTituloDescuento.Text = "Interés:";
             // 
             // lblTituloFechaVenc
             // 
@@ -202,7 +202,7 @@
             // 
             lblDNI.AutoSize = true;
             lblDNI.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDNI.Location = new Point(71, 191);
+            lblDNI.Location = new Point(82, 191);
             lblDNI.Name = "lblDNI";
             lblDNI.Size = new Size(58, 22);
             lblDNI.TabIndex = 13;
@@ -212,21 +212,21 @@
             // 
             lblCaracter.AutoSize = true;
             lblCaracter.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCaracter.Location = new Point(163, 215);
+            lblCaracter.Location = new Point(169, 215);
             lblCaracter.Name = "lblCaracter";
             lblCaracter.Size = new Size(58, 22);
             lblCaracter.TabIndex = 14;
             lblCaracter.Text = "label3";
             // 
-            // lblPago
+            // lblActividad
             // 
-            lblPago.AutoSize = true;
-            lblPago.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPago.Location = new Point(333, 239);
-            lblPago.Name = "lblPago";
-            lblPago.Size = new Size(58, 22);
-            lblPago.TabIndex = 15;
-            lblPago.Text = "label4";
+            lblActividad.AutoSize = true;
+            lblActividad.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            lblActividad.Location = new Point(125, 239);
+            lblActividad.Name = "lblActividad";
+            lblActividad.Size = new Size(58, 22);
+            lblActividad.TabIndex = 15;
+            lblActividad.Text = "label4";
             // 
             // lblFechaPago
             // 
@@ -258,15 +258,15 @@
             lblFormaPago.TabIndex = 18;
             lblFormaPago.Text = "label7";
             // 
-            // lblDescuento
+            // lblInteres
             // 
-            lblDescuento.AutoSize = true;
-            lblDescuento.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDescuento.Location = new Point(131, 396);
-            lblDescuento.Name = "lblDescuento";
-            lblDescuento.Size = new Size(58, 22);
-            lblDescuento.TabIndex = 19;
-            lblDescuento.Text = "label8";
+            lblInteres.AutoSize = true;
+            lblInteres.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            lblInteres.Location = new Point(106, 396);
+            lblInteres.Name = "lblInteres";
+            lblInteres.Size = new Size(58, 22);
+            lblInteres.TabIndex = 19;
+            lblInteres.Text = "label8";
             // 
             // lblMonto
             // 
@@ -321,11 +321,11 @@
             Controls.Add(btnVolver);
             Controls.Add(btnImprimirFactura);
             Controls.Add(lblMonto);
-            Controls.Add(lblDescuento);
+            Controls.Add(lblInteres);
             Controls.Add(lblFormaPago);
             Controls.Add(lblFechaVenc);
             Controls.Add(lblFechaPago);
-            Controls.Add(lblPago);
+            Controls.Add(lblActividad);
             Controls.Add(lblCaracter);
             Controls.Add(lblDNI);
             Controls.Add(lblNombreApe);
@@ -334,7 +334,7 @@
             Controls.Add(lblTituloFechaVenc);
             Controls.Add(lblTituloDescuento);
             Controls.Add(lblTituloFechaPago);
-            Controls.Add(lblTituloPago);
+            Controls.Add(lblTituloActividad);
             Controls.Add(lblTituloCaracter);
             Controls.Add(lblTituloDNI);
             Controls.Add(lblTituloNombreApe);
@@ -359,7 +359,7 @@
         private Label lblTituloNombreApe;
         private Label lblTituloDNI;
         private Label lblTituloCaracter;
-        private Label lblTituloPago;
+        private Label lblTituloActividad;
         private Label lblTituloFechaPago;
         private Label lblTituloDescuento;
         private Label lblTituloFechaVenc;
@@ -368,11 +368,11 @@
         private Label lblNombreApe;
         private Label lblDNI;
         private Label lblCaracter;
-        private Label lblPago;
+        private Label lblActividad;
         private Label lblFechaPago;
         private Label lblFechaVenc;
         private Label lblFormaPago;
-        private Label lblDescuento;
+        private Label lblInteres;
         private Label lblMonto;
         private Dashboard_ClubDeportivo.CustomBotonDos btnImprimirFactura;
         private Dashboard_ClubDeportivo.CustomBotonDos btnVolver;

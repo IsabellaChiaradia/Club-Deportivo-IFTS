@@ -20,6 +20,7 @@ namespace ClubDeportivo.Pages
         private Actividad actividadBD;
         private string dniMiembro;
         private List<E_Actividad> actividades;
+        private frmFactura factura;
 
         public PagoActividad()
         {
@@ -52,6 +53,44 @@ namespace ClubDeportivo.Pages
             cboCuotasPA.SelectedIndex = 0;
         }
 
+        private void cargarFactura()
+        {
+            factura.actividad = cboActividad.SelectedItem.ToString();
+            factura.interes = (calcularInteresCuotas() * 100).ToString() + "%";
+
+            if (cbxTarjetaPA.Checked)
+            {
+                factura.formaDePago = "Tarjeta";
+            } 
+            else
+            {
+                factura.formaDePago = "Efectivo";
+            }
+            
+            cuotaDB.emitirFactura(dniMiembro, factura);
+        }
+
+        private double calcularInteresCuotas()
+        {
+            string cantCuotasSeleccionadas = cboCuotasPA.SelectedItem.ToString();
+
+            if (cantCuotasSeleccionadas == "3 cuotas")
+            {
+                return (double)InteresesCuotasEnum.tresCuotas / 100.00;
+
+            }
+            else if (cantCuotasSeleccionadas == "6 cuotas")
+            {
+                return (double)InteresesCuotasEnum.seisCuotas / 100.00;
+                
+            }
+            else
+            {
+                return 0;
+            }
+            
+        }
+
         private double capturarCostoActivSeleccionada()
         {
             string actSeleccionada = cboActividad.SelectedItem.ToString();
@@ -76,24 +115,10 @@ namespace ClubDeportivo.Pages
 
         private void aplicarInteresCuotas(double costo)
         {
-            string cantCuotasSeleccionadas = cboCuotasPA.SelectedItem.ToString();
-            if (costo > 0)
+            if (costo >= 0)
             {
-                if (cantCuotasSeleccionadas == "3 cuotas")
-                {
-                    double interes = (double)InteresesCuotasEnum.tresCuotas / 100.00;
-                    txtMontoPA.Text = Math.Round((costo * (1 + interes)), 2).ToString();
-
-                }
-                else if (cantCuotasSeleccionadas == "6 cuotas")
-                {
-                    double interes = (double)InteresesCuotasEnum.seisCuotas / 100.00;
-                    txtMontoPA.Text = Math.Round((costo * (1 + interes)), 2).ToString();
-                }
-                else
-                {
-                    txtMontoPA.Text = costo.ToString();
-                }
+                double interes = calcularInteresCuotas();
+                txtMontoPA.Text = Math.Round((costo * (1 + interes)), 2).ToString();
             }
         }
 
@@ -140,6 +165,8 @@ namespace ClubDeportivo.Pages
                     MessageBoxIcon.Information);
                     //Cargamos los datos del pago en la grilla
                     cuotaDB.mostrarPagoExitoso(dtgvActividad, dniMiembro);
+                    this.factura = new frmFactura(); // cada vez que pagamos generamos una nueva factura
+                    cargarFactura();
                     btnComprobantePA.Enabled = true;
                 }
                 else if (codigo == 0)
@@ -165,8 +192,6 @@ namespace ClubDeportivo.Pages
 
         private void btnComprobantePA_Click(object sender, EventArgs e)
         {
-            frmFactura factura = new frmFactura();
-            cuotaDB.emitirFactura(dniMiembro, factura);
             factura.Show();
         }
 
