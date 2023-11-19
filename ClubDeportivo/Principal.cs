@@ -8,7 +8,7 @@ using ClubDeportivo.Pages;
 
 namespace Dashboard_ClubDeportivo
 {
-    public partial class Form1 : Form
+    public partial class Principal : Form
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -29,17 +29,39 @@ namespace Dashboard_ClubDeportivo
         //solo se utilizo para chequear la navegacion interna de paginas dentro del componente contenedor main.
         //A continuación se detalla en el código:
         //-------------------------------------------------------------------------//
-        public Form1()
+
+
+        GestionMiembros uc;
+
+        public Principal()
         {
             InitializeComponent();
-
-            GestionMiembros uc = new GestionMiembros();
-            agregarPaneles(uc);
+            this.uc = new GestionMiembros();
             this.BackColor = Color.FromArgb(0x4A, 0x66, 0xAE);
-
-
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
+
+
+        // ---------------------------- FUNCIONES ----------------------------
+
+        private void agregarPaneles(UserControl userControl)
+        {
+            //Navegacion entre paneles que se encuentra en la carpeta Pages
+            pnlContainer.Controls.Add(userControl);
+            userControl.Dock = DockStyle.Fill;
+            userControl.BringToFront();
+        }
+
+
+        // ---------------------------- EVENTOS DEL FORMULARIO ----------------------------
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            agregarPaneles(uc);
+        }
+
+
+        // ---------------------------- EVENTOS DE BOTONES ----------------------------
 
         private void btnClose2_Click(object sender, EventArgs e)
         {
@@ -51,19 +73,6 @@ namespace Dashboard_ClubDeportivo
         {
             this.WindowState = FormWindowState.Minimized;
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-            CenterToScreen();
-        }
-        //Navegacion entre paneles que se encuentra en la carpeta Pages//
-        private void agregarPaneles(UserControl userControl)
-        {
-            pnlContainer.Controls.Add(userControl);
-            userControl.Dock = DockStyle.Fill;
-            userControl.BringToFront();
         }
 
         private void btnGestion_Click(object sender, EventArgs e)

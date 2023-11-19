@@ -33,14 +33,7 @@ namespace Dashboard_ClubDeportivo.pesañas
 
 
 
-        // -------------------- FUNCIONALIDAD PRINCIPAL DEL FORMULARIO --------------------
-
-
-
-        private void GestionMiembros_Load(object sender, EventArgs e)
-        {
-            this.miembroDB.mostrarMiembros(dgtvListaSocios);
-        }
+        // ---------------------------- FUNCIONES ----------------------------
 
         private void limpiarCampos()
         {
@@ -52,6 +45,17 @@ namespace Dashboard_ClubDeportivo.pesañas
             txtFechaNacimiento.Text = "dd/mm/aaaa";
             cbxEsSocio.Checked = false;
         }
+
+
+        // ---------------------------- EVENTOS DEL FORMULARIO ----------------------------
+
+        private void GestionMiembros_Load(object sender, EventArgs e)
+        {
+            this.miembroDB.mostrarMiembros(dgtvListaSocios);
+        }
+
+
+        // ---------------------------- EVENTOS DE BOTONES ----------------------------
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -114,16 +118,14 @@ namespace Dashboard_ClubDeportivo.pesañas
             limpiarCampos();
         }
 
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             limpiarCampos();
         }
 
 
-
-        // -------------------- COMPORTAMIENTO BASICO DE LOS INPUTS --------------------
-
-
+        // ---------------------------- EVENTOS DE TEXTBOX ----------------------------
 
         private void txtNombre_Enter(object sender, EventArgs e)
         {
@@ -162,6 +164,15 @@ namespace Dashboard_ClubDeportivo.pesañas
             if (txtDni.Text == "DNI")
             {
                 txtDni.Text = "";
+            }
+        }
+
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo números (0-9), teclas de control (como borrar, copiar, pegar), y la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Esto evita que se procese el carácter ingresado
             }
         }
 
@@ -221,13 +232,5 @@ namespace Dashboard_ClubDeportivo.pesañas
             }
         }
 
-        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permite solo números (0-9), teclas de control (como borrar, copiar, pegar), y la tecla de retroceso
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true; // Esto evita que se procese el carácter ingresado
-            }
-        }
     }
 }

@@ -19,6 +19,9 @@ namespace ClubDeportivo.Pages
             InitializeComponent();
         }
 
+
+        // ---------------------------- EVENTOS DEL FORMULARIO ----------------------------
+
         private void CuotasVencidas_Load(object sender, EventArgs e)
         {
             Cuota cuotaDB = new Cuota();

@@ -31,6 +31,56 @@ namespace Dashboard_ClubDeportivo
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
+
+        // ---------------------------- EVENTOS DEL FORMULARIO ----------------------------
+
+        private void Login_Shown(object sender, EventArgs e)
+        {
+            btnLogin.Focus();
+        }
+
+
+        // ---------------------------- EVENTOS DE BOTONES ----------------------------
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string usuario = txtUser.Text;
+            string password = txtPassword.Text;
+
+            DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
+            ClubDeportivo.Datos.Usuario dato = new ClubDeportivo.Datos.Usuario(); // variable que contiene todas las caracteristicas de la clase
+            tablaLogin = dato.Log_Usu(usuario, password);//Se activa el metodo de la clase Usuario instanciada como dato, recordar que
+            //este metodo activa el procedimiento almacenado "IngresoLogin"
+            if (tablaLogin.Rows.Count > 0)
+            {
+                // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
+                MessageBox.Show("INGRESO EXITOSO", "AVISO DEL SISTEMA",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+                Principal dashboardForm = new Principal();
+                dashboardForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usuario y/o password incorrecto", "AVISO DEL SISTEMA",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+        // ---------------------------- EVENTOS DE TEXTBOX ----------------------------
+
         private void txtUser_Enter(object sender, EventArgs e)
         {
             if (txtUser.Text == "Usuario")
@@ -38,6 +88,7 @@ namespace Dashboard_ClubDeportivo
                 txtUser.Text = "";
             }
         }
+
         private void txtUser_Leave(object sender, EventArgs e)
         {
             if (txtUser.Text == "")
@@ -62,46 +113,6 @@ namespace Dashboard_ClubDeportivo
                 txtPassword.Text = "Contraseña";
                 txtPassword.UseSystemPasswordChar = false;
             }
-        }
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            string usuario = txtUser.Text;
-            string password = txtPassword.Text;
-
-            DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
-            ClubDeportivo.Datos.Usuario dato = new ClubDeportivo.Datos.Usuario(); // variable que contiene todas las caracteristicas de la clase
-            tablaLogin = dato.Log_Usu(usuario, password);//Se activa el metodo de la clase Usuario instanciada como dato, recordar que
-            //este metodo activa el procedimiento almacenado "IngresoLogin"
-            if (tablaLogin.Rows.Count > 0)
-            {
-                // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
-                MessageBox.Show("INGRESO EXITOSO", "AVISO DEL SISTEMA",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-                Form1 dashboardForm = new Form1();
-                dashboardForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("Usuario y/o password incorrecto", "AVISO DEL SISTEMA",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Login_Shown(object sender, EventArgs e)
-        {
-            btnLogin.Focus();
         }
     }
 }
