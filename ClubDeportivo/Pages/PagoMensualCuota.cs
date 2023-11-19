@@ -179,6 +179,14 @@ namespace Dashboard_ClubDeportivo.Pages
                 txtDni.Text = "";
             }
         }
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo números (0-9), teclas de control (como borrar, copiar, pegar), y la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Esto evita que se procese el carácter ingresado
+            }
+        }
 
         private void txtDni_Leave(object sender, EventArgs e)
         {
@@ -193,8 +201,17 @@ namespace Dashboard_ClubDeportivo.Pages
             if (txtMonto.Text == "Monto")
             {
                 txtMonto.Text = "";
-            } 
-            
+            }
+
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo números (0-9), teclas de control (como borrar, copiar, pegar), y la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Esto evita que se procese el carácter ingresado
+            }
         }
 
         private void txtMonto_Leave(object sender, EventArgs e)
@@ -205,7 +222,7 @@ namespace Dashboard_ClubDeportivo.Pages
             }
             else
             {
-                
+
                 string monto = txtMonto.Text.Replace('.', ','); // TODO VALIDAR QUE EL VALOR INTRODUCIDO SEA NUMÉRICO
                 montoEfectivo = Math.Round(double.Parse(monto), 2);
 

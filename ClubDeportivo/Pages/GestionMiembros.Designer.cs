@@ -182,6 +182,7 @@
             txtDni.TabIndex = 10;
             txtDni.Text = "DNI";
             txtDni.Enter += txtDni_Enter;
+            txtDni.KeyPress += txtDni_KeyPress;
             txtDni.Leave += txtDni_Leave;
             // 
             // txtCorreo

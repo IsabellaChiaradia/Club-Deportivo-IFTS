@@ -68,6 +68,7 @@
             txtDocumentoPA.TabIndex = 15;
             txtDocumentoPA.Text = "Documento";
             txtDocumentoPA.Enter += txtDocumentoPA_Enter;
+            txtDocumentoPA.KeyPress += txtDocumentoPA_KeyPress;
             txtDocumentoPA.Leave += txtDocumentoPA_Leave;
             // 
             // picDocPA

@@ -221,8 +221,13 @@ namespace Dashboard_ClubDeportivo.pesañas
             }
         }
 
-
-
-
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo números (0-9), teclas de control (como borrar, copiar, pegar), y la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Esto evita que se procese el carácter ingresado
+            }
+        }
     }
 }

@@ -77,6 +77,7 @@
             txtMonto.TabIndex = 13;
             txtMonto.Text = "Monto";
             txtMonto.Enter += txtMonto_Enter;
+            txtMonto.KeyPress += txtMonto_KeyPress;
             txtMonto.Leave += txtMonto_Leave;
             // 
             // picMontoPMC
@@ -104,6 +105,7 @@
             txtDni.TabIndex = 12;
             txtDni.Text = "Documento";
             txtDni.Enter += txtDni_Enter;
+            txtDni.KeyPress += txtDni_KeyPress;
             txtDni.Leave += txtDni_Leave;
             // 
             // picDocPMC
