@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +35,19 @@ namespace ClubDeportivo.Comprobantes
 
         // ---------------------------- EVENTOS DEL FORMULARIO ----------------------------
 
+        private void ImprimirForm1(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int ancho = this.Width;
+            int alto = this.Height;
+            Rectangle bounds = new Rectangle(x, y, ancho, alto);
+            Bitmap img = new Bitmap(ancho, alto);
+            this.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+        }
+
         private void frmFactura_Load(object sender, EventArgs e)
         {
             lblNombreApe.Text = nombre + " " + apellido;
@@ -56,9 +70,24 @@ namespace ClubDeportivo.Comprobantes
 
         // ---------------------------- EVENTOS DE BOTONES ----------------------------
 
+
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void btnImprimirFactura_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
+            btnImprimirFactura.Visible = false;
+            btnVolver.Visible = false;
+            pd.Print();
+            btnImprimirFactura.Visible = true;
+
+            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }

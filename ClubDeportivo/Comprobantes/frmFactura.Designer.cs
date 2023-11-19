@@ -293,6 +293,7 @@
             btnImprimirFactura.TabIndex = 33;
             btnImprimirFactura.Text = "IMPRIMIR";
             btnImprimirFactura.UseVisualStyleBackColor = false;
+            btnImprimirFactura.Click += btnImprimirFactura_Click;
             // 
             // btnVolver
             // 
