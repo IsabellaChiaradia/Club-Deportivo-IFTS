@@ -33,9 +33,10 @@ namespace Dashboard_ClubDeportivo
 
         GestionMiembros uc;
 
-        public Principal()
+        public Principal(string? nombre, string? apellido)
         {
             InitializeComponent();
+            lblNombreUser.Text = $"{nombre} {apellido}";
             this.uc = new GestionMiembros();
             this.BackColor = Color.FromArgb(0x4A, 0x66, 0xAE);
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));

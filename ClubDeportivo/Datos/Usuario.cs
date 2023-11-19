@@ -31,8 +31,13 @@ namespace ClubDeportivo.Datos
                 comando.Parameters.Add("psw", MySqlDbType.VarChar).Value = User_psw;
                 // abrimos la conexion
                 sqlCon.Open();
-                resultado = comando.ExecuteReader(); // almacenamos el resultado en la variable
-                tabla.Load(resultado); // cargamos la tabla con el resultado
+                resultado = comando.ExecuteReader();
+
+                if (resultado.HasRows)
+                {
+                    // Asumiendo que DataTable tiene columnas: "Nombre", "Apellido",y  "NomRol"
+                    tabla.Load(resultado);
+                }
                 return tabla;
                 // de esta forma esta asociado el metodo con el procedure que esta almacenado en MySQL
             }

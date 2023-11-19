@@ -54,10 +54,13 @@ namespace Dashboard_ClubDeportivo
             if (tablaLogin.Rows.Count > 0)
             {
                 // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
-                MessageBox.Show("INGRESO EXITOSO", "AVISO DEL SISTEMA",
+                string nombre = tablaLogin.Rows[0]["Nombre"].ToString();
+                string apellido = tablaLogin.Rows[0]["Apellido"].ToString();
+
+                MessageBox.Show($"Bienvenido, {nombre} {apellido}", "AVISO DEL SISTEMA",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-                Principal dashboardForm = new Principal();
+                Principal dashboardForm = new Principal(nombre, apellido);
                 dashboardForm.Show();
             }
             else
