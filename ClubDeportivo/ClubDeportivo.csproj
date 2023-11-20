@@ -10,7 +10,9 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.1.0" />
+    <PackageReference Include="QrCode.Net" Version="0.4.0" />
     <PackageReference Include="ZXing.Net" Version="0.16.9" />
+    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup>

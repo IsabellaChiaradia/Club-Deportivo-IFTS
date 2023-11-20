@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Gma.QrCodeNet.Encoding;
+using Gma.QrCodeNet.Encoding.Windows.Render;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
@@ -10,6 +13,8 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+
 
 namespace ClubDeportivo.Comprobantes
 {
@@ -56,6 +61,20 @@ namespace ClubDeportivo.Comprobantes
             lblIDsocio.Text = NumSocio;
             lblMail.Text = Correo;
             lblFecha.Text = FechaInscripcion;
+
+
+            QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+            QrCode qrCode = new QrCode();
+            qrEncoder.TryEncode(DNI.Trim(), out qrCode);
+
+            GraphicsRenderer renderer = new GraphicsRenderer(new FixedCodeSize(400, QuietZoneModules.Zero), Brushes.Black, Brushes.White);
+            MemoryStream ms = new MemoryStream();
+            renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, ms);
+            var imageTemporal = new Bitmap(ms);
+            var imagen = new Bitmap(imageTemporal, new Size(new Point(150, 150)));
+
+            pictureQr.BackgroundImage = imagen;
+            imagen.Save("imagen.png", ImageFormat.Png);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -83,5 +102,9 @@ namespace ClubDeportivo.Comprobantes
             MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
+
+
+
+
     }
 }

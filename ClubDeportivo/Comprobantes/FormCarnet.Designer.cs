@@ -42,9 +42,11 @@
             lblMail = new Label();
             lblFecha = new Label();
             panel1 = new Panel();
+            pictureQr = new PictureBox();
             btnImprimirCarnet = new Dashboard_ClubDeportivo.CustomBotonDos();
             btnVolver = new Dashboard_ClubDeportivo.CustomBotonDos();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureQr).BeginInit();
             SuspendLayout();
             // 
             // lblNombre
@@ -184,6 +186,7 @@
             // 
             panel1.BackColor = Color.Transparent;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(pictureQr);
             panel1.Controls.Add(btnImprimirCarnet);
             panel1.Controls.Add(btnVolver);
             panel1.Controls.Add(lblFecha);
@@ -204,6 +207,14 @@
             panel1.Size = new Size(567, 552);
             panel1.TabIndex = 17;
             panel1.Paint += panel1_Paint;
+            // 
+            // pictureQr
+            // 
+            pictureQr.Location = new Point(392, 271);
+            pictureQr.Name = "pictureQr";
+            pictureQr.Size = new Size(150, 150);
+            pictureQr.TabIndex = 37;
+            pictureQr.TabStop = false;
             // 
             // btnImprimirCarnet
             // 
@@ -249,6 +260,7 @@
             Load += FormCarnet_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureQr).EndInit();
             ResumeLayout(false);
         }
 
@@ -270,5 +282,6 @@
         private Panel panel1;
         private Dashboard_ClubDeportivo.CustomBotonDos btnVolver;
         private Dashboard_ClubDeportivo.CustomBotonDos btnImprimirCarnet;
+        private PictureBox pictureQr;
     }
 }
