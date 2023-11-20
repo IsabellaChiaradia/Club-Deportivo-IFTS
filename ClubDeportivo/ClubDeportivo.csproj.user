@@ -4,6 +4,9 @@
     <Compile Update="Boton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Comprobantes\FormCarnet.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Comprobantes\frmFactura.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Drawing.Printing;
+using System.Globalization;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ClubDeportivo.Comprobantes
+{
+    public partial class FormCarnet : Form
+    {
+        public string Nombre { get; set; }
+        public string DNI { get; set; }
+        public string NumSocio { get; set; }
+        public string Correo { get; set; }
+        public string FechaInscripcion { get; set; }
+        //qr
+
+        public FormCarnet(string nombre, string dni, string numSocio, string correo, string fechaInscripcion)
+
+        {
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.BackColor = System.Drawing.Color.White;
+
+            this.Nombre = nombre;
+            this.DNI = dni;
+            this.NumSocio = numSocio;
+            this.Correo = correo;
+            this.FechaInscripcion = fechaInscripcion;
+        }
+
+        private void ImprimirCarnet(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int ancho = this.Width;
+            int alto = this.Height;
+            Rectangle bounds = new Rectangle(x, y, ancho, alto);
+            Bitmap img = new Bitmap(ancho, alto);
+            this.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+        }
+
+        private void FormCarnet_Load(object sender, EventArgs e)
+        {
+            lblNombreSocio.Text = Nombre;
+            lblDniSocio.Text = DNI;
+            lblIDsocio.Text = NumSocio;
+            lblMail.Text = Correo;
+            lblFecha.Text = FechaInscripcion;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            Color borderColor = Color.FromArgb(74, 102, 174);
+            ControlPaint.DrawBorder(e.Graphics, panel1.ClientRectangle, borderColor, 3, ButtonBorderStyle.Solid,
+        borderColor, 3, ButtonBorderStyle.Solid, borderColor, 3, ButtonBorderStyle.Solid, borderColor, 3, ButtonBorderStyle.Solid);
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnImprimirFactura_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(ImprimirCarnet);
+            btnImprimirCarnet.Visible = false;
+            btnVolver.Visible = false;
+            pd.Print();
+            btnImprimirCarnet.Visible = true;
+
+            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+    }
+}

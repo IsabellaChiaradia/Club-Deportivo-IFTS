@@ -1,4 +1,5 @@
-﻿using ClubDeportivo.Datos;
+﻿using ClubDeportivo.Comprobantes;
+using ClubDeportivo.Datos;
 using ClubDeportivo.Entidades;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace Dashboard_ClubDeportivo.pesañas
     public partial class GestionMiembros : UserControl
     {
         private Miembro miembroDB;
+        private FormCarnet carnet;
         public GestionMiembros()
         {
             InitializeComponent();
@@ -232,5 +234,34 @@ namespace Dashboard_ClubDeportivo.pesañas
             }
         }
 
+        private void btnPrintCarnet_Click(object sender, EventArgs e)
+        {
+            if (dgtvListaSocios.SelectedRows.Count > 0)
+            {
+                string nombreSocio = Convert.ToString(dgtvListaSocios.SelectedRows[0].Cells["Nombre"].Value);
+                string dniSocio = Convert.ToString(dgtvListaSocios.SelectedRows[0].Cells["DNI"].Value);
+                string idSocio = Convert.ToString(dgtvListaSocios.SelectedRows[0].Cells["IDMiembro"].Value);
+                string correoSocio = Convert.ToString(dgtvListaSocios.SelectedRows[0].Cells["Correo"].Value);
+                string fechaInscripcion = DateTime.Now.ToString("dd/MM/yyyy");
+
+                bool esSocio = Convert.ToBoolean(dgtvListaSocios.SelectedRows[0].Cells["EsSocio"].Value);
+               
+                if (esSocio)
+                {
+                    FormCarnet carnet = new FormCarnet(nombreSocio, dniSocio, idSocio, correoSocio, fechaInscripcion);
+                    carnet.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("El miembro seleccionado no es un socio, solo los socios pueden tener carnet.", "AVISO DEL SISTEMA",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un miembro antes de imprimir el carnet.", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
