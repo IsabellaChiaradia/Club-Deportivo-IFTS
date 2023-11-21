@@ -204,13 +204,13 @@
             panel1.Controls.Add(lblNombre);
             panel1.Location = new Point(26, 33);
             panel1.Name = "panel1";
-            panel1.Size = new Size(567, 552);
+            panel1.Size = new Size(594, 552);
             panel1.TabIndex = 17;
             panel1.Paint += panel1_Paint;
             // 
             // pictureQr
             // 
-            pictureQr.Location = new Point(392, 271);
+            pictureQr.Location = new Point(414, 271);
             pictureQr.Name = "pictureQr";
             pictureQr.Size = new Size(150, 150);
             pictureQr.TabIndex = 37;
@@ -252,7 +252,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(624, 619);
+            ClientSize = new Size(649, 619);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormCarnet";
