@@ -52,17 +52,17 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(36, 174);
+            lblNombre.Location = new Point(32, 130);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(0, 20);
+            lblNombre.Size = new Size(0, 15);
             lblNombre.TabIndex = 0;
             // 
             // lblDni
             // 
             lblDni.AutoSize = true;
-            lblDni.Location = new Point(96, 246);
+            lblDni.Location = new Point(84, 184);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(0, 20);
+            lblDni.Size = new Size(0, 15);
             lblDni.TabIndex = 1;
             // 
             // lblClubDeportivo
@@ -70,9 +70,9 @@
             lblClubDeportivo.AutoSize = true;
             lblClubDeportivo.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblClubDeportivo.ForeColor = Color.FromArgb(74, 102, 174);
-            lblClubDeportivo.Location = new Point(212, 52);
+            lblClubDeportivo.Location = new Point(186, 39);
             lblClubDeportivo.Name = "lblClubDeportivo";
-            lblClubDeportivo.Size = new Size(215, 46);
+            lblClubDeportivo.Size = new Size(176, 37);
             lblClubDeportivo.TabIndex = 6;
             lblClubDeportivo.Text = "Fitnet club";
             // 
@@ -81,9 +81,9 @@
             lblClubDeportivo2.AutoSize = true;
             lblClubDeportivo2.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblClubDeportivo2.ForeColor = Color.FromArgb(74, 102, 174);
-            lblClubDeportivo2.Location = new Point(212, 98);
+            lblClubDeportivo2.Location = new Point(186, 74);
             lblClubDeportivo2.Name = "lblClubDeportivo2";
-            lblClubDeportivo2.Size = new Size(258, 46);
+            lblClubDeportivo2.Size = new Size(209, 37);
             lblClubDeportivo2.TabIndex = 6;
             lblClubDeportivo2.Text = "Carnet socio";
             // 
@@ -92,9 +92,9 @@
             lblNombreSocio.AutoSize = true;
             lblNombreSocio.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point);
             lblNombreSocio.ForeColor = Color.FromArgb(74, 102, 174);
-            lblNombreSocio.Location = new Point(17, 174);
+            lblNombreSocio.Location = new Point(15, 130);
             lblNombreSocio.Name = "lblNombreSocio";
-            lblNombreSocio.Size = new Size(138, 39);
+            lblNombreSocio.Size = new Size(110, 31);
             lblNombreSocio.TabIndex = 7;
             lblNombreSocio.Text = "Nombre";
             // 
@@ -103,9 +103,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(74, 102, 174);
-            label1.Location = new Point(23, 281);
+            label1.Location = new Point(20, 211);
             label1.Name = "label1";
-            label1.Size = new Size(56, 26);
+            label1.Size = new Size(45, 22);
             label1.TabIndex = 8;
             label1.Text = "DNI:";
             // 
@@ -114,9 +114,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.FromArgb(74, 102, 174);
-            label2.Location = new Point(23, 321);
+            label2.Location = new Point(20, 241);
             label2.Name = "label2";
-            label2.Size = new Size(183, 26);
+            label2.Size = new Size(150, 22);
             label2.TabIndex = 9;
             label2.Text = "Número de socio:";
             // 
@@ -125,9 +125,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.FromArgb(74, 102, 174);
-            label3.Location = new Point(23, 358);
+            label3.Location = new Point(20, 268);
             label3.Name = "label3";
-            label3.Size = new Size(84, 26);
+            label3.Size = new Size(70, 22);
             label3.TabIndex = 10;
             label3.Text = "Correo:";
             // 
@@ -136,9 +136,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.FromArgb(74, 102, 174);
-            label4.Location = new Point(23, 395);
+            label4.Location = new Point(20, 296);
             label4.Name = "label4";
-            label4.Size = new Size(217, 26);
+            label4.Size = new Size(180, 22);
             label4.TabIndex = 11;
             label4.Text = "Fecha de inscripción:";
             // 
@@ -146,9 +146,9 @@
             // 
             lblDniSocio.AutoSize = true;
             lblDniSocio.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDniSocio.Location = new Point(85, 281);
+            lblDniSocio.Location = new Point(74, 211);
             lblDniSocio.Name = "lblDniSocio";
-            lblDniSocio.Size = new Size(70, 26);
+            lblDniSocio.Size = new Size(58, 22);
             lblDniSocio.TabIndex = 13;
             lblDniSocio.Text = "label1";
             // 
@@ -156,9 +156,9 @@
             // 
             lblIDsocio.AutoSize = true;
             lblIDsocio.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblIDsocio.Location = new Point(212, 321);
+            lblIDsocio.Location = new Point(186, 241);
             lblIDsocio.Name = "lblIDsocio";
-            lblIDsocio.Size = new Size(70, 26);
+            lblIDsocio.Size = new Size(58, 22);
             lblIDsocio.TabIndex = 14;
             lblIDsocio.Text = "label1";
             // 
@@ -166,9 +166,9 @@
             // 
             lblMail.AutoSize = true;
             lblMail.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMail.Location = new Point(113, 358);
+            lblMail.Location = new Point(99, 268);
             lblMail.Name = "lblMail";
-            lblMail.Size = new Size(70, 26);
+            lblMail.Size = new Size(58, 22);
             lblMail.TabIndex = 15;
             lblMail.Text = "label1";
             // 
@@ -176,9 +176,9 @@
             // 
             lblFecha.AutoSize = true;
             lblFecha.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            lblFecha.Location = new Point(246, 395);
+            lblFecha.Location = new Point(215, 296);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(70, 26);
+            lblFecha.Size = new Size(58, 22);
             lblFecha.TabIndex = 16;
             lblFecha.Text = "label1";
             // 
@@ -202,17 +202,20 @@
             panel1.Controls.Add(lblClubDeportivo);
             panel1.Controls.Add(lblDni);
             panel1.Controls.Add(lblNombre);
-            panel1.Location = new Point(26, 33);
+            panel1.Location = new Point(23, 25);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(594, 552);
+            panel1.Size = new Size(520, 414);
             panel1.TabIndex = 17;
             panel1.Paint += panel1_Paint;
             // 
             // pictureQr
             // 
-            pictureQr.Location = new Point(414, 271);
+            pictureQr.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureQr.Location = new Point(362, 203);
+            pictureQr.Margin = new Padding(3, 2, 3, 2);
             pictureQr.Name = "pictureQr";
-            pictureQr.Size = new Size(150, 150);
+            pictureQr.Size = new Size(131, 112);
             pictureQr.TabIndex = 37;
             pictureQr.TabStop = false;
             // 
@@ -224,9 +227,10 @@
             btnImprimirCarnet.FlatStyle = FlatStyle.Flat;
             btnImprimirCarnet.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnImprimirCarnet.ForeColor = Color.White;
-            btnImprimirCarnet.Location = new Point(335, 472);
+            btnImprimirCarnet.Location = new Point(293, 354);
+            btnImprimirCarnet.Margin = new Padding(3, 2, 3, 2);
             btnImprimirCarnet.Name = "btnImprimirCarnet";
-            btnImprimirCarnet.Size = new Size(207, 52);
+            btnImprimirCarnet.Size = new Size(181, 39);
             btnImprimirCarnet.TabIndex = 36;
             btnImprimirCarnet.Text = "IMPRIMIR";
             btnImprimirCarnet.UseVisualStyleBackColor = false;
@@ -240,9 +244,10 @@
             btnVolver.FlatStyle = FlatStyle.Flat;
             btnVolver.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnVolver.ForeColor = Color.White;
-            btnVolver.Location = new Point(23, 472);
+            btnVolver.Location = new Point(20, 354);
+            btnVolver.Margin = new Padding(3, 2, 3, 2);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(207, 52);
+            btnVolver.Size = new Size(181, 39);
             btnVolver.TabIndex = 35;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
@@ -250,11 +255,12 @@
             // 
             // FormCarnet
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(649, 619);
+            ClientSize = new Size(568, 464);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormCarnet";
             Text = "FormCarnet";
             Load += FormCarnet_Load;
