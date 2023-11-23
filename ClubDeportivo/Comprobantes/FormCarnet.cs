@@ -21,13 +21,15 @@ namespace ClubDeportivo.Comprobantes
     public partial class FormCarnet : Form
     {
         public string Nombre { get; set; }
+
+        public string Apellido { get; set; }
         public string DNI { get; set; }
         public string NumSocio { get; set; }
         public string Correo { get; set; }
         public string FechaInscripcion { get; set; }
         //qr
 
-        public FormCarnet(string nombre, string dni, string numSocio, string correo, string fechaInscripcion)
+        public FormCarnet(string nombre, string apellido, string dni, string numSocio, string correo, string fechaInscripcion)
 
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace ClubDeportivo.Comprobantes
             this.BackColor = System.Drawing.Color.White;
 
             this.Nombre = nombre;
+            this.Apellido = apellido;
             this.DNI = dni;
             this.NumSocio = numSocio;
             this.Correo = correo;
@@ -56,7 +59,7 @@ namespace ClubDeportivo.Comprobantes
 
         private void FormCarnet_Load(object sender, EventArgs e)
         {
-            lblNombreSocio.Text = Nombre;
+            lblNombreSocio.Text = Nombre + " " + Apellido;
             lblDniSocio.Text = DNI;
             lblIDsocio.Text = NumSocio;
             lblMail.Text = Correo;
