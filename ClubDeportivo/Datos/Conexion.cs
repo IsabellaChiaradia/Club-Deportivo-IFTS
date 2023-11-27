@@ -24,7 +24,7 @@ this.baseDatos = "club_deportivo";
 this.servidor = "localhost";
 this.puerto = "3306";
 this.usuario = "root";
-this.clave = "root"; //Colocar clave propia en el caso de tener.
+this.clave = "Holaenzo17"; //Colocar clave propia en el caso de tener.
 }
     // proceso de interacción
     public MySqlConnection CrearConexion()
