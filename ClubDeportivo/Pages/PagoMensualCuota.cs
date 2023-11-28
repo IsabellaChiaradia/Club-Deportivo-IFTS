@@ -120,13 +120,21 @@ namespace Dashboard_ClubDeportivo.Pages
             bool esnumero = int.TryParse(respuesta, out int codigo);
             if (esnumero)
             {
-                if (codigo == 1)
+                if (codigo == 3)
+                {
+                    MessageBox.Show("El socio ya ha pagado la cuota del mes actual", "AVISO DEL SISTEMA",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                else if (codigo == 1)
                 {
                     MessageBox.Show("Se realizó el pago correctamente", "AVISO DEL SISTEMA",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                    //Cargamos los datos del pago en la grilla
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    // Cargamos los datos del pago en la grilla
                     cuotaDB.mostrarPagoExitoso(dgtvPagoRealizado, dniMiembro);
+
                     this.factura = new frmFactura(); // cada vez que pagamos generamos una nueva factura
                     cargarFactura();
                     btnComprobante.Enabled = true;
@@ -134,22 +142,24 @@ namespace Dashboard_ClubDeportivo.Pages
                 else if (codigo == 0)
                 {
                     MessageBox.Show("Sólo los socios pueden pagar la cuota mensual", "AVISO DEL SISTEMA",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
                 else
                 {
                     MessageBox.Show("El miembro no está registrado en el sistema ", "AVISO DEL SISTEMA",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
             else
             {
                 MessageBox.Show("Ups! Hubo un error en el pago: " + respuesta, "AVISO DEL SISTEMA",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
+
+
 
         }
 
