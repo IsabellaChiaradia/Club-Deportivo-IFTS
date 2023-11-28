@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             lblCuotasVenc = new Label();
-            btnPrintCuotasVenc = new Dashboard_ClubDeportivo.CustomBotonDos();
             btnNotificar = new Dashboard_ClubDeportivo.CustomBotonDos();
             dtgvCuotasVenc = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dtgvCuotasVenc).BeginInit();
@@ -40,26 +39,11 @@
             lblCuotasVenc.AutoSize = true;
             lblCuotasVenc.Font = new Font("Microsoft Sans Serif", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point);
             lblCuotasVenc.ForeColor = Color.White;
-            lblCuotasVenc.Location = new Point(37, 35);
+            lblCuotasVenc.Location = new Point(32, 26);
             lblCuotasVenc.Name = "lblCuotasVenc";
-            lblCuotasVenc.Size = new Size(235, 31);
+            lblCuotasVenc.Size = new Size(192, 26);
             lblCuotasVenc.TabIndex = 14;
             lblCuotasVenc.Text = "Cuotas Vencidas";
-            // 
-            // btnPrintCuotasVenc
-            // 
-            btnPrintCuotasVenc.BackColor = Color.FromArgb(96, 61, 140);
-            btnPrintCuotasVenc.Cursor = Cursors.Hand;
-            btnPrintCuotasVenc.FlatAppearance.BorderSize = 0;
-            btnPrintCuotasVenc.FlatStyle = FlatStyle.Flat;
-            btnPrintCuotasVenc.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPrintCuotasVenc.ForeColor = Color.White;
-            btnPrintCuotasVenc.Location = new Point(664, 559);
-            btnPrintCuotasVenc.Name = "btnPrintCuotasVenc";
-            btnPrintCuotasVenc.Size = new Size(207, 52);
-            btnPrintCuotasVenc.TabIndex = 40;
-            btnPrintCuotasVenc.Text = "IMPRIMIR";
-            btnPrintCuotasVenc.UseVisualStyleBackColor = false;
             // 
             // btnNotificar
             // 
@@ -69,9 +53,10 @@
             btnNotificar.FlatStyle = FlatStyle.Flat;
             btnNotificar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnNotificar.ForeColor = Color.White;
-            btnNotificar.Location = new Point(387, 559);
+            btnNotificar.Location = new Point(581, 419);
+            btnNotificar.Margin = new Padding(3, 2, 3, 2);
             btnNotificar.Name = "btnNotificar";
-            btnNotificar.Size = new Size(207, 52);
+            btnNotificar.Size = new Size(181, 39);
             btnNotificar.TabIndex = 39;
             btnNotificar.Text = "NOTIFICAR";
             btnNotificar.UseVisualStyleBackColor = false;
@@ -84,26 +69,25 @@
             dtgvCuotasVenc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvCuotasVenc.BackgroundColor = Color.White;
             dtgvCuotasVenc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvCuotasVenc.Location = new Point(59, 137);
+            dtgvCuotasVenc.Location = new Point(52, 103);
+            dtgvCuotasVenc.Margin = new Padding(3, 2, 3, 2);
             dtgvCuotasVenc.Name = "dtgvCuotasVenc";
             dtgvCuotasVenc.ReadOnly = true;
             dtgvCuotasVenc.RowHeadersWidth = 51;
             dtgvCuotasVenc.RowTemplate.Height = 25;
-            dtgvCuotasVenc.Size = new Size(811, 376);
+            dtgvCuotasVenc.Size = new Size(710, 282);
             dtgvCuotasVenc.TabIndex = 41;
             // 
             // CuotasVencidas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(74, 102, 174);
             Controls.Add(dtgvCuotasVenc);
-            Controls.Add(btnPrintCuotasVenc);
             Controls.Add(btnNotificar);
             Controls.Add(lblCuotasVenc);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "CuotasVencidas";
-            Size = new Size(902, 684);
+            Size = new Size(789, 513);
             Load += CuotasVencidas_Load;
             ((System.ComponentModel.ISupportInitialize)dtgvCuotasVenc).EndInit();
             ResumeLayout(false);
@@ -113,7 +97,6 @@
         #endregion
 
         private Label lblCuotasVenc;
-        private Dashboard_ClubDeportivo.CustomBotonDos btnPrintCuotasVenc;
         private Dashboard_ClubDeportivo.CustomBotonDos btnNotificar;
         private DataGridView dtgvCuotasVenc;
     }

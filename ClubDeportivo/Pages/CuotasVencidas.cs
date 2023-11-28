@@ -43,15 +43,15 @@ namespace ClubDeportivo.Pages
                 string correoSocio = Convert.ToString(dtgvCuotasVenc.SelectedRows[0].Cells["Correo"].Value);
                 string fechaVencimiento = Convert.ToString(dtgvCuotasVenc.SelectedRows[0].Cells["Fecha de Vencimiento"].Value);
 
-               
+
                 string mensaje = $"Estimado {nombreSocio} {apellidoSocio},\n\n" +
                     $"Le informamos que su cuota vencida con fecha de vencimiento {fechaVencimiento} está pendiente de pago. " +
                     $"Por favor, realice el pago correspondiente lo antes posible.\n\n" +
                     "Atentamente,\nFitNet Club";
 
-            
-                string correoRemitente = "amourxvos@gmail.com"; 
-                string contraseñaRemitente = "jlcu gopb gqks mnch"; 
+
+                string correoRemitente = "amourxvos@gmail.com";
+                string contraseñaRemitente = "jlcu gopb gqks mnch";
                 string asunto = "Aviso de Cuota Vencida";
 
                 SmtpClient clienteSmtp = new SmtpClient("smtp.gmail.com")
@@ -66,7 +66,7 @@ namespace ClubDeportivo.Pages
 
                 try
                 {
-                  
+
                     clienteSmtp.Send(mensajeCorreo);
                     MessageBox.Show("Correo electrónico enviado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -78,8 +78,8 @@ namespace ClubDeportivo.Pages
                 {
                     mensajeCorreo.Dispose();
                 }
-            
-        }
+
+            }
         }
     }
 }
