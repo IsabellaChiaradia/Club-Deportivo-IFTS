@@ -47,11 +47,11 @@ namespace ClubDeportivo.Pages
                 string mensaje = $"Estimado {nombreSocio} {apellidoSocio},\n\n" +
                     $"Le informamos que su cuota vencida con fecha de vencimiento {fechaVencimiento} está pendiente de pago. " +
                     $"Por favor, realice el pago correspondiente lo antes posible.\n\n" +
-                    "Atentamente,\n[Tu Nombre]";
+                    "Atentamente,\nFitNet Club";
 
             
-                string correoRemitente = "clubDeportivo@gmail.com"; 
-                string contraseñaRemitente = "passs"; 
+                string correoRemitente = "amourxvos@gmail.com"; 
+                string contraseñaRemitente = "jlcu gopb gqks mnch"; 
                 string asunto = "Aviso de Cuota Vencida";
 
                 SmtpClient clienteSmtp = new SmtpClient("smtp.gmail.com")
