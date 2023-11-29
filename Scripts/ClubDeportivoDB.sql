@@ -24,6 +24,10 @@ FechaNac varchar(50),
 AptoMedico boolean,
 constraint pk_miembro primary key (IDMiembro)
 );
+insert into miembro(IDMiembro, Nombre, Apellido, DNI, EsSocio, Correo, Direccion, FechaNac, AptoMedico) values
+(1001, 'Juan', 'Perez', '123456789', 1, 'juan.perez@hotmail.com', 'Calle D 123', '01/01/1990', 1),
+(1002, 'Maria', 'Gomez', '987654321', 1, 'maria.gomez@gmail.com', 'Avenida Sarmiento 456', '15/05/1985', 1),
+(1003, 'Carlos', 'Rodriguez', '456789123', 0, 'carlos.rodriguez@gmail.com', 'Plaza Principal 980', '30/11/1988', 1);
 
 create table Usuario(
 IDUsuario int auto_increment,
@@ -79,3 +83,7 @@ IDMiembro int,
 constraint pk_cuota primary key (IDCuota),
 constraint fk_cuota_miembro foreign key (IDMiembro) references Miembro (IDMiembro)
 );
+
+insert into Cuota (Monto, FechaPago, FechaVenc, IDMiembro) values
+(7800, '2023-10-29', DATE_ADD('2023-10-29', INTERVAL 30 DAY), 1001),
+(7800, '2023-10-30', DATE_ADD('2023-10-30', INTERVAL 30 DAY), 1002);
