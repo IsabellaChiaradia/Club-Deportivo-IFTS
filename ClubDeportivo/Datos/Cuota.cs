@@ -90,7 +90,7 @@ namespace ClubDeportivo.Datos
                     + " INNER JOIN cuota c ON c.IDMiembro = m.IDMiembro "
                     + " WHERE m.EsSocio "
                     + " GROUP BY m.IDMiembro "
-                    + " HAVING MAX(c.FechaVenc) < CURRENT_DATE"
+                    + " HAVING MAX(c.FechaVenc) <= CURRENT_DATE"
                     + " ORDER BY MAX(c.FechaVenc); ";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, sqlCon);
                 DataTable dt = new DataTable();
