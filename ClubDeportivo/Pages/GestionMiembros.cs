@@ -246,7 +246,7 @@ namespace Dashboard_ClubDeportivo.pesañas
                 string fechaInscripcion = DateTime.Now.ToString("dd/MM/yyyy");
 
                 bool esSocio = Convert.ToBoolean(dgtvListaSocios.SelectedRows[0].Cells["EsSocio"].Value);
-               
+
                 if (esSocio)
                 {
                     FormCarnet carnet = new FormCarnet(nombreSocio, apellidoSocio, dniSocio, idSocio, correoSocio, fechaInscripcion);
@@ -262,6 +262,16 @@ namespace Dashboard_ClubDeportivo.pesañas
             {
                 MessageBox.Show("Por favor, seleccione un miembro antes de imprimir el carnet.", "AVISO DEL SISTEMA",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cbxAptoFisico_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbxAptoFisico.Checked)
+            {
+                MessageBox.Show("El apto físico es obligatorio para la inscripción.", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbxAptoFisico.Checked = true;
             }
         }
     }
