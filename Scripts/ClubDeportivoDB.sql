@@ -86,4 +86,4 @@ constraint fk_cuota_miembro foreign key (IDMiembro) references Miembro (IDMiembr
 
 insert into Cuota (Monto, FechaPago, FechaVenc, IDMiembro) values
 (7800, '2023-10-29', DATE_ADD('2023-10-29', INTERVAL 30 DAY), 1001),
-(7800, '2023-10-30', DATE_ADD('2023-10-30', INTERVAL 30 DAY), 1002);
+(7800, DATE_SUB(CURDATE(), INTERVAL 1 MONTH), CURDATE(), 1002);
